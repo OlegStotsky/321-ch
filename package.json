@@ -17,10 +17,12 @@
     "webpack-dev-server": "^3.1.4"
   },
   "devDependencies": {
+    "@types/jest": "^23.0.0",
     "awesome-typescript-loader": "^5.0.0",
     "husky": "^0.14.3",
     "prettier": "1.13.5",
-    "pretty-quick": "^1.6.0"
+    "pretty-quick": "^1.6.0",
+    "ts-jest": "^22.4.6"
   },
   "scripts": {
     "precommit": "pretty-quick --staged && npm test",
@@ -28,6 +30,20 @@
     "test": "jest",
     "lint-client": "tslint -c ./tslint.json './client/**/*.ts'",
     "list-server": "tslint -c ./tslint.json './server/**/*.ts'"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   },
   "author": "Oleg Stotsky",
   "license": "ISC"
