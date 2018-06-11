@@ -1,18 +1,25 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
-  entry: './client/src/index.tsx',
+  mode: "development",
+  entry: "./client/src/index.tsx",
   output: {
-    path: path.join(__dirname, 'client', 'dist'),
-    filename: 'bundle.js'
+    path: path.join(__dirname, "client", "dist"),
+    filename: "bundle.js"
   },
   resolve: {
-    extensions: ['.js', '.json', '.ts', '.tsx'],
+    extensions: [".js", ".json", ".ts", ".tsx"]
   },
   module: {
-    rules: [{
-      test: /\.tsx?$/,
-      loader: 'awesome-typescript-loader'
-    }]
+    rules: [
+      {
+        test: /\.tsx?$/,
+        loader: "awesome-typescript-loader"
+      }
+    ]
+  },
+  devServer: {
+    contentBase: path.join(__dirname, "client", "dist"),
+    historyApiFallback: true
   }
-}
+};

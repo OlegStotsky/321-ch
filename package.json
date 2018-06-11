@@ -4,10 +4,19 @@
   "description": "image board",
   "main": "webpack.config.js",
   "dependencies": {
+    "@material-ui/core": "^1.2.1",
+    "@material-ui/icons": "^1.1.0",
+    "@types/react-redux": "^6.0.2",
+    "@types/react-router-dom": "^4.2.7",
+    "@types/redux": "^3.6.0",
     "jest": "^23.1.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
     "ts-loader": "^4.4.1",
+    "tslint": "^5.10.0",
     "tslint-config-airbnb": "^5.9.2",
     "tslint-eslint-rules": "^5.3.1",
     "tslint-react": "^3.6.0",
@@ -25,11 +34,12 @@
     "ts-jest": "^22.4.6"
   },
   "scripts": {
-    "precommit": "pretty-quick --staged && npm test",
+    "precommit": "pretty-quick --staged && npm test && npm run lint-client",
     "build": "webpack",
+    "dev-server": "webpack-dev-server",
     "test": "jest",
-    "lint-client": "tslint -c ./tslint.json './client/**/*.ts'",
-    "list-server": "tslint -c ./tslint.json './server/**/*.ts'"
+    "lint-client": "tslint -c ./tslint.json './client/**/*.ts*'",
+    "list-server": "tslint -c ./tslint.json './server/**/*.ts*'"
   },
   "jest": {
     "transform": {
