@@ -4,6 +4,7 @@
   "description": "image board",
   "main": "webpack.config.js",
   "dependencies": {
+    "jest": "^23.1.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "ts-loader": "^4.4.1",
@@ -12,13 +13,17 @@
     "tslint-react": "^3.6.0",
     "typescript": "^2.9.1",
     "webpack": "^4.12.0",
-    "webpack-dev-server": "^3.1.4",
-    "webpack-cli": "^3.0.3"
+    "webpack-cli": "^3.0.3",
+    "webpack-dev-server": "^3.1.4"
   },
   "devDependencies": {
-    "awesome-typescript-loader": "^5.0.0"
+    "awesome-typescript-loader": "^5.0.0",
+    "husky": "^0.14.3",
+    "prettier": "1.13.5",
+    "pretty-quick": "^1.6.0"
   },
   "scripts": {
+    "precommit": "pretty-quick --staged && npm test",
     "build": "webpack",
     "test": "jest",
     "lint-client": "tslint -c ./tslint.json './client/**/*.ts'",
