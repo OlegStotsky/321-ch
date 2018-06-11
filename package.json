@@ -1,0 +1,29 @@
+{
+  "name": "321-ch",
+  "version": "1.0.0",
+  "description": "image board",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "ts-loader": "^4.4.1",
+    "tslint-config-airbnb": "^5.9.2",
+    "tslint-eslint-rules": "^5.3.1",
+    "tslint-react": "^3.6.0",
+    "typescript": "^2.9.1",
+    "webpack": "^4.12.0",
+    "webpack-dev-server": "^3.1.4",
+    "webpack-cli": "^3.0.3"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.0.0"
+  },
+  "scripts": {
+    "build": "webpack",
+    "test": "jest",
+    "lint-client": "tslint -c ./tslint.json './client/**/*.ts'",
+    "list-server": "tslint -c ./tslint.json './server/**/*.ts'"
+  },
+  "author": "Oleg Stotsky",
+  "license": "ISC"
+}
