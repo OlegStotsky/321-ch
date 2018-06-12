@@ -1,86 +1,52 @@
 import * as React from "react";
+import Box from "./Box";
+import Column from "./Column";
+import TextLink from "./TextLink";
 
 const HomePage = () => {
+  const japaneseCultureSection: Array<[string, string]> = [
+    ["Anime", "/a"],
+    ["Anime/Wallpapers", "/aw"],
+    ["Mecha", "mech"],
+    ["Otaku Culture", "otaku"]
+  ];
+
+  const techSection: Array<[string, string]> = [
+    ["Programming", "/pr"],
+    ["Software & Technology", "/s"],
+    ["Science & Math", "/sci"],
+    ["Web Design", "/wd"]
+  ];
+
+  const misc: Array<[string, string]> = [
+    ["Random", "/b"],
+    ["Politics", "/po"],
+    ["International", "/int"],
+    ["Meet ups", "/soc"]
+  ];
+
+  const toListOfLinks = (a: Array<[string, string]>): React.ReactNode[] => {
+    return a.map((item, i) => (
+      <TextLink key={i} data={item[0]} href={item[1]} />
+    ));
+  };
+
+  const firstColumnItems = toListOfLinks(japaneseCultureSection);
+  const secondColumnItems = toListOfLinks(techSection);
+  const thirdColumnItems = toListOfLinks(misc);
+
   return (
     <div className="home-page">
       <header className="home-page__header">
         <h1 className="home-page__header-main">321.ch</h1>
         <h3 className="home-page__header-sub">Just another imageboard</h3>
       </header>
-      <div className="box">
-        <h1 className="box__header">Boards</h1>
-        <div className="box__content">
-          <ul className="column">
-            <li className="column__heading">Japanese Culture</li>
-            <li>
-              <a className="text-link" href="/a">
-                Anime
-              </a>
-            </li>
-            <li>
-              <a className="text-link" href="/aw">
-                Anime/Wallpapers
-              </a>
-            </li>
-            <li>
-              <a className="text-link" href="/mech">
-                Mecha
-              </a>
-            </li>
-            <li>
-              <a className="text-link" href="/ot">
-                Otaku Culture
-              </a>
-            </li>
-          </ul>
-          <ul className="column">
-            <li className="column__heading">Tech</li>
-            <li>
-              <a className="text-link" href="/pr">
-                Programming
-              </a>
-            </li>
-            <li>
-              <a className="text-link" href="/s">
-                Software &amp; Technology
-              </a>
-            </li>
-            <li>
-              <a className="text-link" href="/sci">
-                Science &amp; Math
-              </a>
-            </li>
-            <li>
-              <a className="text-link" href="/wd">
-                Web Design
-              </a>
-            </li>
-          </ul>
-          <ul className="column">
-            <li className="column__heading">Misc</li>
-            <li>
-              <a className="text-link" href="/wd">
-                Random
-              </a>
-            </li>
-            <li>
-              <a className="text-link" href="/wd">
-                Politics
-              </a>
-            </li>
-            <li>
-              <a className="text-link" href="/wd">
-                International
-              </a>
-            </li>
-            <li>
-              <a className="text-link" href="/wd">
-                Meet ups
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+
+      <Box headerMessage="Boards">
+        <Column headingMessage="Japanese Culture" items={firstColumnItems} />
+        <Column headingMessage="Tech" items={secondColumnItems} />
+        <Column headingMessage="Misc" items={thirdColumnItems} />
+      </Box>
     </div>
   );
 };
