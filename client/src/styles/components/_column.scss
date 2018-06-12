@@ -1,0 +1,22 @@
+.column {
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  list-style: none;
+  margin-bottom: 2rem;
+
+  .text-link {
+    text-decoration: none;
+    color: $color-green;
+
+    &:hover {
+      color: $color-green-dark;
+    }
+  }
+
+  &__heading {
+    color: $color-green-dark;
+    text-decoration: underline;
+    margin-bottom: 1rem;
+  }
+}

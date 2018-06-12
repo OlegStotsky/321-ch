@@ -7,5 +7,9 @@
 @import "./base/animations";
 @import "./base/typography";
 
-@import "./layout/_app.scss";
-@import "./layout/_bg-particles.scss";
+@import "./components/box";
+@import "./components/column";
+
+@import "./layout/app";
+@import "./layout/bg-particles";
+@import "./layout/home-page";

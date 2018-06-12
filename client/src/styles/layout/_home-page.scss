@@ -1,0 +1,21 @@
+.home-page {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__header {
+    color: white;
+    margin-bottom: 3rem;
+
+    &-main {
+      display: flex;
+      justify-content: center;
+      font-size: 4rem;
+    }
+
+    &-sub {
+      font-size: 2rem;
+    }
+  }
+}

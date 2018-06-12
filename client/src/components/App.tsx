@@ -17,7 +17,9 @@ const App = () => {
   return (
     <div>
       <Particles params={particlesParams} className="bg-particles" />
-      <AppRouter />
+      <div className="main-wrapper">
+        <AppRouter />
+      </div>
     </div>
   );
 };
