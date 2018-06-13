@@ -8,7 +8,8 @@
   ],
   "jsRules": {},
   "rules": {
-    "ordered-imports": false
+    "ordered-imports": false,
+    "object-literal-sort-keys": false
   },
   "rulesDirectory": []
 }
