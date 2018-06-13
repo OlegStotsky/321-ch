@@ -5,15 +5,6 @@
   list-style: none;
   margin-bottom: 2rem;
 
-  .text-link {
-    text-decoration: none;
-    color: $color-green;
-
-    &:hover {
-      color: $color-green-dark;
-    }
-  }
-
   &__heading {
     color: $color-green-dark;
     text-decoration: underline;

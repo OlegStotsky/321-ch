@@ -1,0 +1,15 @@
+.text-link {
+  text-decoration: none;
+
+  &:hover {
+    color: $color-green-dark;
+  }
+
+  &--green {
+    color: $color-green;
+  }
+
+  &--white {
+    color: #fff;
+  }
+}

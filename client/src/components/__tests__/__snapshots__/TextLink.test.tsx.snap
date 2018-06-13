@@ -21,7 +21,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": "abcd",
-      "className": "text-link",
+      "className": "text-link text-link--undefined null",
       "href": "/",
     },
     "ref": null,
@@ -35,7 +35,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": "abcd",
-        "className": "text-link",
+        "className": "text-link text-link--undefined null",
         "href": "/",
       },
       "ref": null,

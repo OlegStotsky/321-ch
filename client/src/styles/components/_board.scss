@@ -1,0 +1,33 @@
+.board {
+  &__header {
+  }
+
+  &__list {
+    display: inline-block;
+    font-size: 1.7rem;
+    margin-top: 0.3rem;
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+
+    &:first-child {
+      margin-left: 1rem;
+    }
+
+    &-caret {
+      color: rgb(13, 85, 107);
+
+      &:first-of-type {
+        margin-right: 0.3rem;
+      }
+      &:last-of-type {
+        margin-left: 0.3rem;
+      }
+    }
+
+    &-link {
+      margin: 0 0.2rem;
+    }
+  }
+}
