@@ -1,8 +1,9 @@
 import * as React from "react";
 import BoardHeader from "./BoardHeader";
+import { IBoardCredentials } from "../../lib/types/BoardCredentials";
 
 interface IBoardProps {
-  boardName: string;
+  boardCredentials: IBoardCredentials
 }
 
 class Board extends React.Component<IBoardProps, {}> {
@@ -13,7 +14,7 @@ class Board extends React.Component<IBoardProps, {}> {
   public render() {
     return (
       <div>
-        <BoardHeader />
+        <BoardHeader credentials={this.props.boardCredentials} />
       </div>
     );
   }

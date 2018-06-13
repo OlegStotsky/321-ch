@@ -1,5 +1,10 @@
 .board {
   &__header {
+    &-name {
+      margin-top: 2rem;
+      color: white;
+      font-size: 3rem;
+    }
   }
 
   &__list {
