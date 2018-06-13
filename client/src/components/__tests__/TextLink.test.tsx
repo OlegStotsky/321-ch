@@ -21,6 +21,6 @@ describe("TextLink", () => {
     expect(wrapper.contains("abcd")).toBe(true);
   });
   it("provides href into a element correctly", () => {
-    expect(wrapper.find({ href: "/" })).toHaveLength(1);
+    expect(wrapper.find({ to: "/" })).toHaveLength(1);
   });
 });

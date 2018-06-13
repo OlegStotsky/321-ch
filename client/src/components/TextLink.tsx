@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 
 interface ITextLinkProps {
   data: string;
@@ -14,14 +15,14 @@ const TextLink: React.SFC<ITextLinkProps> = ({
   classNames
 }) => {
   return (
-    <a
+    <Link
       className={`text-link text-link--${color} ${
         classNames ? classNames.join(" ") : null
       }`}
-      href={href}
+      to={href}
     >
       {data}
-    </a>
+    </Link>
   );
 };
 
