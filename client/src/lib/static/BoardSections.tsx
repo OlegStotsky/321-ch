@@ -1,31 +1,31 @@
 import { IBoardSection } from "../types/BoardSection";
 
-const animeSection: IBoardSection = {
+export const japaneseCultureSection: IBoardSection = {
   name: "Japanese Culture",
   boardList: [
-    ["Anime", "/a"],
-    ["Anime/Wallpapers", "/aw"],
-    ["Mecha", "/mech"],
-    ["Otaku Culture", "/otaku"]
+    { name: "Anime", link: "/a" },
+    { name: "Anime/Wallpapers", link: "/aw" },
+    { name: "Mecha", link: "/mech" },
+    { name: "Otaku Culture", link: "/otaku" }
   ]
 };
 
-const techSection: IBoardSection = {
+export const techSection: IBoardSection = {
   name: "Tech",
   boardList: [
-    ["Programming", "/pr"],
-    ["Software & Technology", "/s"],
-    ["Science & Math", "/sci"],
-    ["Web Design", "/wd"]
+    { name: "Programming", link: "/pr" },
+    { name: "Software & Technology", link: "/s" },
+    { name: "Science & Math", link: "/sci" },
+    { name: "Web Design", link: "/wd" }
   ]
 };
 
-const miscSection: IBoardSection = {
+export const miscSection: IBoardSection = {
   name: "Misc",
   boardList: [
-    ["Random", "/b"],
-    ["Politics", "/po"],
-    ["International", "/int"],
-    ["Meet ups", "/soc"]
+    { name: "Random", link: "/b" },
+    { name: "Politics", link: "/po" },
+    { name: "International", link: "/int" },
+    { name: "Meet ups", link: "/soc" }
   ]
 };

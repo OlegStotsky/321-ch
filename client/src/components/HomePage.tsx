@@ -2,38 +2,23 @@ import * as React from "react";
 import Box from "./Box";
 import Column from "./Column";
 import TextLink from "./TextLink";
+import {
+  techSection,
+  japaneseCultureSection,
+  miscSection
+} from "../lib/static/BoardSections";
+import { IBoardCredentials } from "../lib/types/BoardCredentials";
 
 const HomePage = () => {
-  const japaneseCultureSection: Array<[string, string]> = [
-    ["Anime", "/a"],
-    ["Anime/Wallpapers", "/aw"],
-    ["Mecha", "mech"],
-    ["Otaku Culture", "otaku"]
-  ];
-
-  const techSection: Array<[string, string]> = [
-    ["Programming", "/pr"],
-    ["Software & Technology", "/s"],
-    ["Science & Math", "/sci"],
-    ["Web Design", "/wd"]
-  ];
-
-  const misc: Array<[string, string]> = [
-    ["Random", "/b"],
-    ["Politics", "/po"],
-    ["International", "/int"],
-    ["Meet ups", "/soc"]
-  ];
-
-  const toListOfLinks = (a: Array<[string, string]>): React.ReactNode[] => {
+  const toListOfLinks = (a: IBoardCredentials[]): React.ReactNode[] => {
     return a.map((item, i) => (
-      <TextLink key={i} data={item[0]} href={item[1]} />
+      <TextLink key={i} data={item.name} href={item.link} />
     ));
   };
 
-  const firstColumnItems = toListOfLinks(japaneseCultureSection);
-  const secondColumnItems = toListOfLinks(techSection);
-  const thirdColumnItems = toListOfLinks(misc);
+  const firstColumnItems = toListOfLinks(japaneseCultureSection.boardList);
+  const secondColumnItems = toListOfLinks(techSection.boardList);
+  const thirdColumnItems = toListOfLinks(miscSection.boardList);
 
   return (
     <div className="home-page">
@@ -43,9 +28,12 @@ const HomePage = () => {
       </header>
 
       <Box headerMessage="Boards">
-        <Column headingMessage="Japanese Culture" items={firstColumnItems} />
-        <Column headingMessage="Tech" items={secondColumnItems} />
-        <Column headingMessage="Misc" items={thirdColumnItems} />
+        <Column
+          headingMessage={japaneseCultureSection.name}
+          items={firstColumnItems}
+        />
+        <Column headingMessage={techSection.name} items={secondColumnItems} />
+        <Column headingMessage={miscSection.name} items={thirdColumnItems} />
       </Box>
     </div>
   );
