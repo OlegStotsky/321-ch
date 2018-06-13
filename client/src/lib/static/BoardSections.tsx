@@ -1,4 +1,6 @@
 import { IBoardSection } from "../types/BoardSection";
+import { IBoardCredentials } from "../types/BoardCredentials";
+import * as R from "ramda";
 
 export const japaneseCultureSection: IBoardSection = {
   name: "Japanese Culture",
@@ -29,3 +31,6 @@ export const miscSection: IBoardSection = {
     { name: "Meet ups", link: "/soc" }
   ]
 };
+
+export const allSections: IBoardSection[] = [japaneseCultureSection, techSection, miscSection];
+export const allBoards: IBoardCredentials[] = R.flatten(allSections.map(x => x.boardList));
