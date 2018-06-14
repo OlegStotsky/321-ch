@@ -1,7 +1,9 @@
 import * as React from "react";
+import * as $ from "jquery";
 import BoardList from "./BoardList";
 import { IBoardCredentials } from "../../lib/types/BoardCredentials";
 import TextLink from "../TextLink";
+import ThreadFormContainer from "./ThreadFormContainer";
 
 interface IBoardHeaderProps {
   credentials: IBoardCredentials;
@@ -16,12 +18,26 @@ const BoardHeader: React.SFC<IBoardHeaderProps> = ({ credentials }) => {
       </h1>
       <hr className="board__header-before-create-button" />
       <div className="board__header-action u-center-text">
-        <span className="board__header-action-caret">[</span>
-        <a className="board__header-start-new-thread" href="#">
-          Start a New Thread
-        </a>
-        <span className="board__header-action-caret">]</span>
+        <div className="board__header-action-button">
+          <span className="board__header-action-caret">[</span>
+          <a
+            className="board__header-start-new-thread"
+            href="#"
+            id="start-new-thread"
+            onClick={() => {
+              $("#new-thread-form").removeClass("u-hide");
+              $(".board__header-action-button").addClass("u-hide");
+            }}
+          >
+            Start a New Thread
+          </a>
+          <span className="board__header-action-caret">]</span>
       </div>
+        <div className="new-thread-form u-hide" id="new-thread-form">
+          <ThreadFormContainer />
+        </div>
+      </div>
+      <hr className="board__header-after-create-button" />
     </header>
   );
 };

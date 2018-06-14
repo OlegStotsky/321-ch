@@ -8,6 +8,7 @@
     }
 
     &-before-create-button {
+      size: .1rem;
       margin: 1rem auto;
       width: 60%;
     }
@@ -30,6 +31,10 @@
       &:hover {
         color: $color-orange;
       }
+    }
+
+    &-after-create-button {
+      height: .1rem;
     }
   }
 
