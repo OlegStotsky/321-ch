@@ -18,7 +18,7 @@ const BoardHeader: React.SFC<IBoardHeaderProps> = ({ credentials }) => {
       </h1>
       <hr className="board__header-before-create-button" />
       <div className="board__header-action u-center-text">
-        <div className="board__header-action-button">
+        <div className="board__header-action-button" id="initial-button">
           <span className="board__header-action-caret">[</span>
           <a
             className="board__header-start-new-thread"
@@ -26,7 +26,7 @@ const BoardHeader: React.SFC<IBoardHeaderProps> = ({ credentials }) => {
             id="start-new-thread"
             onClick={() => {
               $("#new-thread-form").removeClass("u-hide");
-              $(".board__header-action-button").addClass("u-hide");
+              $("#initial-button").addClass("u-hide");
             }}
           >
             Start a New Thread

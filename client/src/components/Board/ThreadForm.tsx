@@ -4,6 +4,7 @@ interface IThreadFormProps {
   onAuthorNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onThreadNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onMessageChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onSubmit: (e: React.FormEvent) => void;
   authorName: string;
   threadName: string;
   message: string;
@@ -11,7 +12,7 @@ interface IThreadFormProps {
 
 const ThreadForm: React.SFC<IThreadFormProps> = props => {
   return (
-    <form>
+    <form className="form" onSubmit={props.onSubmit}>
       <div className="form-group">
         <label className="form__label">Name</label>
         <input
@@ -19,6 +20,7 @@ const ThreadForm: React.SFC<IThreadFormProps> = props => {
           name="authorName"
           value={props.authorName}
           className="form__input"
+          onChange={props.onAuthorNameChange}
         />
       </div>
       <div className="form-group">
@@ -28,11 +30,21 @@ const ThreadForm: React.SFC<IThreadFormProps> = props => {
           name="threadName"
           value={props.threadName}
           className="form__input"
+          onChange={props.onThreadNameChange}
         />
       </div>
       <div className="form-group">
         <label className="form__label">Message</label>
-        <textarea value={props.message} className="form__input" name="message" />
+        <textarea
+          value={props.message}
+          className="form__input form__input-text"
+          name="message"
+          rows={20}
+          onChange={props.onMessageChange}
+        />
+      </div>
+      <div className="form-group u-center-text">
+        <button className="form__submit">Submit</button>
       </div>
     </form>
   );

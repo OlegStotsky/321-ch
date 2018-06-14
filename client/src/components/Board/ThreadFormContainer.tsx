@@ -54,12 +54,17 @@ class ThreadFormContainer extends React.Component<
     }
   }
 
+  public onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+  }
+
   public render() {
     return (
       <ThreadForm
         onAuthorNameChange={this.onAuthorNameChange}
         onThreadNameChange={this.onThreadNameChange}
         onMessageChange={this.onMessageChange}
+        onSubmit={this.onSubmit}
         authorName={this.state.authorName}
         threadName={this.state.threadName}
         message={this.state.message}
