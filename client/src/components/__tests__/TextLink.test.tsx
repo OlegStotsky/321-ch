@@ -8,7 +8,7 @@ Enzyme.configure({ adapter: new Adapter() });
 describe("TextLink", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = Enzyme.shallow(<TextLink data="abcd" href="/" />);
+    wrapper = Enzyme.shallow(<TextLink href="/">abcd</TextLink>);
   });
 
   it("matches snapshot", () => {

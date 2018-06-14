@@ -2,14 +2,14 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 
 interface ITextLinkProps {
-  data: string;
+  children: React.ReactNode;
   href: string;
   color?: string;
   classNames?: string[];
 }
 
 const TextLink: React.SFC<ITextLinkProps> = ({
-  data,
+  children,
   href,
   color,
   classNames
@@ -21,7 +21,7 @@ const TextLink: React.SFC<ITextLinkProps> = ({
       }`}
       to={href}
     >
-      {data}
+      {children}
     </Link>
   );
 };

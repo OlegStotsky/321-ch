@@ -4,7 +4,6 @@ import HomePage from "../components/HomePage";
 import { Board } from "../components/Board";
 import { allBoards } from "../lib/static/BoardSections";
 
-console.log(allBoards);
 const AppRouter = () => (
   <BrowserRouter>
     <div>

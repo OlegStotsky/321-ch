@@ -20,11 +20,12 @@ const BoardListSection: React.SFC<IBoardListSectionProps> = ({
       {boardLinks.map((cred, i) => (
         <TextLink
           key={i}
-          data={cred.link}
           href={cred.link}
           color="white"
           classNames={["board__list-link"]}
-        />
+        >
+          {cred.link}
+        </TextLink>
       ))}
       <span className="board__list-caret">]</span>
     </div>

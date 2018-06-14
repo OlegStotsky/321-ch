@@ -2,8 +2,34 @@
   &__header {
     &-name {
       margin-top: 2rem;
-      color: white;
+      color: $color-orange;
       font-size: 3rem;
+      -webkit-text-stroke-color: black;
+    }
+
+    &-before-create-button {
+      margin: 1rem auto;
+      width: 60%;
+    }
+
+    &-action {
+
+      &-caret {
+        font-size: 2.3rem;
+        font-weight: 400;
+      }
+    }
+    
+    &-start-new-thread {
+      display: inline-block;
+      margin: 1rem .3rem;
+      color: white;
+      font-size: 2.3rem;
+      text-decoration: none;
+
+      &:hover {
+        color: $color-orange;
+      }
     }
   }
 

@@ -12,7 +12,7 @@ import { IBoardCredentials } from "../lib/types/BoardCredentials";
 const HomePage = () => {
   const toListOfLinks = (a: IBoardCredentials[]): React.ReactNode[] => {
     return a.map((item, i) => (
-      <TextLink key={i} data={item.name} href={item.link} color="green" />
+      <TextLink key={i} href={item.link} color="green">{item.name}</TextLink>
     ));
   };
 
