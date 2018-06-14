@@ -8,14 +8,9 @@ import {
   miscSection
 } from "../lib/static/BoardSections";
 import { IBoardCredentials } from "../lib/types/BoardCredentials";
+import toListOfLinks from "../helpers/toListOfLinks";
 
 const HomePage = () => {
-  const toListOfLinks = (a: IBoardCredentials[]): React.ReactNode[] => {
-    return a.map((item, i) => (
-      <TextLink key={i} href={item.link} color="green">{item.name}</TextLink>
-    ));
-  };
-
   const firstColumnItems = toListOfLinks(japaneseCultureSection.boardList);
   const secondColumnItems = toListOfLinks(techSection.boardList);
   const thirdColumnItems = toListOfLinks(miscSection.boardList);
