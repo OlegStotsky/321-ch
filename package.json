@@ -8,6 +8,7 @@
     "@material-ui/icons": "^1.1.0",
     "@types/enzyme": "^3.1.10",
     "@types/jquery": "^3.3.2",
+    "@types/moment": "^2.13.0",
     "@types/react": "^16.3.17",
     "@types/react-redux": "^6.0.2",
     "@types/react-router-dom": "^4.2.7",
@@ -15,6 +16,7 @@
     "css-loader": "^0.28.11",
     "jest": "^23.1.0",
     "jquery": "^3.3.1",
+    "moment": "^2.22.2",
     "node-sass": "^4.9.0",
     "ramda": "^0.25.0",
     "react": "^16.4.1",
@@ -48,8 +50,8 @@
     "tslint-config-prettier": "^1.13.0"
   },
   "scripts": {
-    "precommit": "pretty-quick --staged && npm test && npm run lint-client",
-    "build": "webpack",
+    "precommit": "pretty-quick --staged && npm test && npm run lint-client && npm run lint-server",
+    "build-client": "webpack",
     "dev-server": "webpack-dev-server",
     "test": "jest",
     "lint-client": "tslint -c ./tslint.json './client/**/*.ts*'",

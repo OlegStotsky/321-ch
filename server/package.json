@@ -1,0 +1,23 @@
+{
+  "name": "321-ch-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./server.ts",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest",
+    "lint": "tslint -c ../tslint.json './**/*.ts*'",
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "author": "Oleg Stotsky",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.16.0",
+    "@types/mongoose": "^5.0.16",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.5"
+  }
+}
