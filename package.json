@@ -50,8 +50,8 @@
     "tslint-config-prettier": "^1.13.0"
   },
   "scripts": {
-    "precommit": "pretty-quick --staged && npm test && npm run lint-client",
-    "build": "webpack",
+    "precommit": "pretty-quick --staged && npm test && npm run lint-client && npm run lint-server",
+    "build-client": "webpack",
     "dev-server": "webpack-dev-server",
     "test": "jest",
     "lint-client": "tslint -c ./tslint.json './client/**/*.ts*'",

@@ -3,7 +3,7 @@
   x Should display time of the post
   x Should display post number tied to a current board
   x Should display name of the post author
-  Should display post content
+  x Should display post content
 */
 
 import * as React from "react";
