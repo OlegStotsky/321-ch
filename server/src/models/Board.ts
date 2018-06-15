@@ -8,4 +8,4 @@ const BoardSchema = new Schema({
 
 const BoardModel = model("Board", BoardSchema);
 
-export { BoardSchema, BoardModel };
+export { BoardSchema, BoardModel as default };

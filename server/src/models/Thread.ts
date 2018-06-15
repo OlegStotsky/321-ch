@@ -12,4 +12,4 @@ const ThreadSchema = new Schema({
 
 const ThreadModel = model("Thread", ThreadSchema);
 
-export { ThreadSchema, ThreadModel };
+export { ThreadSchema, ThreadModel as default};
