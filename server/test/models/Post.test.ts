@@ -76,5 +76,6 @@ describe("Post", () => {
 
   afterAll(() => {
     mongoose.connection.collections.posts.drop();
+    mongoose.connection.close();
   });
 });

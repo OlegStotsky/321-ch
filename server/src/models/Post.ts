@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Document } from "mongoose";
 import * as moment from "moment";
 
 const PostSchema = new Schema({
@@ -16,9 +16,19 @@ const PostSchema = new Schema({
     type: String,
     required: true,
     maxLength: 1500
+  },
+  subject: {
+    type: String
   }
 });
 
-const PostModel = model("Post", PostSchema);
+export interface IPost extends Document {
+  date: number,
+  authorName: string,
+  content: string,
+  subject?: string
+}
+
+const PostModel = model<IPost>("Post", PostSchema);
 
 export { PostSchema, PostModel as default };
