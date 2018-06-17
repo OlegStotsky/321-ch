@@ -11,7 +11,8 @@ describe("Post", () => {
     const postData = {
       date: 12.5,
       authorName: "Anonymous",
-      content: "abcd"
+      content: "abcd",
+      postNumber: 1
     };
     const post = new Post(postData);
     post.save().then(res => {
@@ -20,7 +21,7 @@ describe("Post", () => {
   });
 
   it("Reads post from the db", () => {
-    Post.findOne({ content: "abcd" }).then((post) => {
+    Post.findOne({ content: "abcd" }).then(post => {
       expect(post).toMatchObject({
         date: 12.5,
         authorName: "Anonymous",
@@ -33,7 +34,8 @@ describe("Post", () => {
     const postData = {
       date: 12.5,
       authorName: "",
-      content: "abcd"
+      content: "abcd",
+      postNumber: 1
     };
     const post = new Post(postData);
     post.save().catch(e => {
@@ -44,7 +46,8 @@ describe("Post", () => {
   it("Rejects post without date", () => {
     const postData = {
       authorName: "a",
-      content: "abcd"
+      content: "abcd",
+      postNumber: 1
     };
     const post = new Post(postData);
     post.save().catch(e => {
@@ -55,7 +58,8 @@ describe("Post", () => {
   it("Rejects post without authorName", () => {
     const postData = {
       date: 12.5,
-      content: "abcd"
+      content: "abcd",
+      postNumber: 1
     };
     const post = new Post(postData);
     post.save().catch(e => {
@@ -66,7 +70,8 @@ describe("Post", () => {
   it("Rejects post without content", () => {
     const postData = {
       date: 12.5,
-      authorName: "abcd"
+      authorName: "abcd",
+      postNumber: 1
     };
     const post = new Post(postData);
     post.save().catch(e => {
@@ -75,7 +80,9 @@ describe("Post", () => {
   });
 
   afterAll(() => {
-    mongoose.connection.collections.posts.drop();
-    mongoose.connection.close();
+    const keys = Object.keys(mongoose.connection.collections);
+    keys.forEach(key => {
+      mongoose.connection.collections[key].drop();
+    });
   });
 });
