@@ -83,6 +83,7 @@ describe("Thread", () => {
     };
     const thread = new Thread(threadData);
     await thread.addOpPost(opPost);
+    await thread.save();
     await thread.addPost({
       authorName: "abcd",
       content: "asfasasdf"
@@ -92,7 +93,13 @@ describe("Thread", () => {
     expect(thread.posts[0].content).toMatch("asfasasdf");
   });
 
-  afterAll(() => {
+  afterAll(async () => {
     mongoose.connection.collections.threads.drop();
+    const keys = Object.keys(mongoose.connection.collections);
+    for (const key of keys) {
+      if (key.match(/^.*seqs$/)) {
+        await mongoose.connection.collections[key].drop();
+      }
+    }
   });
 });

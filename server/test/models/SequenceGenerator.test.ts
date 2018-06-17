@@ -21,5 +21,7 @@ describe("Seqeunce Generator", () => {
     expect(nextNum).toEqual(3);
   });
 
-  afterAll(() => {});
+  afterAll(async () => {
+    await mongoose.connection.collections.abcdseqs.drop();
+  });
 });

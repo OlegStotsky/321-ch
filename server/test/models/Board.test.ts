@@ -102,7 +102,13 @@ describe("Board", () => {
     }
   });
 
-  afterAll(() => {
+  afterAll(async () => {
     mongoose.connection.collections.boards.drop();
+    const keys = Object.keys(mongoose.connection.collections);
+    for (const key of keys) {
+      if (key.match(/^.*seqs$/)) {
+        await mongoose.connection.collections[key].drop();
+      }
+    }
   });
 });

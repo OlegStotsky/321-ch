@@ -8,81 +8,102 @@ describe("Post", () => {
   });
 
   it("Successfuly creates valid post", () => {
-    const postData = {
-      date: 12.5,
-      authorName: "Anonymous",
-      content: "abcd",
-      postNumber: 1
-    };
-    const post = new Post(postData);
-    post.save().then(res => {
-      expect(res).toMatchObject(postData);
-    });
+    try {
+      const postData = {
+        date: 12.5,
+        authorName: "Anonymous",
+        content: "abcd",
+        postNumber: 1
+      };
+      const post = new Post(postData);
+      post.save().then(res => {
+        expect(res).toMatchObject(postData);
+      });
+    } catch (e) {
+      console.log(e);
+    }
   });
 
   it("Reads post from the db", () => {
-    Post.findOne({ content: "abcd" }).then(post => {
-      expect(post).toMatchObject({
-        date: 12.5,
-        authorName: "Anonymous",
-        content: "abcd"
+    try {
+      Post.findOne({ content: "abcd" }).then(post => {
+        expect(post).toMatchObject({
+          date: 12.5,
+          authorName: "Anonymous",
+          content: "abcd"
+        });
       });
-    });
+    } catch (e) {
+      console.log(e);
+    }
   });
 
   it("Rejects post with authorName of length less than 1", () => {
-    const postData = {
-      date: 12.5,
-      authorName: "",
-      content: "abcd",
-      postNumber: 1
-    };
-    const post = new Post(postData);
-    post.save().catch(e => {
-      expect(e).toBeTruthy();
-    });
+    try {
+      const postData = {
+        date: 12.5,
+        authorName: "",
+        content: "abcd",
+        postNumber: 1
+      };
+      const post = new Post(postData);
+      post.save().catch(e => {
+        expect(e).toBeTruthy();
+      });
+    } catch (e) {
+      console.log(e);
+    }
   });
 
   it("Rejects post without date", () => {
-    const postData = {
-      authorName: "a",
-      content: "abcd",
-      postNumber: 1
-    };
-    const post = new Post(postData);
-    post.save().catch(e => {
-      expect(e).toBeTruthy();
-    });
+    try {
+      const postData = {
+        authorName: "a",
+        content: "abcd",
+        postNumber: 1
+      };
+      const post = new Post(postData);
+      post.save().catch(e => {
+        expect(e).toBeTruthy();
+      });
+    } catch (e) {
+      console.log(e);
+    }
   });
 
   it("Rejects post without authorName", () => {
-    const postData = {
-      date: 12.5,
-      content: "abcd",
-      postNumber: 1
-    };
-    const post = new Post(postData);
-    post.save().catch(e => {
-      expect(e).toBeTruthy();
-    });
+    try {
+      const postData = {
+        date: 12.5,
+        content: "abcd",
+        postNumber: 1
+      };
+      const post = new Post(postData);
+      post.save().catch(e => {
+        expect(e).toBeTruthy();
+      });
+    } catch (e) {
+      console.log(e);
+    }
   });
 
   it("Rejects post without content", () => {
-    const postData = {
-      date: 12.5,
-      authorName: "abcd",
-      postNumber: 1
-    };
-    const post = new Post(postData);
-    post.save().catch(e => {
-      expect(e).toBeTruthy();
-    });
+    try {
+      const postData = {
+        date: 12.5,
+        authorName: "abcd",
+        postNumber: 1
+      };
+      const post = new Post(postData);
+      post.save().catch(e => {
+        expect(e).toBeTruthy();
+      });
+    } catch (e) {
+      console.log(e);
+    }
   });
 
-  afterAll(() => {
-    const keys = Object.keys(mongoose.connection.collections);
-    keys.forEach(key => {
-      mongoose.connection.collections[key].drop();
-    });
+  afterAll(async () => {
+    await mongoose.connection.collections.posts.drop();
   });
 });

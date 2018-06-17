@@ -27,7 +27,6 @@ ThreadSchema.methods.addPost = async function(params: IAddPostParams) {
     postNumber
   };
   thread.posts.push(post);
-  await thread.save();
   return post;
 };
 
@@ -45,7 +44,7 @@ ThreadSchema.methods.addOpPost = async function(params: IAddOpPostParams) {
     subject: params.subject,
     postNumber
   };
-  return thread.save();
+  return thread;
 };
 
 export interface IThreadDocument extends Document {
