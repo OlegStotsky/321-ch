@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as $ from "jquery";
 import BoardList from "./BoardList";
-import { IBoardCredentials } from "../../lib/types/BoardCredentials";
+import { IBoardCredentials } from "../../../../shared/lib/types/BoardCredentials";
 import TextLink from "../TextLink";
 import ThreadFormContainer from "./ThreadFormContainer";
 

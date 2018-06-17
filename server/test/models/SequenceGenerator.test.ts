@@ -1,11 +1,11 @@
 import * as mongoose from "mongoose";
-import SequenceGenerator from "../../src/models/SequenceGenerator";
+import Sequence from "../../src/models/Sequence";
 import config from "../../src/config/config";
 
-describe("Seqeunce Generator", () => {
+describe("Seqeunce", () => {
   let seq;
   beforeAll(async () => {
-    seq = SequenceGenerator("abcd");
+    seq = Sequence("abcd");
     return mongoose.connect(config["mongo-test-uri"]);
   });
   it("Creates sequence generator with default 1", async () => {

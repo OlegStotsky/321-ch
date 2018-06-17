@@ -2,7 +2,7 @@ import * as React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import HomePage from "../components/HomePage";
 import { Board } from "../components/Board";
-import { allBoards } from "../lib/static/BoardSections";
+import { allBoards } from "../../../shared/lib/static/BoardSections";
 
 const AppRouter = () => (
   <BrowserRouter>

@@ -1,7 +1,7 @@
 import { Schema, model, Document, Model } from "mongoose";
 import { PostSchema, IPost } from "./Post";
 import * as moment from "moment";
-import getNextPostNumber from "./GetNextPostNumber";
+import SequenceManager from "../lib/SequenceManager";
 
 export const ThreadSchema = new Schema({
   opPost: {
@@ -9,7 +9,7 @@ export const ThreadSchema = new Schema({
     required: true
   },
   posts: [PostSchema],
-  board: { type: Schema.Types.ObjectId, ref: "Board", required: true }
+  board: { type: String, required: true }
 });
 
 interface IAddPostParams {
@@ -19,7 +19,7 @@ interface IAddPostParams {
 
 ThreadSchema.methods.addPost = async function(params: IAddPostParams) {
   const thread = this;
-  const postNumber = await getNextPostNumber(this.board);
+  const postNumber = await SequenceManager.getInstance().next(this.board);
   const post = {
     date: moment.now(),
     authorName: params.authorName,
@@ -36,7 +36,7 @@ interface IAddOpPostParams extends IAddPostParams {
 
 ThreadSchema.methods.addOpPost = async function(params: IAddOpPostParams) {
   const thread = this;
-  const postNumber = await getNextPostNumber(this.board);
+  const postNumber = await SequenceManager.getInstance().next(this.board);
   thread.opPost = {
     date: moment.now(),
     authorName: params.authorName,

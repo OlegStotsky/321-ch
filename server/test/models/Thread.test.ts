@@ -4,14 +4,14 @@ import config from "../../src/config/config";
 import Thread from "../../src/models/Thread";
 
 describe("Thread", () => {
-  const boardId = mongoose.Types.ObjectId();
+  const boardName = "b";
   beforeAll(() => {
     return mongoose.connect(config["mongo-test-uri"]);
   });
 
   it("Creates thread with op post", async () => {
     const threadData = {
-      board: boardId
+      board: boardName
     };
     const opPost = {
       authorName: "abcd",
@@ -36,7 +36,7 @@ describe("Thread", () => {
           postNumber: 1
         }
       ],
-      board: boardId
+      board: boardName
     };
     const thread = new Thread(threadData);
     thread.save().catch(e => {
@@ -46,7 +46,7 @@ describe("Thread", () => {
 
   it("Creates thread with op post and posts", async () => {
     const threadData = {
-      board: boardId
+      board: boardName
     };
     const post1 = {
       authorName: "agfasf",
@@ -74,7 +74,7 @@ describe("Thread", () => {
 
   it("Adds post to array of posts", async () => {
     const threadData = {
-      board: boardId
+      board: boardName
     };
     const opPost = {
       authorName: '"abcd',
@@ -94,7 +94,7 @@ describe("Thread", () => {
   });
 
   afterAll(async () => {
-    mongoose.connection.collections.threads.drop();
+    await mongoose.connection.collections.threads.drop();
     const keys = Object.keys(mongoose.connection.collections);
     for (const key of keys) {
       if (key.match(/^.*seqs$/)) {

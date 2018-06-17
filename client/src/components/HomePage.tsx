@@ -6,8 +6,8 @@ import {
   techSection,
   japaneseCultureSection,
   miscSection
-} from "../lib/static/BoardSections";
-import { IBoardCredentials } from "../lib/types/BoardCredentials";
+} from "../../../shared/lib/static/BoardSections";
+import { IBoardCredentials } from "../../../shared/lib/types/BoardCredentials";
 import toListOfLinks from "../helpers/toListOfLinks";
 
 const HomePage = () => {

@@ -3,8 +3,8 @@ import {
   japaneseCultureSection,
   techSection,
   miscSection
-} from "../../lib/static/BoardSections";
-import { IBoardCredentials } from "../../lib/types/BoardCredentials";
+} from "../../../../shared/lib/static/BoardSections";
+import { IBoardCredentials } from "../../../../shared//lib/types/BoardCredentials";
 import TextLink from "../TextLink";
 
 interface IBoardListSectionProps {

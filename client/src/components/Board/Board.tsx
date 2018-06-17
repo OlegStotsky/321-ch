@@ -1,6 +1,6 @@
 import * as React from "react";
 import BoardHeader from "./BoardHeader";
-import { IBoardCredentials } from "../../lib/types/BoardCredentials";
+import { IBoardCredentials } from "../../../../shared/lib/types/BoardCredentials";
 
 interface IBoardProps {
   boardCredentials: IBoardCredentials

@@ -21,7 +21,7 @@ interface IAddThreadParams {
 
 BoardSchema.methods.addThread = async function(params: IAddThreadParams) {
   const threadData = {
-    board: this._id
+    board: this.name
   };
   const thread = new Thread(threadData);
   await thread.addOpPost({
