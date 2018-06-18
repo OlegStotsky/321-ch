@@ -5,3 +5,4 @@ false
 devlog.txt
 server/src/config/config.ts
 api.text
+server/dist
