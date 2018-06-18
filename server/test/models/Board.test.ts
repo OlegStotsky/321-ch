@@ -9,7 +9,7 @@ describe("Board", () => {
     return mongoose.connect(config["mongo-test-uri"]);
   });
 
-  it("Creates board", async () => {
+  it.only("Creates board", async () => {
     const boardData = {
       name: "b"
     };
@@ -87,12 +87,13 @@ describe("Board", () => {
   });
 
   afterAll(async () => {
-   await mongoose.connection.collections.boards.drop();
-   const keys = Object.keys(mongoose.connection.collections);
+    await mongoose.connection.collections.boards.drop();
+    const keys = Object.keys(mongoose.connection.collections);
     for (const key of keys) {
       if (key.match(/^.*seqs$/)) {
         await mongoose.connection.collections[key].drop();
       }
     }
+    // mongoose.disconnect();
   });
 });

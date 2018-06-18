@@ -101,5 +101,6 @@ describe("Thread", () => {
         await mongoose.connection.collections[key].drop();
       }
     }
+    // mongoose.disconnect();
   });
 });
