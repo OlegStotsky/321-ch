@@ -40,7 +40,7 @@ export interface IBoardDocument extends Document {
 }
 
 export interface IBoard extends IBoardDocument {
-  addThread: (opPost: IAddThreadParams) => IThread;
+  addThread: (opPost: IAddThreadParams) => Promise<IThread>;
 }
 
 export interface IBoardModel extends Model<IBoard> {}

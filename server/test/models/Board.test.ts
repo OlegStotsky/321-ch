@@ -9,7 +9,7 @@ describe("Board", () => {
     return mongoose.connect(config["mongo-test-uri"]);
   });
 
-  it.only("Creates board", async () => {
+  it("Creates board", async () => {
     const boardData = {
       name: "b"
     };

@@ -1,8 +1,27 @@
 import { Router, Request, Response } from "express";
 import express from "express";
+import Board from "../models/Board";
 
-const apiRouter: express.Router = express.Router();
+const apiRouter: Router = Router();
 
-apiRouter.get("/:board_name/:thread_id", (req: Request, res : Response) => {
-  
+apiRouter.post("/:board_name/", (req: Request, res: Response) => {
+  const { opPostAuthor, opPostSubject, opPostContent } = req.body;
+  Board.findOne({ name: req.params.board_name }).then(board => {
+    if (!board) {
+      res.status(400).json({
+        errors: "Board doesn't exist"
+      });
+    }
+
+    board
+      .addThread({ opPostAuthor, opPostContent, opPostSubject })
+      .then(thread => {
+        res.status(201).send(thread);
+      })
+      .catch(e => {
+        res.status(500).json(e);
+      });
+  });
 });
+
+export default apiRouter;
