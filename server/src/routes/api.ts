@@ -1,5 +1,6 @@
 import { Router, Request, Response } from "express";
 import express from "express";
+import * as R from "ramda";
 import Board from "../models/Board";
 
 const apiRouter: Router = Router();
@@ -16,7 +17,14 @@ apiRouter.post("/:board_name/", (req: Request, res: Response) => {
     board
       .addThread({ opPostAuthor, opPostContent, opPostSubject })
       .then(thread => {
-        res.status(201).send(thread);
+        res
+          .status(201)
+          .send(
+            R.pick(
+              ["date", "authorName", "content", "subject", "postNumber"],
+              thread.opPost
+            )
+          );
       })
       .catch(e => {
         res.status(500).json(e);
