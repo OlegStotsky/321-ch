@@ -3,5 +3,5 @@ schema.txt
 technologies.txt
 false
 devlog.txt
-/server/src/config/config.ts
+server/src/config/config.ts
 api.text
