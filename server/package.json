@@ -10,7 +10,9 @@
     "test": "jest",
     "lint": "tslint -c ../tslint.json './**/*.ts*'",
     "build": "tsc",
-    "watch": "tsc -w"
+    "compile": "tsc && node ./dist/server/src/server.js",
+    "watch": "nodemon -e ts --exec \"npm run compile\"",
+    "start": "node ./dist/server/src/server.js"
   },
   "author": "Oleg Stotsky",
   "license": "ISC",
