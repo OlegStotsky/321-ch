@@ -26,13 +26,15 @@ export const PostSchema = new Schema({
   }
 });
 
-export interface IPost extends Document {
+export interface IPostDocument extends Document {
   date: number;
   authorName: string;
   content: string;
   subject?: string;
   postNumber: number;
 }
+
+export interface IPost extends IPostDocument {}
 
 const PostModel = model<IPost>("Post", PostSchema);
 

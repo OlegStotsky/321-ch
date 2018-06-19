@@ -60,15 +60,16 @@ describe("Board", () => {
   });
 
   it("Creates 2 board and their post numbers don't clash", async () => {
-    const boardSci = new Board({ name: "a" });
-    const boardMath = new Board({ name: "sci" });
-    const thread1 = await boardMath.addThread({
+    const boardA = new Board({ name: "a" });
+    const boardSci = new Board({ name: "sci" });
+    await boardSci.save();
+    const thread1 = await boardSci.addThread({
       opPostAuthor: "Oleg",
       opPostSubject: "Serious Business",
       opPostContent: "Hello there!"
     });
     expect(thread1.opPost.postNumber).toEqual(1);
-    const thread2 = await boardSci.addThread({
+    const thread2 = await boardA.addThread({
       opPostAuthor: "Oleg",
       opPostSubject: "Serious Business",
       opPostContent: "Hello there!"
@@ -86,6 +87,16 @@ describe("Board", () => {
     expect(post2.postNumber).toEqual(2);
   });
 
+  it("Finds thread by thread number", async () => {
+    const boardSci = await Board.findOne({ name: "sci" });
+    const thread = await boardSci.findThreadByOpPostNumber(1);
+    expect(thread.opPost).toMatchObject({
+      authorName: "Oleg",
+      subject: "Serious Business",
+      content: "Hello there!"
+    });
+  });
+
   afterAll(async () => {
     await mongoose.connection.collections.boards.drop();
     const keys = Object.keys(mongoose.connection.collections);
@@ -94,6 +105,6 @@ describe("Board", () => {
         await mongoose.connection.collections[key].drop();
       }
     }
-    // mongoose.disconnect();
+    mongoose.disconnect();
   });
 });

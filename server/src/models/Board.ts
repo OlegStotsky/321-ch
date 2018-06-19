@@ -19,7 +19,9 @@ interface IAddThreadParams {
   opPostContent: string;
 }
 
-BoardSchema.methods.addThread = async function(params: IAddThreadParams) {
+BoardSchema.methods.addThread = async function(
+  params: IAddThreadParams
+): Promise<IThread> {
   const threadData = {
     board: this.name
   };
@@ -30,8 +32,15 @@ BoardSchema.methods.addThread = async function(params: IAddThreadParams) {
     content: params.opPostContent
   });
   this.threads.push(thread);
-  await this.save();
-  return thread;
+  return this.save().then(() => thread);
+};
+
+BoardSchema.methods.findThreadByOpPostNumber = async function(
+  opPostNumber: number
+): Promise<IThread> {
+  return (this.threads as IThread[]).find(
+    thread => thread.opPost.postNumber === opPostNumber
+  );
 };
 
 export interface IBoardDocument extends Document {
@@ -41,6 +50,7 @@ export interface IBoardDocument extends Document {
 
 export interface IBoard extends IBoardDocument {
   addThread: (opPost: IAddThreadParams) => Promise<IThread>;
+  findThreadByOpPostNumber: (opPostNumber: number) => Promise<IThread>;
 }
 
 export interface IBoardModel extends Model<IBoard> {}

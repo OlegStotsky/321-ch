@@ -23,6 +23,6 @@ describe("Seqeunce", () => {
 
   afterAll(async () => {
     await mongoose.connection.collections.abcdseqs.drop();
-    // mongoose.disconnect();
+    mongoose.disconnect();
   });
 });
