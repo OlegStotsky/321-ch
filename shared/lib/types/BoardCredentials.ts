@@ -1,7 +1,7 @@
-import BoardNames from "./BoardNames";
+import BoardName from "./BoardName";
 
 export interface IBoardCredentials {
   name: string;
   link: string;
-  shortName: BoardNames;
+  shortName: BoardName;
 }

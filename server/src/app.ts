@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import config from "./config/config";
 import apiRouter from "./routes/api";
-import bodyParser from "body-parser";
+import * as bodyParser from "body-parser";
 
 const app = express();
 

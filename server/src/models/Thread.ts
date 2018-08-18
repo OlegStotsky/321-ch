@@ -49,7 +49,7 @@ ThreadSchema.methods.addOpPost = async function(params: IAddOpPostParams) {
 
 export interface IThreadDocument extends Document {
   opPost: IPost;
-  posts?: IPost[];
+  posts: IPost[];
   board: Schema.Types.ObjectId;
 }
 

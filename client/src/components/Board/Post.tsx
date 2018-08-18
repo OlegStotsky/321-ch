@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as moment from "moment";
-import PostId from "../../lib/types/PostId";
+import PostId from "../../../../shared/lib/types/PostId";
 
 interface IPostProps {
   date: moment.Moment;
@@ -9,7 +9,12 @@ interface IPostProps {
   content: string;
 }
 
-const Post: React.SFC<IPostProps> = ({ date, postNumber, authorName, content }) => {
+const Post: React.SFC<IPostProps> = ({
+  date,
+  postNumber,
+  authorName,
+  content
+}) => {
   return (
     <div className="post">
       <div className="post__header">
@@ -18,9 +23,7 @@ const Post: React.SFC<IPostProps> = ({ date, postNumber, authorName, content }) 
         <span className="post__number">{`No. ${postNumber}`}</span>
         <span className="post__author">{authorName}</span>
       </div>
-      <div className="post__body">
-        {content}
-      </div>
+      <div className="post__body">{content}</div>
     </div>
   );
 };

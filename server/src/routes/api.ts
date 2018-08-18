@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import express from "express";
+import * as express from "express";
 import * as R from "ramda";
 import { IThreadDocument } from "../models/Thread";
 import Board from "../models/Board";
