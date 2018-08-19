@@ -4,9 +4,17 @@ import Board, { IBoardDocument, IBoard } from "../../src/models/Board";
 import Thread, { IThread } from "../../src/models/Thread";
 import config from "../../src/config/config";
 
-describe("Board", () => {
-  beforeAll(() => {
-    return mongoose.connect(config["mongo-test-uri"]);
+describe.skip("Board", () => {
+  beforeAll(async () => {
+    await mongoose.connect(config["mongo-test-uri"]);
+  });
+  afterEach(async () => {
+    const keys = Object.keys(mongoose.connection.collections);
+    for (const key of keys) {
+      if (key.match(/^.*seqs$/)) {
+        await mongoose.connection.collections[key].drop();
+      }
+    }
   });
 
   it("Creates board", async () => {
@@ -19,7 +27,9 @@ describe("Board", () => {
   });
 
   it("Adds thhread to the existing board", async () => {
-    const board: IBoard = await Board.findOne({ name: "b" });
+    const board = new Board({ name: "b" });
+    await board.save();
+    // const board: IBoard = await Board.findOne({ name: "b" });
     const opPost = {
       opPostAuthor: "Oleg",
       opPostSubject: "Serious Business",

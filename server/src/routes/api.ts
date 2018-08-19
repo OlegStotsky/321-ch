@@ -50,6 +50,7 @@ apiRouter.get("/:boardName/:threadNumber", (req: Request, res: Response) => {
         res.status(400).json({
           errors: "Board doesn't exist"
         });
+        return;
       }
 
       board.findThreadByOpPostNumber(threadNumber).then(thread => {
@@ -65,6 +66,40 @@ apiRouter.get("/:boardName/:threadNumber", (req: Request, res: Response) => {
     .catch(e => {
       res.status(500).send(e);
     });
+});
+
+apiRouter.post("/:boardName/:threadNumber/", (req: Request, res: Response) => {
+  const boardName: string = req.params.boardName;
+  const threadNumber: number = parseInt(req.params.threadNumber, 10);
+  Board.findOne({ name: boardName }).then(board => {
+    if (!board) {
+      res.status(400).json({
+        errors: "Board doesn't exist"
+      });
+      return;
+    }
+
+    board.findThreadByOpPostNumber(threadNumber).then(thread => {
+      if (!thread) {
+        res.status(400).json({
+          errors: "Thread doesn't exist"
+        });
+        return;
+      }
+
+      thread.addPost(req.body);
+      thread
+        .save()
+        .then(result => {
+          res.status(201).json(result);
+        })
+        .catch(e => {
+          res.status(400).json({
+            errors: e
+          });
+        });
+    });
+  });
 });
 
 export default apiRouter;
