@@ -4,17 +4,12 @@ import Board, { IBoardDocument, IBoard } from "../../src/models/Board";
 import Thread, { IThread } from "../../src/models/Thread";
 import config from "../../src/config/config";
 
-describe.skip("Board", () => {
+describe("Board", () => {
   beforeAll(async () => {
     await mongoose.connect(config["mongo-test-uri"]);
   });
   afterEach(async () => {
-    const keys = Object.keys(mongoose.connection.collections);
-    for (const key of keys) {
-      if (key.match(/^.*seqs$/)) {
-        await mongoose.connection.collections[key].drop();
-      }
-    }
+    await mongoose.connection.db.dropDatabase();
   });
 
   it("Creates board", async () => {
@@ -22,20 +17,24 @@ describe.skip("Board", () => {
       name: "b"
     };
     const board = new Board(boardData);
-    const res = await board.save();
-    expect(res).toMatchObject(boardData);
+    await board.save();
+    expect(board).toMatchObject(boardData);
   });
 
   it("Adds thhread to the existing board", async () => {
     const board = new Board({ name: "b" });
     await board.save();
-    // const board: IBoard = await Board.findOne({ name: "b" });
     const opPost = {
       opPostAuthor: "Oleg",
       opPostSubject: "Serious Business",
       opPostContent: "Hello there!"
     };
     const thread = await board.addThread(opPost);
+    await board.populate("threads").execPopulate();
+    await board.threads[0]
+      .populate("opPost")
+      .populate("posts")
+      .execPopulate();
     expect(board.threads.length).toEqual(1);
     expect(board.threads[0].opPost.postNumber).toEqual(1);
     expect(board.threads[0].opPost.authorName).toEqual("Oleg");
@@ -49,22 +48,28 @@ describe.skip("Board", () => {
 
   it("Creates new board, creates threads and posts in them with correct post numbers", async () => {
     const board = new Board({ name: "pr" });
+    board.save();
     const thread = await board.addThread({
       opPostAuthor: "Oleg",
       opPostSubject: "Serious Business",
       opPostContent: "Hello there!"
     });
     expect(board.threads.length).toEqual(1);
-    expect(board.threads[0].opPost.postNumber).toEqual(1);
+    expect(board.threads[0]).toEqual(thread._id);
     await thread.addPost({
       authorName: "Vasya",
       content: "How are you?"
     });
-    expect(thread.posts[0].postNumber).toEqual(2);
     await thread.addPost({
       authorName: "Kolya",
       content: "Fine, how are you?"
     });
+    await thread
+      .populate("opPost")
+      .populate("posts")
+      .execPopulate();
+    expect(thread.opPost.postNumber).toEqual(1);
+    expect(thread.posts[0].postNumber).toEqual(2);
     expect(thread.posts.length).toEqual(2);
     expect(thread.posts[1].postNumber).toEqual(3);
   });
@@ -72,18 +77,21 @@ describe.skip("Board", () => {
   it("Creates 2 board and their post numbers don't clash", async () => {
     const boardA = new Board({ name: "a" });
     const boardSci = new Board({ name: "sci" });
+    await boardA.save();
     await boardSci.save();
     const thread1 = await boardSci.addThread({
       opPostAuthor: "Oleg",
       opPostSubject: "Serious Business",
       opPostContent: "Hello there!"
     });
+    await thread1.populateThread();
     expect(thread1.opPost.postNumber).toEqual(1);
     const thread2 = await boardA.addThread({
       opPostAuthor: "Oleg",
       opPostSubject: "Serious Business",
       opPostContent: "Hello there!"
     });
+    await thread2.populateThread();
     expect(thread2.opPost.postNumber).toEqual(1);
     const post1 = await thread1.addPost({
       authorName: "anon",
@@ -97,24 +105,8 @@ describe.skip("Board", () => {
     expect(post2.postNumber).toEqual(2);
   });
 
-  it("Finds thread by thread number", async () => {
-    const boardSci = await Board.findOne({ name: "sci" });
-    const thread = await boardSci.findThreadByOpPostNumber(1);
-    expect(thread.opPost).toMatchObject({
-      authorName: "Oleg",
-      subject: "Serious Business",
-      content: "Hello there!"
-    });
-  });
-
   afterAll(async () => {
-    await mongoose.connection.collections.boards.drop();
-    const keys = Object.keys(mongoose.connection.collections);
-    for (const key of keys) {
-      if (key.match(/^.*seqs$/)) {
-        await mongoose.connection.collections[key].drop();
-      }
-    }
+    await mongoose.connection.db.dropDatabase();
     mongoose.disconnect();
   });
 });

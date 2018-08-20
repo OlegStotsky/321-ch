@@ -1,5 +1,9 @@
 import { Schema, model, Document } from "mongoose";
 import * as moment from "moment";
+import * as mongoose from "mongoose";
+
+// const Board = mongoose.model("Board");
+// const Thread = mongoose.model("Thread");
 
 export const PostSchema = new Schema({
   date: {
@@ -21,9 +25,19 @@ export const PostSchema = new Schema({
     type: String
   },
   postNumber: {
-    type: Number,
-    required: true
-  }
+    type: Number
+  },
+  thread: { type: Schema.Types.ObjectId, required: true }
+});
+
+PostSchema.pre("save", async function(next) {
+  const post: any = this;
+  const thread: any = await Thread.findById(post.thread);
+  const board: any = await Board.findById(thread.board);
+  post.postNumber = board.lastPostNumber;
+  board.lastPostNumber++;
+  board.save();
+  next();
 });
 
 export interface IPostDocument extends Document {
@@ -39,3 +53,6 @@ export interface IPost extends IPostDocument {}
 const PostModel = model<IPost>("Post", PostSchema);
 
 export default PostModel;
+
+import Thread from "./Thread";
+import Board from "./Board";

@@ -1,7 +1,4 @@
 import { Schema, model, Document, Model } from "mongoose";
-import { ThreadSchema, IThread, IThreadDocument } from "./Thread";
-import Thread from "./Thread";
-import { IPost } from "./Post";
 import * as moment from "moment";
 
 const BoardSchema = new Schema({
@@ -10,7 +7,12 @@ const BoardSchema = new Schema({
     required: true,
     unique: true
   },
-  threads: [ThreadSchema]
+  lastPostNumber: {
+    type: Number,
+    required: true,
+    default: 1
+  },
+  threads: [{ type: Schema.Types.ObjectId, ref: "Thread" }]
 });
 
 interface IAddThreadParams {
@@ -22,25 +24,20 @@ interface IAddThreadParams {
 BoardSchema.methods.addThread = async function(
   params: IAddThreadParams
 ): Promise<IThread> {
+  const board = this;
   const threadData = {
-    board: this.name
+    board: board._id
   };
   const thread = new Thread(threadData);
+  await thread.save();
   await thread.addOpPost({
     authorName: params.opPostAuthor,
     subject: params.opPostSubject,
     content: params.opPostContent
   });
-  this.threads.push(thread);
-  return this.save().then(() => thread);
-};
-
-BoardSchema.methods.findThreadByOpPostNumber = async function(
-  opPostNumber: number
-): Promise<IThread> {
-  return (this.threads as IThread[]).find(
-    thread => thread.opPost.postNumber === opPostNumber
-  );
+  this.threads.push(thread._id);
+  await this.save();
+  return thread;
 };
 
 export interface IBoardDocument extends Document {
@@ -60,3 +57,7 @@ const BoardModel: IBoardModel = model<IBoard, IBoardModel>(
   BoardSchema
 );
 export default BoardModel;
+
+import { ThreadSchema, IThread, IThreadDocument } from "./Thread";
+import Thread from "./Thread";
+import { IPost } from "./Post";

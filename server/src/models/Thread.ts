@@ -1,17 +1,13 @@
 import { Schema, model, Document, Model } from "mongoose";
-import { PostSchema, IPost } from "./Post";
-import Post from "./Post";
 import * as moment from "moment";
-import SequenceManager from "../lib/SequenceManager";
 
 export const ThreadSchema = new Schema({
   opPost: {
     type: Schema.Types.ObjectId,
-    ref: "Post",
-    required: true
+    ref: "Post"
   },
   posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
-  board: { type: String, required: true }
+  board: { type: Schema.Types.ObjectId, ref: "Board", required: true }
 });
 
 interface IAddPostParams {
@@ -19,16 +15,23 @@ interface IAddPostParams {
   content: string;
 }
 
+ThreadSchema.methods.populateThread = async function(): Promise<IThread> {
+  const thread = this;
+  return thread
+    .populate("opPost")
+    .populate("posts")
+    .execPopulate();
+};
+
 ThreadSchema.methods.addPost = async function(
   params: IAddPostParams
 ): Promise<IPost> {
   const thread = this;
-  const postNumber = await SequenceManager.getInstance().next(this.board);
   const post = new Post({
     date: moment.now(),
     authorName: params.authorName,
     content: params.content,
-    postNumber
+    thread: this._id
   });
   await post.save();
   thread.posts.push(post._id);
@@ -44,13 +47,12 @@ ThreadSchema.methods.addOpPost = async function(
   params: IAddOpPostParams
 ): Promise<IPost> {
   const thread = this;
-  const postNumber = await SequenceManager.getInstance().next(this.board);
   const opPost = new Post({
     date: moment.now(),
     authorName: params.authorName,
     content: params.content,
     subject: params.subject,
-    postNumber
+    thread: thread._id
   });
   await opPost.save();
   thread.opPost = opPost._id;
@@ -67,6 +69,7 @@ export interface IThreadDocument extends Document {
 export interface IThread extends IThreadDocument {
   addPost: (params: IAddPostParams) => Promise<IPost>;
   addOpPost: (params: IAddOpPostParams) => Promise<IPost>;
+  populateThread: () => Promise<IThread>;
 }
 
 export interface IThreadModel extends Model<IThread> {}
@@ -77,3 +80,6 @@ const ThreadModel: IThreadModel = model<IThread, IThreadModel>(
 );
 
 export default ThreadModel;
+
+import { PostSchema, IPost } from "./Post";
+import Post from "./Post";
