@@ -6,6 +6,6 @@
     "jsx": "react",
     "lib": ["es2015", "dom"]
   },
-  "include": ["client", "server"],
-  "compileOnSave": false
+  "include": ["client"],
+  "compileOnSave": true
 }
