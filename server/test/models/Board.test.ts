@@ -30,20 +30,13 @@ describe("Board", () => {
       opPostContent: "Hello there!"
     };
     const thread = await board.addThread(opPost);
-    await board.populate("threads").execPopulate();
-    await board.threads[0]
-      .populate("opPost")
-      .populate("posts")
-      .execPopulate();
-    expect(board.threads.length).toEqual(1);
-    expect(board.threads[0].opPost.postNumber).toEqual(1);
-    expect(board.threads[0].opPost.authorName).toEqual("Oleg");
-    expect(board.threads[0].opPost.subject).toEqual("Serious Business");
-    expect(board.threads[0].opPost.content).toEqual("Hello there!");
-    expect(board.threads[0].opPost.date / 10e6).toBeCloseTo(
-      moment.now() / 10e6,
-      2
-    );
+    await thread.populateThread();
+    expect(thread.opPost.postNumber).toEqual(1);
+    expect(thread.opPost.authorName).toEqual("Oleg");
+    expect(thread.opPost.subject).toEqual("Serious Business");
+    expect(thread.opPost.content).toEqual("Hello there!");
+    expect(thread.opPost.date / 10e6).toBeCloseTo(moment.now() / 10e6, 2);
+    expect(thread.board).toEqual(board._id);
   });
 
   it("Creates new board, creates threads and posts in them with correct post numbers", async () => {
@@ -54,8 +47,8 @@ describe("Board", () => {
       opPostSubject: "Serious Business",
       opPostContent: "Hello there!"
     });
-    expect(board.threads.length).toEqual(1);
-    expect(board.threads[0]).toEqual(thread._id);
+    const threads = await Thread.find({ board: board._id });
+    expect(threads.length).toEqual(1);
     await thread.addPost({
       authorName: "Vasya",
       content: "How are you?"
@@ -64,10 +57,7 @@ describe("Board", () => {
       authorName: "Kolya",
       content: "Fine, how are you?"
     });
-    await thread
-      .populate("opPost")
-      .populate("posts")
-      .execPopulate();
+    await thread.populateThread();
     expect(thread.opPost.postNumber).toEqual(1);
     expect(thread.posts[0].postNumber).toEqual(2);
     expect(thread.posts.length).toEqual(2);

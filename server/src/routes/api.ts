@@ -4,6 +4,7 @@ import * as R from "ramda";
 import { IThreadDocument } from "../models/Thread";
 import Board from "../models/Board";
 import { IPostDocument } from "../models/Post";
+import Thread from "../models/Thread";
 
 const apiRouter: Router = Router();
 
@@ -17,7 +18,7 @@ const pickValuesFromPost = (post: IPostDocument) => {
 const pickValuesfromThread = (thread: IThreadDocument) => {
   return R.evolve(
     { opPost: pickValuesFromPost, posts: R.map(pickValuesFromPost) },
-    R.pick(["posts", "board", "opPost"], thread)
+    R.pick(["posts", "opPost"], thread)
   );
 };
 
@@ -33,7 +34,12 @@ apiRouter.post("/:board_name/", (req: Request, res: Response) => {
     board
       .addThread({ opPostAuthor, opPostContent, opPostSubject })
       .then(thread => {
-        res.status(201).send(pickValuesFromPost(thread.opPost));
+        thread
+          .populate("opPost")
+          .execPopulate()
+          .then(populatedThread => {
+            res.status(201).json(pickValuesFromPost(populatedThread.opPost));
+          });
       })
       .catch(e => {
         res.status(500).json(e);
@@ -53,15 +59,19 @@ apiRouter.get("/:boardName/:threadNumber", (req: Request, res: Response) => {
         return;
       }
 
-      board.findThreadByOpPostNumber(threadNumber).then(thread => {
-        if (!thread) {
-          res.status(400).json({
-            errors: "Thread doesn't exist"
+      Thread.findOne({ opPostNumber: threadNumber, board: board._id }).then(
+        thread => {
+          if (!thread) {
+            res.status(400).json({
+              errors: "Thread doesn't exist"
+            });
+          }
+
+          thread.populateThread().then(populatedThread => {
+            res.status(200).send(pickValuesfromThread(thread));
           });
         }
-
-        res.status(200).send(pickValuesfromThread(thread));
-      });
+      );
     })
     .catch(e => {
       res.status(500).send(e);
@@ -79,26 +89,27 @@ apiRouter.post("/:boardName/:threadNumber/", (req: Request, res: Response) => {
       return;
     }
 
-    board.findThreadByOpPostNumber(threadNumber).then(thread => {
-      if (!thread) {
-        res.status(400).json({
-          errors: "Thread doesn't exist"
-        });
-        return;
-      }
-
-      thread.addPost(req.body);
-      thread
-        .save()
-        .then(result => {
-          res.status(201).json(result);
-        })
-        .catch(e => {
+    Thread.findOne({ opPostNumber: threadNumber, board: board._id }).then(
+      thread => {
+        if (!thread) {
           res.status(400).json({
-            errors: e
+            errors: "Thread doesn't exist"
           });
-        });
-    });
+          return;
+        }
+
+        thread
+          .addPost(req.body)
+          .then(newPost => {
+            res.status(201).json(pickValuesFromPost(newPost));
+          })
+          .catch(e => {
+            res.status(400).json({
+              errors: e
+            });
+          });
+      }
+    );
   });
 });
 

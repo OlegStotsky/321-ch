@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import config from "./config/config";
 import apiRouter from "./routes/api";
 import * as bodyParser from "body-parser";
+import Thread from "./models/thread";
+import Board from "./models/Board";
 
 const app = express();
 

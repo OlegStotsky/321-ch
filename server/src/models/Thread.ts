@@ -6,6 +6,9 @@ export const ThreadSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Post"
   },
+  opPostNumber: {
+    type: Number
+  },
   posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
   board: { type: Schema.Types.ObjectId, ref: "Board", required: true }
 });
@@ -56,6 +59,7 @@ ThreadSchema.methods.addOpPost = async function(
   });
   await opPost.save();
   thread.opPost = opPost._id;
+  thread.opPostNumber = opPost.postNumber;
   await thread.save();
   return thread;
 };

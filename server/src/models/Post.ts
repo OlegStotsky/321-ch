@@ -2,9 +2,6 @@ import { Schema, model, Document } from "mongoose";
 import * as moment from "moment";
 import * as mongoose from "mongoose";
 
-// const Board = mongoose.model("Board");
-// const Thread = mongoose.model("Thread");
-
 export const PostSchema = new Schema({
   date: {
     type: Number,

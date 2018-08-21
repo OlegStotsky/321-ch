@@ -11,8 +11,7 @@ const BoardSchema = new Schema({
     type: Number,
     required: true,
     default: 1
-  },
-  threads: [{ type: Schema.Types.ObjectId, ref: "Thread" }]
+  }
 });
 
 interface IAddThreadParams {
@@ -35,8 +34,6 @@ BoardSchema.methods.addThread = async function(
     subject: params.opPostSubject,
     content: params.opPostContent
   });
-  this.threads.push(thread._id);
-  await this.save();
   return thread;
 };
 
@@ -47,7 +44,6 @@ export interface IBoardDocument extends Document {
 
 export interface IBoard extends IBoardDocument {
   addThread: (opPost: IAddThreadParams) => Promise<IThread>;
-  findThreadByOpPostNumber: (opPostNumber: number) => Promise<IThread>;
 }
 
 export interface IBoardModel extends Model<IBoard> {}

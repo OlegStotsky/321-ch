@@ -10,9 +10,9 @@
     "test": "jest",
     "lint": "tslint -c ../tslint.json './**/*.ts*'",
     "build": "tsc",
-    "compile": "tsc && node ./dist/server/src/server.js",
+    "compile": "tsc && node ./dist/server.js",
     "watch": "nodemon -e ts --exec \"npm run compile\"",
-    "start": "node ./dist/server/src/server.js",
+    "start": "node ./dist/server.js",
     "start-db": "mongo"
   },
   "author": "Oleg Stotsky",
@@ -24,6 +24,7 @@
     "jest": "^23.5.0",
     "mongoose": "^5.1.5",
     "tsc": "^1.20150623.0",
+    "tslint": "^5.11.0",
     "typescript": "^3.0.1"
   }
 }
