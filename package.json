@@ -6,6 +6,7 @@
   "dependencies": {
     "@material-ui/core": "^1.2.1",
     "@material-ui/icons": "^1.1.0",
+    "@mojotech/json-type-validation": "^2.0.0",
     "@types/enzyme": "^3.1.10",
     "@types/jquery": "^3.2.5",
     "@types/moment": "^2.13.0",
@@ -14,6 +15,7 @@
     "@types/react-redux": "^6.0.2",
     "@types/react-router-dom": "^4.2.7",
     "@types/redux": "^3.6.0",
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "css-loader": "^0.28.11",
     "jest": "^23.1.0",

@@ -1,0 +1,25 @@
+.post {
+  background-color: $color-off-white;
+  color: $color-green-dark;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  border-radius: 0.2rem;
+
+  &__header {
+    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
+  }
+
+  &__body {
+    font-size: 1.7rem;
+    padding: 1rem 1.5rem;
+  }
+
+  &__date,
+  &__time,
+  &__number,
+  &__author {
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+}

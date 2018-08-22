@@ -5,7 +5,8 @@ module.exports = {
   entry: "./client/src/index.tsx",
   output: {
     path: path.join(__dirname, "client", "dist"),
-    filename: "bundle.js"
+    filename: "bundle.js",
+    publicPath: "/"
   },
   resolve: {
     extensions: [".js", ".json", ".ts", ".tsx"]
@@ -24,6 +25,12 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, "client", "dist"),
-    historyApiFallback: true
-  }
+    historyApiFallback: true,
+    proxy: {
+      "/api/*": {
+        target: "http://localhost:3000"
+      }
+    }
+  },
+  devtool: "eval-source-map"
 };
