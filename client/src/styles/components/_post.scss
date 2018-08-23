@@ -1,13 +1,27 @@
 .post {
-  background-color: $color-off-white;
-  color: $color-green-dark;
-  margin-bottom: 1rem;
-  padding: 0.8rem;
-  border-radius: 0.2rem;
+  &__content {
+    display: inline-block;
+    background-color: $color-off-white;
+    color: $color-green-dark;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border-radius: 0.2rem;
+    min-width: 40rem;
+  }
+
+  &__content--opPost {
+    display: block;
+    background-color: transparent;
+    color: white;
+  }
 
   &__header {
     font-size: 1.5rem;
     margin-bottom: 0.6rem;
+  }
+
+  &__header--opPost {
+    margin-bottom: 2rem;
   }
 
   &__body {
@@ -18,8 +32,17 @@
   &__date,
   &__time,
   &__number,
-  &__author {
+  &__author,
+  &__subject {
     display: inline-block;
     margin-right: 0.5rem;
+  }
+
+  &__subject {
+    font-weight: bold;
+  }
+
+  &--opPost {
+    margin-bottom: 4rem;
   }
 }

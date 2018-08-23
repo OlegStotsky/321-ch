@@ -15,7 +15,7 @@ import Post from "../Post";
 Enzyme.configure({ adapter: new Adapter() });
 
 describe("Post", () => {
-  const date = moment("2018-06-15 09:30:26");
+  const date = moment("2018-06-15 09:30:26").valueOf();
   const postNumber = 123;
   let post;
   const postAuthor = "Oleg";
@@ -27,6 +27,7 @@ describe("Post", () => {
         postNumber={postNumber}
         authorName={postAuthor}
         content={postContent}
+        isOpPost={false}
       />
     );
   });

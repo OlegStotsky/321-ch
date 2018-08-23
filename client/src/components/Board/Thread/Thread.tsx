@@ -6,6 +6,7 @@ import { IBoardCredentials } from "../../../../../shared/lib/types/BoardCredenti
 import { IPost } from "../../../lib/Post";
 import * as moment from "moment";
 import { IThread } from "../../../lib/Thread";
+import BoardList from "../BoardList";
 
 interface IThreadProps {
   boardCredentials: IBoardCredentials;
@@ -25,16 +26,15 @@ const Thread: React.SFC<IThreadProps> = ({
     <MidPanel />
     <div className="thread__body">
       {loading && <div>Loading posts...</div>}
+      {!loading && <Post {...threadData.opPost} isOpPost={true} />}
       {!loading &&
         threadData.posts.map(post => (
-          <Post
-            key={post.postNumber}
-            date={moment(post.date)}
-            postNumber={post.postNumber}
-            authorName={post.authorName}
-            content={post.content}
-          />
+          <Post key={post.postNumber} {...post} isOpPost={false} />
         ))}
+      <MidPanel />
+    </div>
+    <div className="thread__footer">
+      <BoardList />
     </div>
   </React.Fragment>
 );

@@ -8,7 +8,6 @@ export default class ApiAdapter {
     boardCredentials: IBoardCredentials,
     threadNumber: number
   ): Promise<IThread> {
-    console.log(`/api/${boardCredentials.shortName}/${threadNumber}`);
     return axios
       .get(`/api/${boardCredentials.shortName}/${threadNumber}`)
       .then(response => response.data)
