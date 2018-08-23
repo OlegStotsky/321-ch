@@ -60,7 +60,8 @@
     "dev-server": "webpack-dev-server",
     "test": "jest --runInBand",
     "lint-client": "tslint -c ./tslint.json './client/**/*.ts*'",
-    "lint-server": "tslint -c ./tslint.json './server/**/*.ts*'"
+    "lint-server": "tslint -c ./tslint.json './server/**/*.ts*'",
+    "start-server": "node ./server/dist/server.js"
   },
   "author": "Oleg Stotsky",
   "license": "ISC"
