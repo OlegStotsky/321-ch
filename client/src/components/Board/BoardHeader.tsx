@@ -3,13 +3,20 @@ import * as $ from "jquery";
 import BoardList from "./BoardList";
 import { IBoardCredentials } from "../../../../shared/lib/types/BoardCredentials";
 import TextLink from "../TextLink";
-import ThreadFormContainer from "./ThreadFormContainer";
+import NewThreadFormContainer from "./NewThreadFormContainer";
+import NewPostFormContainer from "./Thread/NewPostFormContainer";
 
 interface IBoardHeaderProps {
   credentials: IBoardCredentials;
+  actionName: string;
+  Form?: typeof NewThreadFormContainer | typeof NewPostFormContainer;
 }
 
-const BoardHeader: React.SFC<IBoardHeaderProps> = ({ credentials }) => {
+const BoardHeader: React.SFC<IBoardHeaderProps> = ({
+  credentials,
+  actionName,
+  Form
+}) => {
   return (
     <header className="board__header">
       <BoardList />
@@ -29,17 +36,21 @@ const BoardHeader: React.SFC<IBoardHeaderProps> = ({ credentials }) => {
               $("#initial-button").addClass("u-hide");
             }}
           >
-            Start a New Thread
+            {actionName}
           </a>
           <span className="board__header-action-caret">]</span>
-      </div>
+        </div>
         <div className="new-thread-form u-hide" id="new-thread-form">
-          <ThreadFormContainer />
+          <Form />
         </div>
       </div>
       <hr className="board__header-after-create-button" />
     </header>
   );
+};
+
+BoardHeader.defaultProps = {
+  Form: NewThreadFormContainer
 };
 
 export default BoardHeader;
