@@ -15,7 +15,7 @@ class Board extends React.Component<IBoardProps, {}> {
   public render() {
     return (
       <div>
-        <BoardHeader credentials={this.props.boardCredentials} />
+        <BoardHeader actionName="Start a New Thread" credentials={this.props.boardCredentials} />
         <MidPanel />
       </div>
     );

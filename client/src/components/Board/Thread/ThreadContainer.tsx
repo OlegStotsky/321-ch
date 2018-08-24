@@ -4,11 +4,12 @@ import { IPost } from "../../../lib/Post";
 import { IBoardCredentials } from "../../../../../shared/lib/types/BoardCredentials";
 import ApiAdapter from "../../../lib/ApiAdapter";
 import { IThread } from "../../../lib/Thread";
+import { IRootState } from "../../../redux/reducers/rootReducer";
+import { connect } from "react-redux";
 
 interface IThreadContainerProps {
   boardCredentials: IBoardCredentials;
   threadNumber: number;
-  match: any;
 }
 
 interface IThreadState {
@@ -16,7 +17,7 @@ interface IThreadState {
   threadData?: IThread;
 }
 
-export default class ThreadContainer extends React.Component<
+class ThreadContainer extends React.Component<
   IThreadContainerProps,
   IThreadState
 > {
@@ -28,7 +29,7 @@ export default class ThreadContainer extends React.Component<
     super(props);
     ApiAdapter.getThread(
       this.props.boardCredentials,
-      this.props.match.params.threadNumber
+      this.props.threadNumber
     ).then(thread => {
       this.setState({
         loading: false,
@@ -48,3 +49,10 @@ export default class ThreadContainer extends React.Component<
     );
   }
 }
+
+const mapStateToProps = (state: IRootState): IThreadContainerProps => ({
+  boardCredentials: state.curBoard.curBoard,
+  threadNumber: state.curThread.curThread
+});
+
+export default connect(mapStateToProps)(ThreadContainer);

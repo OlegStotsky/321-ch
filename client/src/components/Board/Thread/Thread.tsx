@@ -7,6 +7,7 @@ import { IPost } from "../../../lib/Post";
 import * as moment from "moment";
 import { IThread } from "../../../lib/Thread";
 import BoardList from "../BoardList";
+import NewPostFormContainer from "./NewPostFormContainer";
 
 interface IThreadProps {
   boardCredentials: IBoardCredentials;
@@ -22,7 +23,7 @@ const Thread: React.SFC<IThreadProps> = ({
   loading
 }) => (
   <React.Fragment>
-    <BoardHeader credentials={boardCredentials} />
+    <BoardHeader actionName="Post a Reply" Form={NewPostFormContainer}  credentials={boardCredentials} />
     <MidPanel />
     <div className="thread__body">
       {loading && <div>Loading posts...</div>}
