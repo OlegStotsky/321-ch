@@ -6,11 +6,22 @@ import ApiAdapter from "../../../lib/ApiAdapter";
 import { IThread } from "../../../lib/Thread";
 import { IRootState } from "../../../redux/reducers/rootReducer";
 import { connect } from "react-redux";
+import { loadCurrentThreadData } from "../../../redux/actions/curThread";
+import { ICurThreadState } from "../../../redux/reducers/curThread";
 
-interface IThreadContainerProps {
+interface IStateProps {
   boardCredentials: IBoardCredentials;
-  threadNumber: number;
+  curThread: ICurThreadState;
 }
+
+interface IDispatchProps {
+  loadCurrentThreadData: (
+    boardCredentials: IBoardCredentials,
+    threadNumber: number
+  ) => any;
+}
+
+type ThreadContainerProps = IStateProps & IDispatchProps;
 
 interface IThreadState {
   loading: boolean;
@@ -18,7 +29,7 @@ interface IThreadState {
 }
 
 class ThreadContainer extends React.Component<
-  IThreadContainerProps,
+  ThreadContainerProps,
   IThreadState
 > {
   public state = {
@@ -27,32 +38,40 @@ class ThreadContainer extends React.Component<
   };
   constructor(props) {
     super(props);
-    ApiAdapter.getThread(
+  }
+
+  public componentWillMount() {
+    this.props.loadCurrentThreadData(
       this.props.boardCredentials,
-      this.props.threadNumber
-    ).then(thread => {
-      this.setState({
-        loading: false,
-        threadData: thread
-      });
-    });
+      this.props.curThread.curThreadNumber
+    );
   }
 
   public render() {
     return (
       <Thread
         boardCredentials={this.props.boardCredentials}
-        threadData={this.state.threadData}
-        loading={this.state.loading}
-        threadNumber={this.props.threadNumber}
+        threadData={this.props.curThread.curThreadData}
+        loading={this.props.curThread.isLoading}
+        threadNumber={this.props.curThread.curThreadNumber}
       />
     );
   }
 }
 
-const mapStateToProps = (state: IRootState): IThreadContainerProps => ({
+const mapStateToProps = (state: IRootState): IStateProps => ({
   boardCredentials: state.curBoard.curBoard,
-  threadNumber: state.curThread.curThread
+  curThread: state.curThread
 });
 
-export default connect(mapStateToProps)(ThreadContainer);
+const mapDispatchToProps = dispatch => ({
+  loadCurrentThreadData: (
+    boardCredentials: IBoardCredentials,
+    threadNumber: number
+  ) => dispatch(loadCurrentThreadData(boardCredentials, threadNumber))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ThreadContainer);

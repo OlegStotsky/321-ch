@@ -4,6 +4,8 @@ import ApiAdapter from "../../../lib/ApiAdapter";
 import { connect } from "react-redux";
 import { IBoardCredentials } from "../../../../../shared/lib/types/BoardCredentials";
 import { IRootState } from "../../../redux/reducers/rootReducer";
+import { ICurThreadState } from "../../../redux/reducers/curThread";
+import { sendNewPost } from "../../../redux/actions/curThread";
 
 interface INewPostFormContainerState {
   authorName: string;
@@ -17,11 +19,22 @@ const lengthConstrains = {
 
 interface IStateProps {
   curBoard: IBoardCredentials;
-  curThread: number;
+  curThread: ICurThreadState;
 }
 
+interface IDispatchProps {
+  addNewPost: (
+    boardCredentials: IBoardCredentials,
+    threadNumber: number,
+    authorName: string,
+    content: string
+  ) => any;
+}
+
+type NewPostFormProps = IStateProps & IDispatchProps;
+
 class NewPostFormContainer extends React.Component<
-  IStateProps,
+  NewPostFormProps,
   INewPostFormContainerState
 > {
   public state: INewPostFormContainerState = {
@@ -53,12 +66,18 @@ class NewPostFormContainer extends React.Component<
 
   public onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    ApiAdapter.sendPost(
-      this.props.curBoard,
-      this.props.curThread,
-      this.state.authorName,
-      this.state.content
-    );
+    this.props
+      .addNewPost(
+        this.props.curBoard,
+        this.props.curThread.curThreadNumber,
+        this.state.authorName,
+        this.state.content
+      )
+      .then(() => {
+        this.setState(() => ({
+          content: ""
+        }));
+      });
   };
 
   public render() {
@@ -69,6 +88,7 @@ class NewPostFormContainer extends React.Component<
         onSubmit={this.onSubmit}
         authorName={this.state.authorName}
         content={this.state.content}
+        isSubmitting={this.props.curThread.addingNewPost}
       />
     );
   }
@@ -76,7 +96,20 @@ class NewPostFormContainer extends React.Component<
 
 const mapStateToProps = (state: IRootState): IStateProps => ({
   curBoard: state.curBoard.curBoard,
-  curThread: state.curThread.curThread
+  curThread: state.curThread
 });
 
-export default connect(mapStateToProps)(NewPostFormContainer);
+const mapDispatchToProps = dispatch => ({
+  addNewPost: (
+    boardCredentials: IBoardCredentials,
+    threadNumber: number,
+    authorName: string,
+    content: string
+  ) =>
+    dispatch(sendNewPost(boardCredentials, threadNumber, authorName, content))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NewPostFormContainer);

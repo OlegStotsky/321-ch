@@ -29,7 +29,6 @@ const BoardHeader: React.SFC<IBoardHeaderProps> = ({
           <span className="board__header-action-caret">[</span>
           <a
             className="board__header-start-new-thread"
-            href="#"
             id="start-new-thread"
             onClick={() => {
               $("#new-thread-form").removeClass("u-hide");

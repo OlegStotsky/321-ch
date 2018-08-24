@@ -5,7 +5,7 @@ import { Board, ThreadContainer } from "../components/Board";
 import { allBoards } from "../../../shared/lib/static/BoardSections";
 import { changangeCurrentBoard } from "../redux/actions/curBoard";
 import { connect } from "react-redux";
-import { changeCurrentThread } from "../redux/actions/curThread";
+import { changeCurrentThreadNumber } from "../redux/actions/curThread";
 
 const AppRouter = props => (
   <BrowserRouter>
@@ -25,9 +25,11 @@ const AppRouter = props => (
         {allBoards.map(board => (
           <Route
             path={`${board.link}/:threadNumber`}
-            render={(routeProps) => {
+            render={routeProps => {
               props.dispatch(changangeCurrentBoard(board));
-              props.dispatch(changeCurrentThread(routeProps.match.params.threadNumber));
+              props.dispatch(
+                changeCurrentThreadNumber(routeProps.match.params.threadNumber)
+              );
               return <ThreadContainer {...routeProps} />;
             }}
           />

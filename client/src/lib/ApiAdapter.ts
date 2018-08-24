@@ -2,6 +2,7 @@ import axios from "axios";
 import { array } from "@mojotech/json-type-validation";
 import { IBoardCredentials } from "../../../shared/lib/types/BoardCredentials";
 import { IThread, threadDecoder } from "./Thread";
+import { postDecoder } from "./Post";
 
 export default class ApiAdapter {
   public static getThread(
@@ -24,9 +25,9 @@ export default class ApiAdapter {
       authorName,
       content
     };
-    return axios.post(
-      `/api/${boardCredentials.shortName}/${threadNumber}`,
-      post
-    );
+    return axios
+      .post(`/api/${boardCredentials.shortName}/${threadNumber}`, post)
+      .then(response => response.data)
+      .then(newPost => postDecoder.runWithException(newPost));
   }
 }
