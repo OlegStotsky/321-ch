@@ -3,8 +3,10 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import HomePage from "../components/HomePage";
 import { Board, ThreadContainer } from "../components/Board";
 import { allBoards } from "../../../shared/lib/static/BoardSections";
+import { changangeCurrentBoard } from "../redux/actions/curBoard";
+import { connect } from "react-redux";
 
-const AppRouter = () => (
+const AppRouter = props => (
   <BrowserRouter>
     <div>
       <Switch>
@@ -12,16 +14,20 @@ const AppRouter = () => (
         {allBoards.map(board => (
           <Route
             path={board.link}
-            render={() => <Board boardCredentials={board} />}
+            render={() => {
+              props.dispatch(changangeCurrentBoard(board));
+              return <Board boardCredentials={board} />;
+            }}
             exact={true}
           />
         ))}
         {allBoards.map(board => (
           <Route
             path={`${board.link}/:threadNumber`}
-            render={(props: any) => (
-              <ThreadContainer boardCredentials={board} {...props} />
-            )}
+            render={() => {
+              props.dispatch(changangeCurrentBoard(board));
+              return <ThreadContainer boardCredentials={board} {...props} />;
+            }}
           />
         ))}
       </Switch>
@@ -29,4 +35,4 @@ const AppRouter = () => (
   </BrowserRouter>
 );
 
-export default AppRouter;
+export default connect()(AppRouter);
