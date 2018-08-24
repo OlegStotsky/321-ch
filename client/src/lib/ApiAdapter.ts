@@ -13,4 +13,20 @@ export default class ApiAdapter {
       .then(response => response.data)
       .then(thread => threadDecoder.runWithException(thread));
   }
+
+  public static sendPost(
+    boardCredentials: IBoardCredentials,
+    threadNumber: number,
+    authorName: string,
+    content: string
+  ) {
+    const post = {
+      authorName,
+      content
+    };
+    return axios.post(
+      `/api/${boardCredentials.shortName}/${threadNumber}`,
+      post
+    );
+  }
 }
