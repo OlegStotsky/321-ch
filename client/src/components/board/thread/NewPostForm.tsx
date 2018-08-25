@@ -18,13 +18,15 @@ const NewPostForm: React.SFC<INewPostFormProps> = props => {
   `;
   return (
     <form className="form" onSubmit={props.onSubmit}>
-      <ClipLoader
-        sizeUnit="px"
-        size={35}
-        loading={props.isSubmitting}
-        color="rgb(54, 215, 183)"
-        className={override}
-      />
+      <div className="spinner">
+        <ClipLoader
+          sizeUnit="px"
+          size={35}
+          loading={props.isSubmitting}
+          color="rgb(54, 215, 183)"
+          className={override}
+        />
+      </div>
       <div className="form-group">
         <label className="form__label">Name</label>
         <input
