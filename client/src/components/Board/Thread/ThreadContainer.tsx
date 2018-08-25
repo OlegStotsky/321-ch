@@ -8,17 +8,16 @@ import { IRootState } from "../../../redux/reducers/rootReducer";
 import { connect } from "react-redux";
 import { loadCurrentThreadData } from "../../../redux/actions/curThread";
 import { ICurThreadState } from "../../../redux/reducers/curThread";
+import { IApiState } from "../../../redux/reducers/api";
 
 interface IStateProps {
   boardCredentials: IBoardCredentials;
   curThread: ICurThreadState;
+  api: IApiState;
 }
 
 interface IDispatchProps {
-  loadCurrentThreadData: (
-    boardCredentials: IBoardCredentials,
-    threadNumber: number
-  ) => any;
+  loadCurrentThreadData: () => any;
 }
 
 type ThreadContainerProps = IStateProps & IDispatchProps;
@@ -41,10 +40,7 @@ class ThreadContainer extends React.Component<
   }
 
   public componentWillMount() {
-    this.props.loadCurrentThreadData(
-      this.props.boardCredentials,
-      this.props.curThread.curThreadNumber
-    );
+    this.props.loadCurrentThreadData();
   }
 
   public render() {
@@ -61,14 +57,12 @@ class ThreadContainer extends React.Component<
 
 const mapStateToProps = (state: IRootState): IStateProps => ({
   boardCredentials: state.curBoard.curBoard,
-  curThread: state.curThread
+  curThread: state.curThread,
+  api: state.api
 });
 
 const mapDispatchToProps = dispatch => ({
-  loadCurrentThreadData: (
-    boardCredentials: IBoardCredentials,
-    threadNumber: number
-  ) => dispatch(loadCurrentThreadData(boardCredentials, threadNumber))
+  loadCurrentThreadData: () => dispatch(loadCurrentThreadData())
 });
 
 export default connect(

@@ -8,6 +8,8 @@ import * as moment from "moment";
 import { IThread } from "../../../lib/Thread";
 import BoardList from "../BoardList";
 import NewPostFormContainer from "./NewPostFormContainer";
+import { css } from "react-emotion";
+import { ClipLoader } from "react-spinners";
 
 interface IThreadProps {
   boardCredentials: IBoardCredentials;
@@ -16,6 +18,10 @@ interface IThreadProps {
   loading: boolean;
 }
 
+const override = css`
+  display: block;
+  margin: 10px auto;
+`;
 const Thread: React.SFC<IThreadProps> = ({
   boardCredentials,
   threadNumber,
@@ -23,12 +29,26 @@ const Thread: React.SFC<IThreadProps> = ({
   loading
 }) => (
   <React.Fragment>
-    <BoardHeader actionName="Post a Reply" Form={NewPostFormContainer}  credentials={boardCredentials} />
+    <BoardHeader
+      actionName="Post a Reply"
+      Form={NewPostFormContainer}
+      credentials={boardCredentials}
+    />
     <MidPanel />
     <div className="thread__body">
-      {loading && <div>Loading posts...</div>}
-      {!loading && <Post {...threadData.opPost} isOpPost={true} />}
-      {!loading &&
+      <div className="spinner">
+        {
+          <ClipLoader
+            sizeUnit="px"
+            size={50}
+            loading={loading}
+            color="rgb(54, 215, 183)"
+            className={override}
+          />
+        }
+      </div>
+      {threadData && <Post {...threadData.opPost} isOpPost={true} />}
+      {threadData &&
         threadData.posts.map(post => (
           <Post key={post.postNumber} {...post} isOpPost={false} />
         ))}
