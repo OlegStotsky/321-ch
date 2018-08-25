@@ -24,6 +24,7 @@
     "express": "^4.16.3",
     "jest": "^23.5.0",
     "mongoose": "^5.1.5",
+    "mongoose-error-helper": "^0.0.2",
     "morgan": "^1.9.0",
     "morgan-body": "^2.4.5",
     "tsc": "^1.20150623.0",

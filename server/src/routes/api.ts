@@ -42,8 +42,9 @@ apiRouter.post("/:board_name/", (req: Request, res: Response) => {
           });
       })
       .catch(e => {
-        res.status(500).json(e);
-        console.log("Error: ", e);
+        res.status(400).json({
+          errors: e.errors
+        });
       });
   });
 });
@@ -75,8 +76,7 @@ apiRouter.get("/:boardName/:threadNumber", (req: Request, res: Response) => {
       );
     })
     .catch(e => {
-      res.status(500).send(e);
-      console.log("Error :", e);
+      res.status(400).send(e.errors);
     });
 });
 
@@ -106,9 +106,9 @@ apiRouter.post("/:boardName/:threadNumber/", (req: Request, res: Response) => {
             res.status(201).json(pickValuesFromPost(newPost));
           })
           .catch(e => {
-            console.log("Error: ", e);
+            console.log("Eror: ", e);
             res.status(400).json({
-              e
+              errors: ["Something went wrong"]
             });
           });
       }
