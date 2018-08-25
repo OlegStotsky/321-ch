@@ -2,6 +2,9 @@ import ApiAdapter from "../../lib/ApiAdapter";
 import { IThread } from "../../lib/Thread";
 import { IBoardCredentials } from "../../../../shared/lib/types/BoardCredentials";
 import { IPost } from "../../lib/Post";
+import { apiFetchRequested, apiFetchSucceded, apiFetchFailed } from "./api";
+import { IRootState } from "../reducers/rootReducer";
+import { addNewFlashMessage } from "./flashMessages";
 
 export enum ICurThreadActionTypeKeys {
   CHANGE_CUR_THREAD_NUMBER = "CHANGE_CUR_THREAD_NUMBER",
@@ -9,6 +12,8 @@ export enum ICurThreadActionTypeKeys {
   CURRENT_THREAD_NOT_LOADING = "CURRENT_THREAD_NOT_LOADING",
   CURRENT_THREAD_ADDING_NEW_POST = "CURRENT_THREAD_ADDING_NEW_POST",
   CURRENT_THREAD_NOT_ADDING_NEW_POST = "CURRENT_THREAD_NOT_ADDING_NEW_POST",
+  CURRENT_THREAD_LOAD_SUCCESS = "CURRENT_THREAD_LOAD_SUCCESS",
+  CURRENT_THREAD_LOAD_FAILURE = "CURRENT_THREAD_LOAD_FAILURE",
   SET_CUR_THREAD_DATA = "SET_CUR_THREAD_DATA",
   ADD_NEW_POST = "ADD_NEW_POST"
 }
@@ -49,18 +54,25 @@ export const setCurrentThreadData = (
   curThreadData
 });
 
-export const loadCurrentThreadData = (
-  boardCredentials: IBoardCredentials,
-  threadNumer: number
-) => {
-  return (dispatch, getCurState) => {
+export const loadCurrentThreadData = () => {
+  return (dispatch, getCurState: () => IRootState) => {
     dispatch(currentThreadLoading());
-    ApiAdapter.getThread(boardCredentials, threadNumer).then(
-      (threadData: IThread) => {
+    dispatch(apiFetchRequested());
+    const curBoardCredentials: IBoardCredentials = getCurState().curBoard
+      .curBoard;
+    const curThreadNumber: number = getCurState().curThread.curThreadNumber;
+    ApiAdapter.getThread(curBoardCredentials, curThreadNumber)
+      .then((threadData: IThread) => {
+        setTimeout(() => dispatch(apiFetchSucceded()), 500);
+        setTimeout(() => dispatch(currentThreadNotLoading()), 500);
+        dispatch(curThreadLoadSuccess());
         dispatch(setCurrentThreadData(threadData));
+      })
+      .catch(e => {
         dispatch(currentThreadNotLoading());
-      }
-    );
+        dispatch(curThreadLoadFailure());
+        dispatch(apiFetchFailed());
+      });
   };
 };
 
@@ -71,16 +83,26 @@ export const sendNewPost = (
   content: string
 ) => {
   return (dispatch, getCurState) => {
+    dispatch(apiFetchRequested());
     dispatch(addingNewPost());
     return ApiAdapter.sendPost(
       boardCredentials,
       threadNumber,
       authorName,
       content
-    ).then(post => {
-      dispatch(addNewPost(post));
-      dispatch(notAddingNewPost());
-    });
+    )
+      .then(post => {
+        dispatch(addNewPost(post));
+        dispatch(apiFetchSucceded());
+        dispatch(notAddingNewPost());
+      })
+      .catch(e => {
+        dispatch(notAddingNewPost());
+        dispatch(apiFetchFailed());
+        e.response.data.errors.forEach(errorMessage =>
+          dispatch(addNewFlashMessage(errorMessage))
+        );
+      });
   };
 };
 
@@ -93,18 +115,32 @@ export const addNewPost = (post: IPost): ICurThreadAddNewPostAction => ({
   post
 });
 
-export interface ICurThreadAddingNewPost {
+export interface ICurThreadAddingNewPostAction {
   type: ICurThreadActionTypeKeys.CURRENT_THREAD_ADDING_NEW_POST;
 }
-export const addingNewPost = (): ICurThreadAddingNewPost => ({
+export const addingNewPost = (): ICurThreadAddingNewPostAction => ({
   type: ICurThreadActionTypeKeys.CURRENT_THREAD_ADDING_NEW_POST
 });
 
-export interface ICurThreadNotAddingNewPost {
+export interface ICurThreadNotAddingNewPostAction {
   type: ICurThreadActionTypeKeys.CURRENT_THREAD_NOT_ADDING_NEW_POST;
 }
-export const notAddingNewPost = (): ICurThreadNotAddingNewPost => ({
+export const notAddingNewPost = (): ICurThreadNotAddingNewPostAction => ({
   type: ICurThreadActionTypeKeys.CURRENT_THREAD_NOT_ADDING_NEW_POST
+});
+
+export interface ICurThreadLoadSuccessAction {
+  type: ICurThreadActionTypeKeys.CURRENT_THREAD_LOAD_SUCCESS;
+}
+export const curThreadLoadSuccess = (): ICurThreadLoadSuccessAction => ({
+  type: ICurThreadActionTypeKeys.CURRENT_THREAD_LOAD_SUCCESS
+});
+
+export interface ICurThreadLoadFailureAction {
+  type: ICurThreadActionTypeKeys.CURRENT_THREAD_LOAD_FAILURE;
+}
+export const curThreadLoadFailure = (): ICurThreadLoadFailureAction => ({
+  type: ICurThreadActionTypeKeys.CURRENT_THREAD_LOAD_FAILURE
 });
 
 export type CurThreadActionTypes =
@@ -113,5 +149,7 @@ export type CurThreadActionTypes =
   | ICurrentThreadNotLoadingAction
   | ISetCurrentThreadDataAction
   | ICurThreadAddNewPostAction
-  | ICurThreadAddingNewPost
-  | ICurThreadNotAddingNewPost;
+  | ICurThreadAddingNewPostAction
+  | ICurThreadNotAddingNewPostAction
+  | ICurThreadLoadSuccessAction
+  | ICurThreadLoadFailureAction;
