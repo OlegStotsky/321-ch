@@ -18,46 +18,48 @@ interface IThreadProps {
   loading: boolean;
 }
 
-const override = css`
-  display: block;
-  margin: 10px auto;
-`;
 const Thread: React.SFC<IThreadProps> = ({
   boardCredentials,
   threadNumber,
   threadData,
   loading
-}) => (
-  <React.Fragment>
-    <BoardHeader
-      actionName="Post a Reply"
-      Form={NewPostFormContainer}
-      credentials={boardCredentials}
-    />
-    <MidPanel />
-    <div className="thread__body">
-      <div className="spinner">
-        {
-          <ClipLoader
-            sizeUnit="px"
-            size={50}
-            loading={loading}
-            color="rgb(54, 215, 183)"
-            className={override}
-          />
-        }
-      </div>
-      {threadData && <Post {...threadData.opPost} isOpPost={true} />}
-      {threadData &&
-        threadData.posts.map(post => (
-          <Post key={post.postNumber} {...post} isOpPost={false} />
-        ))}
+}) => {
+  const override = css`
+    display: block;
+    margin: 10px auto;
+  `;
+  return (
+    <React.Fragment>
+      <BoardHeader
+        actionName="Post a Reply"
+        Form={NewPostFormContainer}
+        credentials={boardCredentials}
+      />
       <MidPanel />
-    </div>
-    <div className="thread__footer">
-      <BoardList />
-    </div>
-  </React.Fragment>
-);
+      <div className="thread__body">
+        <div className="spinner">
+          {
+            <ClipLoader
+              sizeUnit="px"
+              size={50}
+              loading={loading}
+              color="rgb(54, 215, 183)"
+              className={override}
+            />
+          }
+        </div>
+        {threadData && <Post {...threadData.opPost} isOpPost={true} />}
+        {threadData &&
+          threadData.posts.map(post => (
+            <Post key={post.postNumber} {...post} isOpPost={false} />
+          ))}
+        <MidPanel />
+      </div>
+      <div className="thread__footer">
+        <BoardList />
+      </div>
+    </React.Fragment>
+  );
+};
 
 export default Thread;
