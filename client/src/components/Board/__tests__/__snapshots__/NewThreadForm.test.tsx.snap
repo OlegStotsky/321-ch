@@ -1,0 +1,3889 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewThreadFormContainer Matches snapshot 1`] = `
+ReactWrapper {
+  "length": 1,
+  Symbol(enzyme.__unrendered__): <NewThreadFormContainer />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__node__): Object {
+    "instance": NewThreadFormContainer {
+      "_reactInternalFiber": FiberNode {
+        "_debugID": 5,
+        "_debugIsCurrentlyTiming": false,
+        "_debugOwner": FiberNode {
+          "_debugID": 4,
+          "_debugIsCurrentlyTiming": false,
+          "_debugOwner": null,
+          "_debugSource": null,
+          "alternate": null,
+          "child": [Circular],
+          "effectTag": 1,
+          "expirationTime": 0,
+          "firstEffect": null,
+          "index": 0,
+          "key": null,
+          "lastEffect": null,
+          "memoizedProps": Object {
+            "Component": [Function],
+            "context": null,
+            "props": Object {},
+          },
+          "memoizedState": Object {
+            "context": null,
+            "mount": true,
+            "props": Object {},
+          },
+          "mode": 0,
+          "nextEffect": null,
+          "pendingProps": Object {
+            "Component": [Function],
+            "context": null,
+            "props": Object {},
+          },
+          "ref": null,
+          "return": FiberNode {
+            "_debugID": 1,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": null,
+            "_debugSource": null,
+            "alternate": FiberNode {
+              "_debugID": 1,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": null,
+              "_debugSource": null,
+              "alternate": [Circular],
+              "child": null,
+              "effectTag": 0,
+              "expirationTime": 1,
+              "firstEffect": null,
+              "index": 0,
+              "key": null,
+              "lastEffect": null,
+              "memoizedProps": null,
+              "memoizedState": null,
+              "mode": 0,
+              "nextEffect": null,
+              "pendingProps": null,
+              "ref": null,
+              "return": null,
+              "selfBaseTime": 0,
+              "sibling": null,
+              "stateNode": Object {
+                "containerInfo": <div>
+                  <form
+                    class="form"
+                  >
+                    <div
+                      class="form-group"
+                    >
+                      <label
+                        class="form__label"
+                      >
+                        Name
+                      </label>
+                      <input
+                        class="form__input"
+                        name="authorName"
+                        type="text"
+                        value="Anonymous"
+                      />
+                    </div>
+                    <div
+                      class="form-group"
+                    >
+                      <label
+                        class="form__label"
+                      >
+                        Thread name
+                      </label>
+                      <input
+                        class="form__input"
+                        name="threadName"
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                    <div
+                      class="form-group"
+                    >
+                      <label
+                        class="form__label"
+                      >
+                        Message
+                      </label>
+                      <textarea
+                        class="form__input form__input-text"
+                        name="message"
+                        rows="20"
+                      />
+                    </div>
+                    <div
+                      class="form-group u-center-text"
+                    >
+                      <button
+                        class="form__submit"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </div>,
+                "context": Object {},
+                "current": [Circular],
+                "earliestPendingTime": 0,
+                "earliestSuspendedTime": 0,
+                "finishedWork": null,
+                "firstBatch": null,
+                "hydrate": false,
+                "latestPendingTime": 0,
+                "latestPingedTime": 0,
+                "latestSuspendedTime": 0,
+                "nextScheduledRoot": null,
+                "pendingChildren": null,
+                "pendingCommitExpirationTime": 0,
+                "pendingContext": null,
+                "remainingExpirationTime": 0,
+              },
+              "tag": 3,
+              "treeBaseTime": 0,
+              "type": null,
+              "updateQueue": Object {
+                "baseState": null,
+                "expirationTime": 1,
+                "firstCapturedEffect": null,
+                "firstCapturedUpdate": null,
+                "firstEffect": null,
+                "firstUpdate": Object {
+                  "callback": null,
+                  "expirationTime": 1,
+                  "next": null,
+                  "nextEffect": null,
+                  "payload": Object {
+                    "element": <WrapperComponent
+                      Component={[Function]}
+                      context={null}
+                      props={Object {}}
+                    />,
+                  },
+                  "tag": 0,
+                },
+                "lastCapturedEffect": null,
+                "lastCapturedUpdate": null,
+                "lastEffect": null,
+                "lastUpdate": Object {
+                  "callback": null,
+                  "expirationTime": 1,
+                  "next": null,
+                  "nextEffect": null,
+                  "payload": Object {
+                    "element": <WrapperComponent
+                      Component={[Function]}
+                      context={null}
+                      props={Object {}}
+                    />,
+                  },
+                  "tag": 0,
+                },
+              },
+            },
+            "child": [Circular],
+            "effectTag": 32,
+            "expirationTime": 0,
+            "firstEffect": [Circular],
+            "index": 0,
+            "key": null,
+            "lastEffect": [Circular],
+            "memoizedProps": null,
+            "memoizedState": Object {
+              "element": <WrapperComponent
+                Component={[Function]}
+                context={null}
+                props={Object {}}
+              />,
+            },
+            "mode": 0,
+            "nextEffect": null,
+            "pendingProps": null,
+            "ref": null,
+            "return": null,
+            "selfBaseTime": 0,
+            "sibling": null,
+            "stateNode": Object {
+              "containerInfo": <div>
+                <form
+                  class="form"
+                >
+                  <div
+                    class="form-group"
+                  >
+                    <label
+                      class="form__label"
+                    >
+                      Name
+                    </label>
+                    <input
+                      class="form__input"
+                      name="authorName"
+                      type="text"
+                      value="Anonymous"
+                    />
+                  </div>
+                  <div
+                    class="form-group"
+                  >
+                    <label
+                      class="form__label"
+                    >
+                      Thread name
+                    </label>
+                    <input
+                      class="form__input"
+                      name="threadName"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    class="form-group"
+                  >
+                    <label
+                      class="form__label"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      class="form__input form__input-text"
+                      name="message"
+                      rows="20"
+                    />
+                  </div>
+                  <div
+                    class="form-group u-center-text"
+                  >
+                    <button
+                      class="form__submit"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </div>,
+              "context": Object {},
+              "current": [Circular],
+              "earliestPendingTime": 0,
+              "earliestSuspendedTime": 0,
+              "finishedWork": null,
+              "firstBatch": null,
+              "hydrate": false,
+              "latestPendingTime": 0,
+              "latestPingedTime": 0,
+              "latestSuspendedTime": 0,
+              "nextScheduledRoot": null,
+              "pendingChildren": null,
+              "pendingCommitExpirationTime": 0,
+              "pendingContext": null,
+              "remainingExpirationTime": 0,
+            },
+            "tag": 3,
+            "treeBaseTime": 0,
+            "type": null,
+            "updateQueue": Object {
+              "baseState": Object {
+                "element": <WrapperComponent
+                  Component={[Function]}
+                  context={null}
+                  props={Object {}}
+                />,
+              },
+              "expirationTime": 0,
+              "firstCapturedEffect": null,
+              "firstCapturedUpdate": null,
+              "firstEffect": null,
+              "firstUpdate": null,
+              "lastCapturedEffect": null,
+              "lastCapturedUpdate": null,
+              "lastEffect": null,
+              "lastUpdate": null,
+            },
+          },
+          "selfBaseTime": 0,
+          "sibling": null,
+          "stateNode": WrapperComponent {
+            "_reactInternalFiber": [Circular],
+            "_reactInternalInstance": Object {},
+            "context": Object {},
+            "props": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {},
+            },
+            "refs": Object {},
+            "state": Object {
+              "context": null,
+              "mount": true,
+              "props": Object {},
+            },
+            "updater": Object {
+              "enqueueForceUpdate": [Function],
+              "enqueueReplaceState": [Function],
+              "enqueueSetState": [Function],
+              "isMounted": [Function],
+            },
+          },
+          "tag": 2,
+          "treeBaseTime": 0,
+          "type": [Function],
+          "updateQueue": null,
+        },
+        "_debugSource": null,
+        "alternate": null,
+        "child": FiberNode {
+          "_debugID": 6,
+          "_debugIsCurrentlyTiming": false,
+          "_debugOwner": [Circular],
+          "_debugSource": null,
+          "alternate": null,
+          "child": FiberNode {
+            "_debugID": 7,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": [Circular],
+            "_debugSource": null,
+            "alternate": null,
+            "child": FiberNode {
+              "_debugID": 8,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": [Circular],
+              "_debugSource": null,
+              "alternate": null,
+              "child": FiberNode {
+                "_debugID": 12,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": [Circular],
+                "_debugSource": null,
+                "alternate": null,
+                "child": null,
+                "effectTag": 0,
+                "expirationTime": 0,
+                "firstEffect": null,
+                "index": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": Object {
+                  "children": "Name",
+                  "className": "form__label",
+                },
+                "memoizedState": null,
+                "mode": 0,
+                "nextEffect": null,
+                "pendingProps": Object {
+                  "children": "Name",
+                  "className": "form__label",
+                },
+                "ref": null,
+                "return": [Circular],
+                "selfBaseTime": 0,
+                "sibling": FiberNode {
+                  "_debugID": 13,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": [Circular],
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": null,
+                  "effectTag": 0,
+                  "expirationTime": 0,
+                  "firstEffect": null,
+                  "index": 1,
+                  "key": null,
+                  "lastEffect": null,
+                  "memoizedProps": Object {
+                    "className": "form__input",
+                    "name": "authorName",
+                    "onChange": [Function],
+                    "type": "text",
+                    "value": "Anonymous",
+                  },
+                  "memoizedState": null,
+                  "mode": 0,
+                  "nextEffect": null,
+                  "pendingProps": Object {
+                    "className": "form__input",
+                    "name": "authorName",
+                    "onChange": [Function],
+                    "type": "text",
+                    "value": "Anonymous",
+                  },
+                  "ref": null,
+                  "return": [Circular],
+                  "selfBaseTime": 0,
+                  "sibling": null,
+                  "stateNode": <input
+                    class="form__input"
+                    name="authorName"
+                    type="text"
+                    value="Anonymous"
+                  />,
+                  "tag": 5,
+                  "treeBaseTime": 0,
+                  "type": "input",
+                  "updateQueue": null,
+                },
+                "stateNode": <label
+                  class="form__label"
+                >
+                  Name
+                </label>,
+                "tag": 5,
+                "treeBaseTime": 0,
+                "type": "label",
+                "updateQueue": null,
+              },
+              "effectTag": 0,
+              "expirationTime": 0,
+              "firstEffect": null,
+              "index": 0,
+              "key": null,
+              "lastEffect": null,
+              "memoizedProps": Object {
+                "children": Array [
+                  <label
+                    className="form__label"
+                  >
+                    Name
+                  </label>,
+                  <input
+                    className="form__input"
+                    name="authorName"
+                    onChange={[Function]}
+                    type="text"
+                    value="Anonymous"
+                  />,
+                ],
+                "className": "form-group",
+              },
+              "memoizedState": null,
+              "mode": 0,
+              "nextEffect": null,
+              "pendingProps": Object {
+                "children": Array [
+                  <label
+                    className="form__label"
+                  >
+                    Name
+                  </label>,
+                  <input
+                    className="form__input"
+                    name="authorName"
+                    onChange={[Function]}
+                    type="text"
+                    value="Anonymous"
+                  />,
+                ],
+                "className": "form-group",
+              },
+              "ref": null,
+              "return": [Circular],
+              "selfBaseTime": 0,
+              "sibling": FiberNode {
+                "_debugID": 9,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": [Circular],
+                "_debugSource": null,
+                "alternate": null,
+                "child": FiberNode {
+                  "_debugID": 14,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": [Circular],
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": null,
+                  "effectTag": 0,
+                  "expirationTime": 0,
+                  "firstEffect": null,
+                  "index": 0,
+                  "key": null,
+                  "lastEffect": null,
+                  "memoizedProps": Object {
+                    "children": "Thread name",
+                    "className": "form__label",
+                  },
+                  "memoizedState": null,
+                  "mode": 0,
+                  "nextEffect": null,
+                  "pendingProps": Object {
+                    "children": "Thread name",
+                    "className": "form__label",
+                  },
+                  "ref": null,
+                  "return": [Circular],
+                  "selfBaseTime": 0,
+                  "sibling": FiberNode {
+                    "_debugID": 15,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": [Circular],
+                    "_debugSource": null,
+                    "alternate": null,
+                    "child": null,
+                    "effectTag": 0,
+                    "expirationTime": 0,
+                    "firstEffect": null,
+                    "index": 1,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": Object {
+                      "className": "form__input",
+                      "name": "threadName",
+                      "onChange": [Function],
+                      "type": "text",
+                      "value": "",
+                    },
+                    "memoizedState": null,
+                    "mode": 0,
+                    "nextEffect": null,
+                    "pendingProps": Object {
+                      "className": "form__input",
+                      "name": "threadName",
+                      "onChange": [Function],
+                      "type": "text",
+                      "value": "",
+                    },
+                    "ref": null,
+                    "return": [Circular],
+                    "selfBaseTime": 0,
+                    "sibling": null,
+                    "stateNode": <input
+                      class="form__input"
+                      name="threadName"
+                      type="text"
+                      value=""
+                    />,
+                    "tag": 5,
+                    "treeBaseTime": 0,
+                    "type": "input",
+                    "updateQueue": null,
+                  },
+                  "stateNode": <label
+                    class="form__label"
+                  >
+                    Thread name
+                  </label>,
+                  "tag": 5,
+                  "treeBaseTime": 0,
+                  "type": "label",
+                  "updateQueue": null,
+                },
+                "effectTag": 0,
+                "expirationTime": 0,
+                "firstEffect": null,
+                "index": 1,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": Object {
+                  "children": Array [
+                    <label
+                      className="form__label"
+                    >
+                      Thread name
+                    </label>,
+                    <input
+                      className="form__input"
+                      name="threadName"
+                      onChange={[Function]}
+                      type="text"
+                      value=""
+                    />,
+                  ],
+                  "className": "form-group",
+                },
+                "memoizedState": null,
+                "mode": 0,
+                "nextEffect": null,
+                "pendingProps": Object {
+                  "children": Array [
+                    <label
+                      className="form__label"
+                    >
+                      Thread name
+                    </label>,
+                    <input
+                      className="form__input"
+                      name="threadName"
+                      onChange={[Function]}
+                      type="text"
+                      value=""
+                    />,
+                  ],
+                  "className": "form-group",
+                },
+                "ref": null,
+                "return": [Circular],
+                "selfBaseTime": 0,
+                "sibling": FiberNode {
+                  "_debugID": 10,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": [Circular],
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": FiberNode {
+                    "_debugID": 16,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": [Circular],
+                    "_debugSource": null,
+                    "alternate": null,
+                    "child": null,
+                    "effectTag": 0,
+                    "expirationTime": 0,
+                    "firstEffect": null,
+                    "index": 0,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": Object {
+                      "children": "Message",
+                      "className": "form__label",
+                    },
+                    "memoizedState": null,
+                    "mode": 0,
+                    "nextEffect": null,
+                    "pendingProps": Object {
+                      "children": "Message",
+                      "className": "form__label",
+                    },
+                    "ref": null,
+                    "return": [Circular],
+                    "selfBaseTime": 0,
+                    "sibling": FiberNode {
+                      "_debugID": 17,
+                      "_debugIsCurrentlyTiming": false,
+                      "_debugOwner": [Circular],
+                      "_debugSource": null,
+                      "alternate": null,
+                      "child": null,
+                      "effectTag": 0,
+                      "expirationTime": 0,
+                      "firstEffect": null,
+                      "index": 1,
+                      "key": null,
+                      "lastEffect": null,
+                      "memoizedProps": Object {
+                        "className": "form__input form__input-text",
+                        "name": "message",
+                        "onChange": [Function],
+                        "rows": 20,
+                        "value": "",
+                      },
+                      "memoizedState": null,
+                      "mode": 0,
+                      "nextEffect": null,
+                      "pendingProps": Object {
+                        "className": "form__input form__input-text",
+                        "name": "message",
+                        "onChange": [Function],
+                        "rows": 20,
+                        "value": "",
+                      },
+                      "ref": null,
+                      "return": [Circular],
+                      "selfBaseTime": 0,
+                      "sibling": null,
+                      "stateNode": <textarea
+                        class="form__input form__input-text"
+                        name="message"
+                        rows="20"
+                      />,
+                      "tag": 5,
+                      "treeBaseTime": 0,
+                      "type": "textarea",
+                      "updateQueue": null,
+                    },
+                    "stateNode": <label
+                      class="form__label"
+                    >
+                      Message
+                    </label>,
+                    "tag": 5,
+                    "treeBaseTime": 0,
+                    "type": "label",
+                    "updateQueue": null,
+                  },
+                  "effectTag": 0,
+                  "expirationTime": 0,
+                  "firstEffect": null,
+                  "index": 2,
+                  "key": null,
+                  "lastEffect": null,
+                  "memoizedProps": Object {
+                    "children": Array [
+                      <label
+                        className="form__label"
+                      >
+                        Message
+                      </label>,
+                      <textarea
+                        className="form__input form__input-text"
+                        name="message"
+                        onChange={[Function]}
+                        rows={20}
+                        value=""
+                      />,
+                    ],
+                    "className": "form-group",
+                  },
+                  "memoizedState": null,
+                  "mode": 0,
+                  "nextEffect": null,
+                  "pendingProps": Object {
+                    "children": Array [
+                      <label
+                        className="form__label"
+                      >
+                        Message
+                      </label>,
+                      <textarea
+                        className="form__input form__input-text"
+                        name="message"
+                        onChange={[Function]}
+                        rows={20}
+                        value=""
+                      />,
+                    ],
+                    "className": "form-group",
+                  },
+                  "ref": null,
+                  "return": [Circular],
+                  "selfBaseTime": 0,
+                  "sibling": FiberNode {
+                    "_debugID": 11,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": [Circular],
+                    "_debugSource": null,
+                    "alternate": null,
+                    "child": FiberNode {
+                      "_debugID": 18,
+                      "_debugIsCurrentlyTiming": false,
+                      "_debugOwner": [Circular],
+                      "_debugSource": null,
+                      "alternate": null,
+                      "child": null,
+                      "effectTag": 0,
+                      "expirationTime": 0,
+                      "firstEffect": null,
+                      "index": 0,
+                      "key": null,
+                      "lastEffect": null,
+                      "memoizedProps": Object {
+                        "children": "Submit",
+                        "className": "form__submit",
+                      },
+                      "memoizedState": null,
+                      "mode": 0,
+                      "nextEffect": null,
+                      "pendingProps": Object {
+                        "children": "Submit",
+                        "className": "form__submit",
+                      },
+                      "ref": null,
+                      "return": [Circular],
+                      "selfBaseTime": 0,
+                      "sibling": null,
+                      "stateNode": <button
+                        class="form__submit"
+                      >
+                        Submit
+                      </button>,
+                      "tag": 5,
+                      "treeBaseTime": 0,
+                      "type": "button",
+                      "updateQueue": null,
+                    },
+                    "effectTag": 0,
+                    "expirationTime": 0,
+                    "firstEffect": null,
+                    "index": 3,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": Object {
+                      "children": <button
+                        className="form__submit"
+                      >
+                        Submit
+                      </button>,
+                      "className": "form-group u-center-text",
+                    },
+                    "memoizedState": null,
+                    "mode": 0,
+                    "nextEffect": null,
+                    "pendingProps": Object {
+                      "children": <button
+                        className="form__submit"
+                      >
+                        Submit
+                      </button>,
+                      "className": "form-group u-center-text",
+                    },
+                    "ref": null,
+                    "return": [Circular],
+                    "selfBaseTime": 0,
+                    "sibling": null,
+                    "stateNode": <div
+                      class="form-group u-center-text"
+                    >
+                      <button
+                        class="form__submit"
+                      >
+                        Submit
+                      </button>
+                    </div>,
+                    "tag": 5,
+                    "treeBaseTime": 0,
+                    "type": "div",
+                    "updateQueue": null,
+                  },
+                  "stateNode": <div
+                    class="form-group"
+                  >
+                    <label
+                      class="form__label"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      class="form__input form__input-text"
+                      name="message"
+                      rows="20"
+                    />
+                  </div>,
+                  "tag": 5,
+                  "treeBaseTime": 0,
+                  "type": "div",
+                  "updateQueue": null,
+                },
+                "stateNode": <div
+                  class="form-group"
+                >
+                  <label
+                    class="form__label"
+                  >
+                    Thread name
+                  </label>
+                  <input
+                    class="form__input"
+                    name="threadName"
+                    type="text"
+                    value=""
+                  />
+                </div>,
+                "tag": 5,
+                "treeBaseTime": 0,
+                "type": "div",
+                "updateQueue": null,
+              },
+              "stateNode": <div
+                class="form-group"
+              >
+                <label
+                  class="form__label"
+                >
+                  Name
+                </label>
+                <input
+                  class="form__input"
+                  name="authorName"
+                  type="text"
+                  value="Anonymous"
+                />
+              </div>,
+              "tag": 5,
+              "treeBaseTime": 0,
+              "type": "div",
+              "updateQueue": null,
+            },
+            "effectTag": 0,
+            "expirationTime": 0,
+            "firstEffect": null,
+            "index": 0,
+            "key": null,
+            "lastEffect": null,
+            "memoizedProps": Object {
+              "children": Array [
+                <div
+                  className="form-group"
+                >
+                  <label
+                    className="form__label"
+                  >
+                    Name
+                  </label>
+                  <input
+                    className="form__input"
+                    name="authorName"
+                    onChange={[Function]}
+                    type="text"
+                    value="Anonymous"
+                  />
+                </div>,
+                <div
+                  className="form-group"
+                >
+                  <label
+                    className="form__label"
+                  >
+                    Thread name
+                  </label>
+                  <input
+                    className="form__input"
+                    name="threadName"
+                    onChange={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </div>,
+                <div
+                  className="form-group"
+                >
+                  <label
+                    className="form__label"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    className="form__input form__input-text"
+                    name="message"
+                    onChange={[Function]}
+                    rows={20}
+                    value=""
+                  />
+                </div>,
+                <div
+                  className="form-group u-center-text"
+                >
+                  <button
+                    className="form__submit"
+                  >
+                    Submit
+                  </button>
+                </div>,
+              ],
+              "className": "form",
+              "onSubmit": [Function],
+            },
+            "memoizedState": null,
+            "mode": 0,
+            "nextEffect": null,
+            "pendingProps": Object {
+              "children": Array [
+                <div
+                  className="form-group"
+                >
+                  <label
+                    className="form__label"
+                  >
+                    Name
+                  </label>
+                  <input
+                    className="form__input"
+                    name="authorName"
+                    onChange={[Function]}
+                    type="text"
+                    value="Anonymous"
+                  />
+                </div>,
+                <div
+                  className="form-group"
+                >
+                  <label
+                    className="form__label"
+                  >
+                    Thread name
+                  </label>
+                  <input
+                    className="form__input"
+                    name="threadName"
+                    onChange={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </div>,
+                <div
+                  className="form-group"
+                >
+                  <label
+                    className="form__label"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    className="form__input form__input-text"
+                    name="message"
+                    onChange={[Function]}
+                    rows={20}
+                    value=""
+                  />
+                </div>,
+                <div
+                  className="form-group u-center-text"
+                >
+                  <button
+                    className="form__submit"
+                  >
+                    Submit
+                  </button>
+                </div>,
+              ],
+              "className": "form",
+              "onSubmit": [Function],
+            },
+            "ref": null,
+            "return": [Circular],
+            "selfBaseTime": 0,
+            "sibling": null,
+            "stateNode": <form
+              class="form"
+            >
+              <div
+                class="form-group"
+              >
+                <label
+                  class="form__label"
+                >
+                  Name
+                </label>
+                <input
+                  class="form__input"
+                  name="authorName"
+                  type="text"
+                  value="Anonymous"
+                />
+              </div>
+              <div
+                class="form-group"
+              >
+                <label
+                  class="form__label"
+                >
+                  Thread name
+                </label>
+                <input
+                  class="form__input"
+                  name="threadName"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class="form-group"
+              >
+                <label
+                  class="form__label"
+                >
+                  Message
+                </label>
+                <textarea
+                  class="form__input form__input-text"
+                  name="message"
+                  rows="20"
+                />
+              </div>
+              <div
+                class="form-group u-center-text"
+              >
+                <button
+                  class="form__submit"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>,
+            "tag": 5,
+            "treeBaseTime": 0,
+            "type": "form",
+            "updateQueue": null,
+          },
+          "effectTag": 1,
+          "expirationTime": 0,
+          "firstEffect": null,
+          "index": 0,
+          "key": null,
+          "lastEffect": null,
+          "memoizedProps": Object {
+            "authorName": "Anonymous",
+            "message": "",
+            "onAuthorNameChange": [Function],
+            "onMessageChange": [Function],
+            "onSubmit": [Function],
+            "onThreadNameChange": [Function],
+            "threadName": "",
+          },
+          "memoizedState": null,
+          "mode": 0,
+          "nextEffect": null,
+          "pendingProps": Object {
+            "authorName": "Anonymous",
+            "message": "",
+            "onAuthorNameChange": [Function],
+            "onMessageChange": [Function],
+            "onSubmit": [Function],
+            "onThreadNameChange": [Function],
+            "threadName": "",
+          },
+          "ref": null,
+          "return": [Circular],
+          "selfBaseTime": 0,
+          "sibling": null,
+          "stateNode": null,
+          "tag": 1,
+          "treeBaseTime": 0,
+          "type": [Function],
+          "updateQueue": null,
+        },
+        "effectTag": 1,
+        "expirationTime": 0,
+        "firstEffect": null,
+        "index": 0,
+        "key": null,
+        "lastEffect": null,
+        "memoizedProps": Object {},
+        "memoizedState": Object {
+          "authorName": "Anonymous",
+          "message": "",
+          "threadName": "",
+        },
+        "mode": 0,
+        "nextEffect": null,
+        "pendingProps": Object {},
+        "ref": null,
+        "return": FiberNode {
+          "_debugID": 4,
+          "_debugIsCurrentlyTiming": false,
+          "_debugOwner": null,
+          "_debugSource": null,
+          "alternate": null,
+          "child": [Circular],
+          "effectTag": 1,
+          "expirationTime": 0,
+          "firstEffect": null,
+          "index": 0,
+          "key": null,
+          "lastEffect": null,
+          "memoizedProps": Object {
+            "Component": [Function],
+            "context": null,
+            "props": Object {},
+          },
+          "memoizedState": Object {
+            "context": null,
+            "mount": true,
+            "props": Object {},
+          },
+          "mode": 0,
+          "nextEffect": null,
+          "pendingProps": Object {
+            "Component": [Function],
+            "context": null,
+            "props": Object {},
+          },
+          "ref": null,
+          "return": FiberNode {
+            "_debugID": 1,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": null,
+            "_debugSource": null,
+            "alternate": FiberNode {
+              "_debugID": 1,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": null,
+              "_debugSource": null,
+              "alternate": [Circular],
+              "child": null,
+              "effectTag": 0,
+              "expirationTime": 1,
+              "firstEffect": null,
+              "index": 0,
+              "key": null,
+              "lastEffect": null,
+              "memoizedProps": null,
+              "memoizedState": null,
+              "mode": 0,
+              "nextEffect": null,
+              "pendingProps": null,
+              "ref": null,
+              "return": null,
+              "selfBaseTime": 0,
+              "sibling": null,
+              "stateNode": Object {
+                "containerInfo": <div>
+                  <form
+                    class="form"
+                  >
+                    <div
+                      class="form-group"
+                    >
+                      <label
+                        class="form__label"
+                      >
+                        Name
+                      </label>
+                      <input
+                        class="form__input"
+                        name="authorName"
+                        type="text"
+                        value="Anonymous"
+                      />
+                    </div>
+                    <div
+                      class="form-group"
+                    >
+                      <label
+                        class="form__label"
+                      >
+                        Thread name
+                      </label>
+                      <input
+                        class="form__input"
+                        name="threadName"
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                    <div
+                      class="form-group"
+                    >
+                      <label
+                        class="form__label"
+                      >
+                        Message
+                      </label>
+                      <textarea
+                        class="form__input form__input-text"
+                        name="message"
+                        rows="20"
+                      />
+                    </div>
+                    <div
+                      class="form-group u-center-text"
+                    >
+                      <button
+                        class="form__submit"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </div>,
+                "context": Object {},
+                "current": [Circular],
+                "earliestPendingTime": 0,
+                "earliestSuspendedTime": 0,
+                "finishedWork": null,
+                "firstBatch": null,
+                "hydrate": false,
+                "latestPendingTime": 0,
+                "latestPingedTime": 0,
+                "latestSuspendedTime": 0,
+                "nextScheduledRoot": null,
+                "pendingChildren": null,
+                "pendingCommitExpirationTime": 0,
+                "pendingContext": null,
+                "remainingExpirationTime": 0,
+              },
+              "tag": 3,
+              "treeBaseTime": 0,
+              "type": null,
+              "updateQueue": Object {
+                "baseState": null,
+                "expirationTime": 1,
+                "firstCapturedEffect": null,
+                "firstCapturedUpdate": null,
+                "firstEffect": null,
+                "firstUpdate": Object {
+                  "callback": null,
+                  "expirationTime": 1,
+                  "next": null,
+                  "nextEffect": null,
+                  "payload": Object {
+                    "element": <WrapperComponent
+                      Component={[Function]}
+                      context={null}
+                      props={Object {}}
+                    />,
+                  },
+                  "tag": 0,
+                },
+                "lastCapturedEffect": null,
+                "lastCapturedUpdate": null,
+                "lastEffect": null,
+                "lastUpdate": Object {
+                  "callback": null,
+                  "expirationTime": 1,
+                  "next": null,
+                  "nextEffect": null,
+                  "payload": Object {
+                    "element": <WrapperComponent
+                      Component={[Function]}
+                      context={null}
+                      props={Object {}}
+                    />,
+                  },
+                  "tag": 0,
+                },
+              },
+            },
+            "child": [Circular],
+            "effectTag": 32,
+            "expirationTime": 0,
+            "firstEffect": [Circular],
+            "index": 0,
+            "key": null,
+            "lastEffect": [Circular],
+            "memoizedProps": null,
+            "memoizedState": Object {
+              "element": <WrapperComponent
+                Component={[Function]}
+                context={null}
+                props={Object {}}
+              />,
+            },
+            "mode": 0,
+            "nextEffect": null,
+            "pendingProps": null,
+            "ref": null,
+            "return": null,
+            "selfBaseTime": 0,
+            "sibling": null,
+            "stateNode": Object {
+              "containerInfo": <div>
+                <form
+                  class="form"
+                >
+                  <div
+                    class="form-group"
+                  >
+                    <label
+                      class="form__label"
+                    >
+                      Name
+                    </label>
+                    <input
+                      class="form__input"
+                      name="authorName"
+                      type="text"
+                      value="Anonymous"
+                    />
+                  </div>
+                  <div
+                    class="form-group"
+                  >
+                    <label
+                      class="form__label"
+                    >
+                      Thread name
+                    </label>
+                    <input
+                      class="form__input"
+                      name="threadName"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    class="form-group"
+                  >
+                    <label
+                      class="form__label"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      class="form__input form__input-text"
+                      name="message"
+                      rows="20"
+                    />
+                  </div>
+                  <div
+                    class="form-group u-center-text"
+                  >
+                    <button
+                      class="form__submit"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </div>,
+              "context": Object {},
+              "current": [Circular],
+              "earliestPendingTime": 0,
+              "earliestSuspendedTime": 0,
+              "finishedWork": null,
+              "firstBatch": null,
+              "hydrate": false,
+              "latestPendingTime": 0,
+              "latestPingedTime": 0,
+              "latestSuspendedTime": 0,
+              "nextScheduledRoot": null,
+              "pendingChildren": null,
+              "pendingCommitExpirationTime": 0,
+              "pendingContext": null,
+              "remainingExpirationTime": 0,
+            },
+            "tag": 3,
+            "treeBaseTime": 0,
+            "type": null,
+            "updateQueue": Object {
+              "baseState": Object {
+                "element": <WrapperComponent
+                  Component={[Function]}
+                  context={null}
+                  props={Object {}}
+                />,
+              },
+              "expirationTime": 0,
+              "firstCapturedEffect": null,
+              "firstCapturedUpdate": null,
+              "firstEffect": null,
+              "firstUpdate": null,
+              "lastCapturedEffect": null,
+              "lastCapturedUpdate": null,
+              "lastEffect": null,
+              "lastUpdate": null,
+            },
+          },
+          "selfBaseTime": 0,
+          "sibling": null,
+          "stateNode": WrapperComponent {
+            "_reactInternalFiber": [Circular],
+            "_reactInternalInstance": Object {},
+            "context": Object {},
+            "props": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {},
+            },
+            "refs": Object {},
+            "state": Object {
+              "context": null,
+              "mount": true,
+              "props": Object {},
+            },
+            "updater": Object {
+              "enqueueForceUpdate": [Function],
+              "enqueueReplaceState": [Function],
+              "enqueueSetState": [Function],
+              "isMounted": [Function],
+            },
+          },
+          "tag": 2,
+          "treeBaseTime": 0,
+          "type": [Function],
+          "updateQueue": null,
+        },
+        "selfBaseTime": 0,
+        "sibling": null,
+        "stateNode": [Circular],
+        "tag": 2,
+        "treeBaseTime": 0,
+        "type": [Function],
+        "updateQueue": null,
+      },
+      "_reactInternalInstance": Object {},
+      "context": Object {},
+      "lengthConstrains": Object {
+        "authorName": 30,
+        "message": 1500,
+        "threadName": 50,
+      },
+      "onChange": [Function],
+      "onSubmit": [Function],
+      "props": Object {},
+      "refs": Object {},
+      "state": Object {
+        "authorName": "Anonymous",
+        "message": "",
+        "threadName": "",
+      },
+      "updater": Object {
+        "enqueueForceUpdate": [Function],
+        "enqueueReplaceState": [Function],
+        "enqueueSetState": [Function],
+        "isMounted": [Function],
+      },
+    },
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {},
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "authorName": "Anonymous",
+        "message": "",
+        "onAuthorNameChange": [Function],
+        "onMessageChange": [Function],
+        "onSubmit": [Function],
+        "onThreadNameChange": [Function],
+        "threadName": "",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": <form
+          class="form"
+        >
+          <div
+            class="form-group"
+          >
+            <label
+              class="form__label"
+            >
+              Name
+            </label>
+            <input
+              class="form__input"
+              name="authorName"
+              type="text"
+              value="Anonymous"
+            />
+          </div>
+          <div
+            class="form-group"
+          >
+            <label
+              class="form__label"
+            >
+              Thread name
+            </label>
+            <input
+              class="form__input"
+              name="threadName"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="form-group"
+          >
+            <label
+              class="form__label"
+            >
+              Message
+            </label>
+            <textarea
+              class="form__input form__input-text"
+              name="message"
+              rows="20"
+            />
+          </div>
+          <div
+            class="form-group u-center-text"
+          >
+            <button
+              class="form__submit"
+            >
+              Submit
+            </button>
+          </div>
+        </form>,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div
+              className="form-group"
+            >
+              <label
+                className="form__label"
+              >
+                Name
+              </label>
+              <input
+                className="form__input"
+                name="authorName"
+                onChange={[Function]}
+                type="text"
+                value="Anonymous"
+              />
+            </div>,
+            <div
+              className="form-group"
+            >
+              <label
+                className="form__label"
+              >
+                Thread name
+              </label>
+              <input
+                className="form__input"
+                name="threadName"
+                onChange={[Function]}
+                type="text"
+                value=""
+              />
+            </div>,
+            <div
+              className="form-group"
+            >
+              <label
+                className="form__label"
+              >
+                Message
+              </label>
+              <textarea
+                className="form__input form__input-text"
+                name="message"
+                onChange={[Function]}
+                rows={20}
+                value=""
+              />
+            </div>,
+            <div
+              className="form-group u-center-text"
+            >
+              <button
+                className="form__submit"
+              >
+                Submit
+              </button>
+            </div>,
+          ],
+          "className": "form",
+          "onSubmit": [Function],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": <div
+              class="form-group"
+            >
+              <label
+                class="form__label"
+              >
+                Name
+              </label>
+              <input
+                class="form__input"
+                name="authorName"
+                type="text"
+                value="Anonymous"
+              />
+            </div>,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <label
+                  className="form__label"
+                >
+                  Name
+                </label>,
+                <input
+                  className="form__input"
+                  name="authorName"
+                  onChange={[Function]}
+                  type="text"
+                  value="Anonymous"
+                />,
+              ],
+              "className": "form-group",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": <label
+                  class="form__label"
+                >
+                  Name
+                </label>,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Name",
+                  "className": "form__label",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Name",
+                ],
+                "type": "label",
+              },
+              Object {
+                "instance": <input
+                  class="form__input"
+                  name="authorName"
+                  type="text"
+                  value="Anonymous"
+                />,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "className": "form__input",
+                  "name": "authorName",
+                  "onChange": [Function],
+                  "type": "text",
+                  "value": "Anonymous",
+                },
+                "ref": null,
+                "rendered": Array [
+                  undefined,
+                ],
+                "type": "input",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": <div
+              class="form-group"
+            >
+              <label
+                class="form__label"
+              >
+                Thread name
+              </label>
+              <input
+                class="form__input"
+                name="threadName"
+                type="text"
+                value=""
+              />
+            </div>,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <label
+                  className="form__label"
+                >
+                  Thread name
+                </label>,
+                <input
+                  className="form__input"
+                  name="threadName"
+                  onChange={[Function]}
+                  type="text"
+                  value=""
+                />,
+              ],
+              "className": "form-group",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": <label
+                  class="form__label"
+                >
+                  Thread name
+                </label>,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Thread name",
+                  "className": "form__label",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Thread name",
+                ],
+                "type": "label",
+              },
+              Object {
+                "instance": <input
+                  class="form__input"
+                  name="threadName"
+                  type="text"
+                  value=""
+                />,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "className": "form__input",
+                  "name": "threadName",
+                  "onChange": [Function],
+                  "type": "text",
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": Array [
+                  undefined,
+                ],
+                "type": "input",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": <div
+              class="form-group"
+            >
+              <label
+                class="form__label"
+              >
+                Message
+              </label>
+              <textarea
+                class="form__input form__input-text"
+                name="message"
+                rows="20"
+              />
+            </div>,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <label
+                  className="form__label"
+                >
+                  Message
+                </label>,
+                <textarea
+                  className="form__input form__input-text"
+                  name="message"
+                  onChange={[Function]}
+                  rows={20}
+                  value=""
+                />,
+              ],
+              "className": "form-group",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": <label
+                  class="form__label"
+                >
+                  Message
+                </label>,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Message",
+                  "className": "form__label",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Message",
+                ],
+                "type": "label",
+              },
+              Object {
+                "instance": <textarea
+                  class="form__input form__input-text"
+                  name="message"
+                  rows="20"
+                />,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "className": "form__input form__input-text",
+                  "name": "message",
+                  "onChange": [Function],
+                  "rows": 20,
+                  "value": "",
+                },
+                "ref": null,
+                "rendered": Array [
+                  undefined,
+                ],
+                "type": "textarea",
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": <div
+              class="form-group u-center-text"
+            >
+              <button
+                class="form__submit"
+              >
+                Submit
+              </button>
+            </div>,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <button
+                className="form__submit"
+              >
+                Submit
+              </button>,
+              "className": "form-group u-center-text",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": <button
+                  class="form__submit"
+                >
+                  Submit
+                </button>,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Submit",
+                  "className": "form__submit",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Submit",
+                ],
+                "type": "button",
+              },
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "form",
+      },
+      "type": [Function],
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": NewThreadFormContainer {
+        "_reactInternalFiber": FiberNode {
+          "_debugID": 5,
+          "_debugIsCurrentlyTiming": false,
+          "_debugOwner": FiberNode {
+            "_debugID": 4,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": null,
+            "_debugSource": null,
+            "alternate": null,
+            "child": [Circular],
+            "effectTag": 1,
+            "expirationTime": 0,
+            "firstEffect": null,
+            "index": 0,
+            "key": null,
+            "lastEffect": null,
+            "memoizedProps": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {},
+            },
+            "memoizedState": Object {
+              "context": null,
+              "mount": true,
+              "props": Object {},
+            },
+            "mode": 0,
+            "nextEffect": null,
+            "pendingProps": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {},
+            },
+            "ref": null,
+            "return": FiberNode {
+              "_debugID": 1,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": null,
+              "_debugSource": null,
+              "alternate": FiberNode {
+                "_debugID": 1,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": null,
+                "_debugSource": null,
+                "alternate": [Circular],
+                "child": null,
+                "effectTag": 0,
+                "expirationTime": 1,
+                "firstEffect": null,
+                "index": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": null,
+                "memoizedState": null,
+                "mode": 0,
+                "nextEffect": null,
+                "pendingProps": null,
+                "ref": null,
+                "return": null,
+                "selfBaseTime": 0,
+                "sibling": null,
+                "stateNode": Object {
+                  "containerInfo": <div>
+                    <form
+                      class="form"
+                    >
+                      <div
+                        class="form-group"
+                      >
+                        <label
+                          class="form__label"
+                        >
+                          Name
+                        </label>
+                        <input
+                          class="form__input"
+                          name="authorName"
+                          type="text"
+                          value="Anonymous"
+                        />
+                      </div>
+                      <div
+                        class="form-group"
+                      >
+                        <label
+                          class="form__label"
+                        >
+                          Thread name
+                        </label>
+                        <input
+                          class="form__input"
+                          name="threadName"
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                      <div
+                        class="form-group"
+                      >
+                        <label
+                          class="form__label"
+                        >
+                          Message
+                        </label>
+                        <textarea
+                          class="form__input form__input-text"
+                          name="message"
+                          rows="20"
+                        />
+                      </div>
+                      <div
+                        class="form-group u-center-text"
+                      >
+                        <button
+                          class="form__submit"
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    </form>
+                  </div>,
+                  "context": Object {},
+                  "current": [Circular],
+                  "earliestPendingTime": 0,
+                  "earliestSuspendedTime": 0,
+                  "finishedWork": null,
+                  "firstBatch": null,
+                  "hydrate": false,
+                  "latestPendingTime": 0,
+                  "latestPingedTime": 0,
+                  "latestSuspendedTime": 0,
+                  "nextScheduledRoot": null,
+                  "pendingChildren": null,
+                  "pendingCommitExpirationTime": 0,
+                  "pendingContext": null,
+                  "remainingExpirationTime": 0,
+                },
+                "tag": 3,
+                "treeBaseTime": 0,
+                "type": null,
+                "updateQueue": Object {
+                  "baseState": null,
+                  "expirationTime": 1,
+                  "firstCapturedEffect": null,
+                  "firstCapturedUpdate": null,
+                  "firstEffect": null,
+                  "firstUpdate": Object {
+                    "callback": null,
+                    "expirationTime": 1,
+                    "next": null,
+                    "nextEffect": null,
+                    "payload": Object {
+                      "element": <WrapperComponent
+                        Component={[Function]}
+                        context={null}
+                        props={Object {}}
+                      />,
+                    },
+                    "tag": 0,
+                  },
+                  "lastCapturedEffect": null,
+                  "lastCapturedUpdate": null,
+                  "lastEffect": null,
+                  "lastUpdate": Object {
+                    "callback": null,
+                    "expirationTime": 1,
+                    "next": null,
+                    "nextEffect": null,
+                    "payload": Object {
+                      "element": <WrapperComponent
+                        Component={[Function]}
+                        context={null}
+                        props={Object {}}
+                      />,
+                    },
+                    "tag": 0,
+                  },
+                },
+              },
+              "child": [Circular],
+              "effectTag": 32,
+              "expirationTime": 0,
+              "firstEffect": [Circular],
+              "index": 0,
+              "key": null,
+              "lastEffect": [Circular],
+              "memoizedProps": null,
+              "memoizedState": Object {
+                "element": <WrapperComponent
+                  Component={[Function]}
+                  context={null}
+                  props={Object {}}
+                />,
+              },
+              "mode": 0,
+              "nextEffect": null,
+              "pendingProps": null,
+              "ref": null,
+              "return": null,
+              "selfBaseTime": 0,
+              "sibling": null,
+              "stateNode": Object {
+                "containerInfo": <div>
+                  <form
+                    class="form"
+                  >
+                    <div
+                      class="form-group"
+                    >
+                      <label
+                        class="form__label"
+                      >
+                        Name
+                      </label>
+                      <input
+                        class="form__input"
+                        name="authorName"
+                        type="text"
+                        value="Anonymous"
+                      />
+                    </div>
+                    <div
+                      class="form-group"
+                    >
+                      <label
+                        class="form__label"
+                      >
+                        Thread name
+                      </label>
+                      <input
+                        class="form__input"
+                        name="threadName"
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                    <div
+                      class="form-group"
+                    >
+                      <label
+                        class="form__label"
+                      >
+                        Message
+                      </label>
+                      <textarea
+                        class="form__input form__input-text"
+                        name="message"
+                        rows="20"
+                      />
+                    </div>
+                    <div
+                      class="form-group u-center-text"
+                    >
+                      <button
+                        class="form__submit"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </div>,
+                "context": Object {},
+                "current": [Circular],
+                "earliestPendingTime": 0,
+                "earliestSuspendedTime": 0,
+                "finishedWork": null,
+                "firstBatch": null,
+                "hydrate": false,
+                "latestPendingTime": 0,
+                "latestPingedTime": 0,
+                "latestSuspendedTime": 0,
+                "nextScheduledRoot": null,
+                "pendingChildren": null,
+                "pendingCommitExpirationTime": 0,
+                "pendingContext": null,
+                "remainingExpirationTime": 0,
+              },
+              "tag": 3,
+              "treeBaseTime": 0,
+              "type": null,
+              "updateQueue": Object {
+                "baseState": Object {
+                  "element": <WrapperComponent
+                    Component={[Function]}
+                    context={null}
+                    props={Object {}}
+                  />,
+                },
+                "expirationTime": 0,
+                "firstCapturedEffect": null,
+                "firstCapturedUpdate": null,
+                "firstEffect": null,
+                "firstUpdate": null,
+                "lastCapturedEffect": null,
+                "lastCapturedUpdate": null,
+                "lastEffect": null,
+                "lastUpdate": null,
+              },
+            },
+            "selfBaseTime": 0,
+            "sibling": null,
+            "stateNode": WrapperComponent {
+              "_reactInternalFiber": [Circular],
+              "_reactInternalInstance": Object {},
+              "context": Object {},
+              "props": Object {
+                "Component": [Function],
+                "context": null,
+                "props": Object {},
+              },
+              "refs": Object {},
+              "state": Object {
+                "context": null,
+                "mount": true,
+                "props": Object {},
+              },
+              "updater": Object {
+                "enqueueForceUpdate": [Function],
+                "enqueueReplaceState": [Function],
+                "enqueueSetState": [Function],
+                "isMounted": [Function],
+              },
+            },
+            "tag": 2,
+            "treeBaseTime": 0,
+            "type": [Function],
+            "updateQueue": null,
+          },
+          "_debugSource": null,
+          "alternate": null,
+          "child": FiberNode {
+            "_debugID": 6,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": [Circular],
+            "_debugSource": null,
+            "alternate": null,
+            "child": FiberNode {
+              "_debugID": 7,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": [Circular],
+              "_debugSource": null,
+              "alternate": null,
+              "child": FiberNode {
+                "_debugID": 8,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": [Circular],
+                "_debugSource": null,
+                "alternate": null,
+                "child": FiberNode {
+                  "_debugID": 12,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": [Circular],
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": null,
+                  "effectTag": 0,
+                  "expirationTime": 0,
+                  "firstEffect": null,
+                  "index": 0,
+                  "key": null,
+                  "lastEffect": null,
+                  "memoizedProps": Object {
+                    "children": "Name",
+                    "className": "form__label",
+                  },
+                  "memoizedState": null,
+                  "mode": 0,
+                  "nextEffect": null,
+                  "pendingProps": Object {
+                    "children": "Name",
+                    "className": "form__label",
+                  },
+                  "ref": null,
+                  "return": [Circular],
+                  "selfBaseTime": 0,
+                  "sibling": FiberNode {
+                    "_debugID": 13,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": [Circular],
+                    "_debugSource": null,
+                    "alternate": null,
+                    "child": null,
+                    "effectTag": 0,
+                    "expirationTime": 0,
+                    "firstEffect": null,
+                    "index": 1,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": Object {
+                      "className": "form__input",
+                      "name": "authorName",
+                      "onChange": [Function],
+                      "type": "text",
+                      "value": "Anonymous",
+                    },
+                    "memoizedState": null,
+                    "mode": 0,
+                    "nextEffect": null,
+                    "pendingProps": Object {
+                      "className": "form__input",
+                      "name": "authorName",
+                      "onChange": [Function],
+                      "type": "text",
+                      "value": "Anonymous",
+                    },
+                    "ref": null,
+                    "return": [Circular],
+                    "selfBaseTime": 0,
+                    "sibling": null,
+                    "stateNode": <input
+                      class="form__input"
+                      name="authorName"
+                      type="text"
+                      value="Anonymous"
+                    />,
+                    "tag": 5,
+                    "treeBaseTime": 0,
+                    "type": "input",
+                    "updateQueue": null,
+                  },
+                  "stateNode": <label
+                    class="form__label"
+                  >
+                    Name
+                  </label>,
+                  "tag": 5,
+                  "treeBaseTime": 0,
+                  "type": "label",
+                  "updateQueue": null,
+                },
+                "effectTag": 0,
+                "expirationTime": 0,
+                "firstEffect": null,
+                "index": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": Object {
+                  "children": Array [
+                    <label
+                      className="form__label"
+                    >
+                      Name
+                    </label>,
+                    <input
+                      className="form__input"
+                      name="authorName"
+                      onChange={[Function]}
+                      type="text"
+                      value="Anonymous"
+                    />,
+                  ],
+                  "className": "form-group",
+                },
+                "memoizedState": null,
+                "mode": 0,
+                "nextEffect": null,
+                "pendingProps": Object {
+                  "children": Array [
+                    <label
+                      className="form__label"
+                    >
+                      Name
+                    </label>,
+                    <input
+                      className="form__input"
+                      name="authorName"
+                      onChange={[Function]}
+                      type="text"
+                      value="Anonymous"
+                    />,
+                  ],
+                  "className": "form-group",
+                },
+                "ref": null,
+                "return": [Circular],
+                "selfBaseTime": 0,
+                "sibling": FiberNode {
+                  "_debugID": 9,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": [Circular],
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": FiberNode {
+                    "_debugID": 14,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": [Circular],
+                    "_debugSource": null,
+                    "alternate": null,
+                    "child": null,
+                    "effectTag": 0,
+                    "expirationTime": 0,
+                    "firstEffect": null,
+                    "index": 0,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": Object {
+                      "children": "Thread name",
+                      "className": "form__label",
+                    },
+                    "memoizedState": null,
+                    "mode": 0,
+                    "nextEffect": null,
+                    "pendingProps": Object {
+                      "children": "Thread name",
+                      "className": "form__label",
+                    },
+                    "ref": null,
+                    "return": [Circular],
+                    "selfBaseTime": 0,
+                    "sibling": FiberNode {
+                      "_debugID": 15,
+                      "_debugIsCurrentlyTiming": false,
+                      "_debugOwner": [Circular],
+                      "_debugSource": null,
+                      "alternate": null,
+                      "child": null,
+                      "effectTag": 0,
+                      "expirationTime": 0,
+                      "firstEffect": null,
+                      "index": 1,
+                      "key": null,
+                      "lastEffect": null,
+                      "memoizedProps": Object {
+                        "className": "form__input",
+                        "name": "threadName",
+                        "onChange": [Function],
+                        "type": "text",
+                        "value": "",
+                      },
+                      "memoizedState": null,
+                      "mode": 0,
+                      "nextEffect": null,
+                      "pendingProps": Object {
+                        "className": "form__input",
+                        "name": "threadName",
+                        "onChange": [Function],
+                        "type": "text",
+                        "value": "",
+                      },
+                      "ref": null,
+                      "return": [Circular],
+                      "selfBaseTime": 0,
+                      "sibling": null,
+                      "stateNode": <input
+                        class="form__input"
+                        name="threadName"
+                        type="text"
+                        value=""
+                      />,
+                      "tag": 5,
+                      "treeBaseTime": 0,
+                      "type": "input",
+                      "updateQueue": null,
+                    },
+                    "stateNode": <label
+                      class="form__label"
+                    >
+                      Thread name
+                    </label>,
+                    "tag": 5,
+                    "treeBaseTime": 0,
+                    "type": "label",
+                    "updateQueue": null,
+                  },
+                  "effectTag": 0,
+                  "expirationTime": 0,
+                  "firstEffect": null,
+                  "index": 1,
+                  "key": null,
+                  "lastEffect": null,
+                  "memoizedProps": Object {
+                    "children": Array [
+                      <label
+                        className="form__label"
+                      >
+                        Thread name
+                      </label>,
+                      <input
+                        className="form__input"
+                        name="threadName"
+                        onChange={[Function]}
+                        type="text"
+                        value=""
+                      />,
+                    ],
+                    "className": "form-group",
+                  },
+                  "memoizedState": null,
+                  "mode": 0,
+                  "nextEffect": null,
+                  "pendingProps": Object {
+                    "children": Array [
+                      <label
+                        className="form__label"
+                      >
+                        Thread name
+                      </label>,
+                      <input
+                        className="form__input"
+                        name="threadName"
+                        onChange={[Function]}
+                        type="text"
+                        value=""
+                      />,
+                    ],
+                    "className": "form-group",
+                  },
+                  "ref": null,
+                  "return": [Circular],
+                  "selfBaseTime": 0,
+                  "sibling": FiberNode {
+                    "_debugID": 10,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": [Circular],
+                    "_debugSource": null,
+                    "alternate": null,
+                    "child": FiberNode {
+                      "_debugID": 16,
+                      "_debugIsCurrentlyTiming": false,
+                      "_debugOwner": [Circular],
+                      "_debugSource": null,
+                      "alternate": null,
+                      "child": null,
+                      "effectTag": 0,
+                      "expirationTime": 0,
+                      "firstEffect": null,
+                      "index": 0,
+                      "key": null,
+                      "lastEffect": null,
+                      "memoizedProps": Object {
+                        "children": "Message",
+                        "className": "form__label",
+                      },
+                      "memoizedState": null,
+                      "mode": 0,
+                      "nextEffect": null,
+                      "pendingProps": Object {
+                        "children": "Message",
+                        "className": "form__label",
+                      },
+                      "ref": null,
+                      "return": [Circular],
+                      "selfBaseTime": 0,
+                      "sibling": FiberNode {
+                        "_debugID": 17,
+                        "_debugIsCurrentlyTiming": false,
+                        "_debugOwner": [Circular],
+                        "_debugSource": null,
+                        "alternate": null,
+                        "child": null,
+                        "effectTag": 0,
+                        "expirationTime": 0,
+                        "firstEffect": null,
+                        "index": 1,
+                        "key": null,
+                        "lastEffect": null,
+                        "memoizedProps": Object {
+                          "className": "form__input form__input-text",
+                          "name": "message",
+                          "onChange": [Function],
+                          "rows": 20,
+                          "value": "",
+                        },
+                        "memoizedState": null,
+                        "mode": 0,
+                        "nextEffect": null,
+                        "pendingProps": Object {
+                          "className": "form__input form__input-text",
+                          "name": "message",
+                          "onChange": [Function],
+                          "rows": 20,
+                          "value": "",
+                        },
+                        "ref": null,
+                        "return": [Circular],
+                        "selfBaseTime": 0,
+                        "sibling": null,
+                        "stateNode": <textarea
+                          class="form__input form__input-text"
+                          name="message"
+                          rows="20"
+                        />,
+                        "tag": 5,
+                        "treeBaseTime": 0,
+                        "type": "textarea",
+                        "updateQueue": null,
+                      },
+                      "stateNode": <label
+                        class="form__label"
+                      >
+                        Message
+                      </label>,
+                      "tag": 5,
+                      "treeBaseTime": 0,
+                      "type": "label",
+                      "updateQueue": null,
+                    },
+                    "effectTag": 0,
+                    "expirationTime": 0,
+                    "firstEffect": null,
+                    "index": 2,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": Object {
+                      "children": Array [
+                        <label
+                          className="form__label"
+                        >
+                          Message
+                        </label>,
+                        <textarea
+                          className="form__input form__input-text"
+                          name="message"
+                          onChange={[Function]}
+                          rows={20}
+                          value=""
+                        />,
+                      ],
+                      "className": "form-group",
+                    },
+                    "memoizedState": null,
+                    "mode": 0,
+                    "nextEffect": null,
+                    "pendingProps": Object {
+                      "children": Array [
+                        <label
+                          className="form__label"
+                        >
+                          Message
+                        </label>,
+                        <textarea
+                          className="form__input form__input-text"
+                          name="message"
+                          onChange={[Function]}
+                          rows={20}
+                          value=""
+                        />,
+                      ],
+                      "className": "form-group",
+                    },
+                    "ref": null,
+                    "return": [Circular],
+                    "selfBaseTime": 0,
+                    "sibling": FiberNode {
+                      "_debugID": 11,
+                      "_debugIsCurrentlyTiming": false,
+                      "_debugOwner": [Circular],
+                      "_debugSource": null,
+                      "alternate": null,
+                      "child": FiberNode {
+                        "_debugID": 18,
+                        "_debugIsCurrentlyTiming": false,
+                        "_debugOwner": [Circular],
+                        "_debugSource": null,
+                        "alternate": null,
+                        "child": null,
+                        "effectTag": 0,
+                        "expirationTime": 0,
+                        "firstEffect": null,
+                        "index": 0,
+                        "key": null,
+                        "lastEffect": null,
+                        "memoizedProps": Object {
+                          "children": "Submit",
+                          "className": "form__submit",
+                        },
+                        "memoizedState": null,
+                        "mode": 0,
+                        "nextEffect": null,
+                        "pendingProps": Object {
+                          "children": "Submit",
+                          "className": "form__submit",
+                        },
+                        "ref": null,
+                        "return": [Circular],
+                        "selfBaseTime": 0,
+                        "sibling": null,
+                        "stateNode": <button
+                          class="form__submit"
+                        >
+                          Submit
+                        </button>,
+                        "tag": 5,
+                        "treeBaseTime": 0,
+                        "type": "button",
+                        "updateQueue": null,
+                      },
+                      "effectTag": 0,
+                      "expirationTime": 0,
+                      "firstEffect": null,
+                      "index": 3,
+                      "key": null,
+                      "lastEffect": null,
+                      "memoizedProps": Object {
+                        "children": <button
+                          className="form__submit"
+                        >
+                          Submit
+                        </button>,
+                        "className": "form-group u-center-text",
+                      },
+                      "memoizedState": null,
+                      "mode": 0,
+                      "nextEffect": null,
+                      "pendingProps": Object {
+                        "children": <button
+                          className="form__submit"
+                        >
+                          Submit
+                        </button>,
+                        "className": "form-group u-center-text",
+                      },
+                      "ref": null,
+                      "return": [Circular],
+                      "selfBaseTime": 0,
+                      "sibling": null,
+                      "stateNode": <div
+                        class="form-group u-center-text"
+                      >
+                        <button
+                          class="form__submit"
+                        >
+                          Submit
+                        </button>
+                      </div>,
+                      "tag": 5,
+                      "treeBaseTime": 0,
+                      "type": "div",
+                      "updateQueue": null,
+                    },
+                    "stateNode": <div
+                      class="form-group"
+                    >
+                      <label
+                        class="form__label"
+                      >
+                        Message
+                      </label>
+                      <textarea
+                        class="form__input form__input-text"
+                        name="message"
+                        rows="20"
+                      />
+                    </div>,
+                    "tag": 5,
+                    "treeBaseTime": 0,
+                    "type": "div",
+                    "updateQueue": null,
+                  },
+                  "stateNode": <div
+                    class="form-group"
+                  >
+                    <label
+                      class="form__label"
+                    >
+                      Thread name
+                    </label>
+                    <input
+                      class="form__input"
+                      name="threadName"
+                      type="text"
+                      value=""
+                    />
+                  </div>,
+                  "tag": 5,
+                  "treeBaseTime": 0,
+                  "type": "div",
+                  "updateQueue": null,
+                },
+                "stateNode": <div
+                  class="form-group"
+                >
+                  <label
+                    class="form__label"
+                  >
+                    Name
+                  </label>
+                  <input
+                    class="form__input"
+                    name="authorName"
+                    type="text"
+                    value="Anonymous"
+                  />
+                </div>,
+                "tag": 5,
+                "treeBaseTime": 0,
+                "type": "div",
+                "updateQueue": null,
+              },
+              "effectTag": 0,
+              "expirationTime": 0,
+              "firstEffect": null,
+              "index": 0,
+              "key": null,
+              "lastEffect": null,
+              "memoizedProps": Object {
+                "children": Array [
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="form__label"
+                    >
+                      Name
+                    </label>
+                    <input
+                      className="form__input"
+                      name="authorName"
+                      onChange={[Function]}
+                      type="text"
+                      value="Anonymous"
+                    />
+                  </div>,
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="form__label"
+                    >
+                      Thread name
+                    </label>
+                    <input
+                      className="form__input"
+                      name="threadName"
+                      onChange={[Function]}
+                      type="text"
+                      value=""
+                    />
+                  </div>,
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="form__label"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      className="form__input form__input-text"
+                      name="message"
+                      onChange={[Function]}
+                      rows={20}
+                      value=""
+                    />
+                  </div>,
+                  <div
+                    className="form-group u-center-text"
+                  >
+                    <button
+                      className="form__submit"
+                    >
+                      Submit
+                    </button>
+                  </div>,
+                ],
+                "className": "form",
+                "onSubmit": [Function],
+              },
+              "memoizedState": null,
+              "mode": 0,
+              "nextEffect": null,
+              "pendingProps": Object {
+                "children": Array [
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="form__label"
+                    >
+                      Name
+                    </label>
+                    <input
+                      className="form__input"
+                      name="authorName"
+                      onChange={[Function]}
+                      type="text"
+                      value="Anonymous"
+                    />
+                  </div>,
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="form__label"
+                    >
+                      Thread name
+                    </label>
+                    <input
+                      className="form__input"
+                      name="threadName"
+                      onChange={[Function]}
+                      type="text"
+                      value=""
+                    />
+                  </div>,
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="form__label"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      className="form__input form__input-text"
+                      name="message"
+                      onChange={[Function]}
+                      rows={20}
+                      value=""
+                    />
+                  </div>,
+                  <div
+                    className="form-group u-center-text"
+                  >
+                    <button
+                      className="form__submit"
+                    >
+                      Submit
+                    </button>
+                  </div>,
+                ],
+                "className": "form",
+                "onSubmit": [Function],
+              },
+              "ref": null,
+              "return": [Circular],
+              "selfBaseTime": 0,
+              "sibling": null,
+              "stateNode": <form
+                class="form"
+              >
+                <div
+                  class="form-group"
+                >
+                  <label
+                    class="form__label"
+                  >
+                    Name
+                  </label>
+                  <input
+                    class="form__input"
+                    name="authorName"
+                    type="text"
+                    value="Anonymous"
+                  />
+                </div>
+                <div
+                  class="form-group"
+                >
+                  <label
+                    class="form__label"
+                  >
+                    Thread name
+                  </label>
+                  <input
+                    class="form__input"
+                    name="threadName"
+                    type="text"
+                    value=""
+                  />
+                </div>
+                <div
+                  class="form-group"
+                >
+                  <label
+                    class="form__label"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    class="form__input form__input-text"
+                    name="message"
+                    rows="20"
+                  />
+                </div>
+                <div
+                  class="form-group u-center-text"
+                >
+                  <button
+                    class="form__submit"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>,
+              "tag": 5,
+              "treeBaseTime": 0,
+              "type": "form",
+              "updateQueue": null,
+            },
+            "effectTag": 1,
+            "expirationTime": 0,
+            "firstEffect": null,
+            "index": 0,
+            "key": null,
+            "lastEffect": null,
+            "memoizedProps": Object {
+              "authorName": "Anonymous",
+              "message": "",
+              "onAuthorNameChange": [Function],
+              "onMessageChange": [Function],
+              "onSubmit": [Function],
+              "onThreadNameChange": [Function],
+              "threadName": "",
+            },
+            "memoizedState": null,
+            "mode": 0,
+            "nextEffect": null,
+            "pendingProps": Object {
+              "authorName": "Anonymous",
+              "message": "",
+              "onAuthorNameChange": [Function],
+              "onMessageChange": [Function],
+              "onSubmit": [Function],
+              "onThreadNameChange": [Function],
+              "threadName": "",
+            },
+            "ref": null,
+            "return": [Circular],
+            "selfBaseTime": 0,
+            "sibling": null,
+            "stateNode": null,
+            "tag": 1,
+            "treeBaseTime": 0,
+            "type": [Function],
+            "updateQueue": null,
+          },
+          "effectTag": 1,
+          "expirationTime": 0,
+          "firstEffect": null,
+          "index": 0,
+          "key": null,
+          "lastEffect": null,
+          "memoizedProps": Object {},
+          "memoizedState": Object {
+            "authorName": "Anonymous",
+            "message": "",
+            "threadName": "",
+          },
+          "mode": 0,
+          "nextEffect": null,
+          "pendingProps": Object {},
+          "ref": null,
+          "return": FiberNode {
+            "_debugID": 4,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": null,
+            "_debugSource": null,
+            "alternate": null,
+            "child": [Circular],
+            "effectTag": 1,
+            "expirationTime": 0,
+            "firstEffect": null,
+            "index": 0,
+            "key": null,
+            "lastEffect": null,
+            "memoizedProps": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {},
+            },
+            "memoizedState": Object {
+              "context": null,
+              "mount": true,
+              "props": Object {},
+            },
+            "mode": 0,
+            "nextEffect": null,
+            "pendingProps": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {},
+            },
+            "ref": null,
+            "return": FiberNode {
+              "_debugID": 1,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": null,
+              "_debugSource": null,
+              "alternate": FiberNode {
+                "_debugID": 1,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": null,
+                "_debugSource": null,
+                "alternate": [Circular],
+                "child": null,
+                "effectTag": 0,
+                "expirationTime": 1,
+                "firstEffect": null,
+                "index": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": null,
+                "memoizedState": null,
+                "mode": 0,
+                "nextEffect": null,
+                "pendingProps": null,
+                "ref": null,
+                "return": null,
+                "selfBaseTime": 0,
+                "sibling": null,
+                "stateNode": Object {
+                  "containerInfo": <div>
+                    <form
+                      class="form"
+                    >
+                      <div
+                        class="form-group"
+                      >
+                        <label
+                          class="form__label"
+                        >
+                          Name
+                        </label>
+                        <input
+                          class="form__input"
+                          name="authorName"
+                          type="text"
+                          value="Anonymous"
+                        />
+                      </div>
+                      <div
+                        class="form-group"
+                      >
+                        <label
+                          class="form__label"
+                        >
+                          Thread name
+                        </label>
+                        <input
+                          class="form__input"
+                          name="threadName"
+                          type="text"
+                          value=""
+                        />
+                      </div>
+                      <div
+                        class="form-group"
+                      >
+                        <label
+                          class="form__label"
+                        >
+                          Message
+                        </label>
+                        <textarea
+                          class="form__input form__input-text"
+                          name="message"
+                          rows="20"
+                        />
+                      </div>
+                      <div
+                        class="form-group u-center-text"
+                      >
+                        <button
+                          class="form__submit"
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    </form>
+                  </div>,
+                  "context": Object {},
+                  "current": [Circular],
+                  "earliestPendingTime": 0,
+                  "earliestSuspendedTime": 0,
+                  "finishedWork": null,
+                  "firstBatch": null,
+                  "hydrate": false,
+                  "latestPendingTime": 0,
+                  "latestPingedTime": 0,
+                  "latestSuspendedTime": 0,
+                  "nextScheduledRoot": null,
+                  "pendingChildren": null,
+                  "pendingCommitExpirationTime": 0,
+                  "pendingContext": null,
+                  "remainingExpirationTime": 0,
+                },
+                "tag": 3,
+                "treeBaseTime": 0,
+                "type": null,
+                "updateQueue": Object {
+                  "baseState": null,
+                  "expirationTime": 1,
+                  "firstCapturedEffect": null,
+                  "firstCapturedUpdate": null,
+                  "firstEffect": null,
+                  "firstUpdate": Object {
+                    "callback": null,
+                    "expirationTime": 1,
+                    "next": null,
+                    "nextEffect": null,
+                    "payload": Object {
+                      "element": <WrapperComponent
+                        Component={[Function]}
+                        context={null}
+                        props={Object {}}
+                      />,
+                    },
+                    "tag": 0,
+                  },
+                  "lastCapturedEffect": null,
+                  "lastCapturedUpdate": null,
+                  "lastEffect": null,
+                  "lastUpdate": Object {
+                    "callback": null,
+                    "expirationTime": 1,
+                    "next": null,
+                    "nextEffect": null,
+                    "payload": Object {
+                      "element": <WrapperComponent
+                        Component={[Function]}
+                        context={null}
+                        props={Object {}}
+                      />,
+                    },
+                    "tag": 0,
+                  },
+                },
+              },
+              "child": [Circular],
+              "effectTag": 32,
+              "expirationTime": 0,
+              "firstEffect": [Circular],
+              "index": 0,
+              "key": null,
+              "lastEffect": [Circular],
+              "memoizedProps": null,
+              "memoizedState": Object {
+                "element": <WrapperComponent
+                  Component={[Function]}
+                  context={null}
+                  props={Object {}}
+                />,
+              },
+              "mode": 0,
+              "nextEffect": null,
+              "pendingProps": null,
+              "ref": null,
+              "return": null,
+              "selfBaseTime": 0,
+              "sibling": null,
+              "stateNode": Object {
+                "containerInfo": <div>
+                  <form
+                    class="form"
+                  >
+                    <div
+                      class="form-group"
+                    >
+                      <label
+                        class="form__label"
+                      >
+                        Name
+                      </label>
+                      <input
+                        class="form__input"
+                        name="authorName"
+                        type="text"
+                        value="Anonymous"
+                      />
+                    </div>
+                    <div
+                      class="form-group"
+                    >
+                      <label
+                        class="form__label"
+                      >
+                        Thread name
+                      </label>
+                      <input
+                        class="form__input"
+                        name="threadName"
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                    <div
+                      class="form-group"
+                    >
+                      <label
+                        class="form__label"
+                      >
+                        Message
+                      </label>
+                      <textarea
+                        class="form__input form__input-text"
+                        name="message"
+                        rows="20"
+                      />
+                    </div>
+                    <div
+                      class="form-group u-center-text"
+                    >
+                      <button
+                        class="form__submit"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </div>,
+                "context": Object {},
+                "current": [Circular],
+                "earliestPendingTime": 0,
+                "earliestSuspendedTime": 0,
+                "finishedWork": null,
+                "firstBatch": null,
+                "hydrate": false,
+                "latestPendingTime": 0,
+                "latestPingedTime": 0,
+                "latestSuspendedTime": 0,
+                "nextScheduledRoot": null,
+                "pendingChildren": null,
+                "pendingCommitExpirationTime": 0,
+                "pendingContext": null,
+                "remainingExpirationTime": 0,
+              },
+              "tag": 3,
+              "treeBaseTime": 0,
+              "type": null,
+              "updateQueue": Object {
+                "baseState": Object {
+                  "element": <WrapperComponent
+                    Component={[Function]}
+                    context={null}
+                    props={Object {}}
+                  />,
+                },
+                "expirationTime": 0,
+                "firstCapturedEffect": null,
+                "firstCapturedUpdate": null,
+                "firstEffect": null,
+                "firstUpdate": null,
+                "lastCapturedEffect": null,
+                "lastCapturedUpdate": null,
+                "lastEffect": null,
+                "lastUpdate": null,
+              },
+            },
+            "selfBaseTime": 0,
+            "sibling": null,
+            "stateNode": WrapperComponent {
+              "_reactInternalFiber": [Circular],
+              "_reactInternalInstance": Object {},
+              "context": Object {},
+              "props": Object {
+                "Component": [Function],
+                "context": null,
+                "props": Object {},
+              },
+              "refs": Object {},
+              "state": Object {
+                "context": null,
+                "mount": true,
+                "props": Object {},
+              },
+              "updater": Object {
+                "enqueueForceUpdate": [Function],
+                "enqueueReplaceState": [Function],
+                "enqueueSetState": [Function],
+                "isMounted": [Function],
+              },
+            },
+            "tag": 2,
+            "treeBaseTime": 0,
+            "type": [Function],
+            "updateQueue": null,
+          },
+          "selfBaseTime": 0,
+          "sibling": null,
+          "stateNode": [Circular],
+          "tag": 2,
+          "treeBaseTime": 0,
+          "type": [Function],
+          "updateQueue": null,
+        },
+        "_reactInternalInstance": Object {},
+        "context": Object {},
+        "lengthConstrains": Object {
+          "authorName": 30,
+          "message": 1500,
+          "threadName": 50,
+        },
+        "onChange": [Function],
+        "onSubmit": [Function],
+        "props": Object {},
+        "refs": Object {},
+        "state": Object {
+          "authorName": "Anonymous",
+          "message": "",
+          "threadName": "",
+        },
+        "updater": Object {
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+        },
+      },
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {},
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "authorName": "Anonymous",
+          "message": "",
+          "onAuthorNameChange": [Function],
+          "onMessageChange": [Function],
+          "onSubmit": [Function],
+          "onThreadNameChange": [Function],
+          "threadName": "",
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": <form
+            class="form"
+          >
+            <div
+              class="form-group"
+            >
+              <label
+                class="form__label"
+              >
+                Name
+              </label>
+              <input
+                class="form__input"
+                name="authorName"
+                type="text"
+                value="Anonymous"
+              />
+            </div>
+            <div
+              class="form-group"
+            >
+              <label
+                class="form__label"
+              >
+                Thread name
+              </label>
+              <input
+                class="form__input"
+                name="threadName"
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              class="form-group"
+            >
+              <label
+                class="form__label"
+              >
+                Message
+              </label>
+              <textarea
+                class="form__input form__input-text"
+                name="message"
+                rows="20"
+              />
+            </div>
+            <div
+              class="form-group u-center-text"
+            >
+              <button
+                class="form__submit"
+              >
+                Submit
+              </button>
+            </div>
+          </form>,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div
+                className="form-group"
+              >
+                <label
+                  className="form__label"
+                >
+                  Name
+                </label>
+                <input
+                  className="form__input"
+                  name="authorName"
+                  onChange={[Function]}
+                  type="text"
+                  value="Anonymous"
+                />
+              </div>,
+              <div
+                className="form-group"
+              >
+                <label
+                  className="form__label"
+                >
+                  Thread name
+                </label>
+                <input
+                  className="form__input"
+                  name="threadName"
+                  onChange={[Function]}
+                  type="text"
+                  value=""
+                />
+              </div>,
+              <div
+                className="form-group"
+              >
+                <label
+                  className="form__label"
+                >
+                  Message
+                </label>
+                <textarea
+                  className="form__input form__input-text"
+                  name="message"
+                  onChange={[Function]}
+                  rows={20}
+                  value=""
+                />
+              </div>,
+              <div
+                className="form-group u-center-text"
+              >
+                <button
+                  className="form__submit"
+                >
+                  Submit
+                </button>
+              </div>,
+            ],
+            "className": "form",
+            "onSubmit": [Function],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": <div
+                class="form-group"
+              >
+                <label
+                  class="form__label"
+                >
+                  Name
+                </label>
+                <input
+                  class="form__input"
+                  name="authorName"
+                  type="text"
+                  value="Anonymous"
+                />
+              </div>,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <label
+                    className="form__label"
+                  >
+                    Name
+                  </label>,
+                  <input
+                    className="form__input"
+                    name="authorName"
+                    onChange={[Function]}
+                    type="text"
+                    value="Anonymous"
+                  />,
+                ],
+                "className": "form-group",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": <label
+                    class="form__label"
+                  >
+                    Name
+                  </label>,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Name",
+                    "className": "form__label",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Name",
+                  ],
+                  "type": "label",
+                },
+                Object {
+                  "instance": <input
+                    class="form__input"
+                    name="authorName"
+                    type="text"
+                    value="Anonymous"
+                  />,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "className": "form__input",
+                    "name": "authorName",
+                    "onChange": [Function],
+                    "type": "text",
+                    "value": "Anonymous",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    undefined,
+                  ],
+                  "type": "input",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": <div
+                class="form-group"
+              >
+                <label
+                  class="form__label"
+                >
+                  Thread name
+                </label>
+                <input
+                  class="form__input"
+                  name="threadName"
+                  type="text"
+                  value=""
+                />
+              </div>,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <label
+                    className="form__label"
+                  >
+                    Thread name
+                  </label>,
+                  <input
+                    className="form__input"
+                    name="threadName"
+                    onChange={[Function]}
+                    type="text"
+                    value=""
+                  />,
+                ],
+                "className": "form-group",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": <label
+                    class="form__label"
+                  >
+                    Thread name
+                  </label>,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Thread name",
+                    "className": "form__label",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Thread name",
+                  ],
+                  "type": "label",
+                },
+                Object {
+                  "instance": <input
+                    class="form__input"
+                    name="threadName"
+                    type="text"
+                    value=""
+                  />,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "className": "form__input",
+                    "name": "threadName",
+                    "onChange": [Function],
+                    "type": "text",
+                    "value": "",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    undefined,
+                  ],
+                  "type": "input",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": <div
+                class="form-group"
+              >
+                <label
+                  class="form__label"
+                >
+                  Message
+                </label>
+                <textarea
+                  class="form__input form__input-text"
+                  name="message"
+                  rows="20"
+                />
+              </div>,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <label
+                    className="form__label"
+                  >
+                    Message
+                  </label>,
+                  <textarea
+                    className="form__input form__input-text"
+                    name="message"
+                    onChange={[Function]}
+                    rows={20}
+                    value=""
+                  />,
+                ],
+                "className": "form-group",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": <label
+                    class="form__label"
+                  >
+                    Message
+                  </label>,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Message",
+                    "className": "form__label",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Message",
+                  ],
+                  "type": "label",
+                },
+                Object {
+                  "instance": <textarea
+                    class="form__input form__input-text"
+                    name="message"
+                    rows="20"
+                  />,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "className": "form__input form__input-text",
+                    "name": "message",
+                    "onChange": [Function],
+                    "rows": 20,
+                    "value": "",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    undefined,
+                  ],
+                  "type": "textarea",
+                },
+              ],
+              "type": "div",
+            },
+            Object {
+              "instance": <div
+                class="form-group u-center-text"
+              >
+                <button
+                  class="form__submit"
+                >
+                  Submit
+                </button>
+              </div>,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <button
+                  className="form__submit"
+                >
+                  Submit
+                </button>,
+                "className": "form-group u-center-text",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": <button
+                    class="form__submit"
+                  >
+                    Submit
+                  </button>,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Submit",
+                    "className": "form__submit",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "Submit",
+                  ],
+                  "type": "button",
+                },
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "form",
+        },
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

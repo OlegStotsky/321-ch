@@ -1,55 +1,33 @@
 import * as React from "react";
 import NewThreadForm from "./NewThreadForm";
 
-interface IThreadFormContainerState {
+interface INewThreadFormContainerState {
   authorName: string;
   threadName: string;
   message: string;
 }
 
-const lengthConstrains = {
-  authorName: 30,
-  threadName: 50,
-  message: 1500
-};
-
-class NewThreadFormContainer extends React.Component<
-  {},
-  IThreadFormContainerState
-> {
-  public state: IThreadFormContainerState = {
+class NewThreadFormContainer extends React.Component<{}, any> {
+  public state: INewThreadFormContainerState = {
     authorName: "Anonymous",
     threadName: "",
     message: ""
+  };
+  private lengthConstrains = {
+    authorName: 30,
+    threadName: 50,
+    message: 1500
   };
 
   constructor(props) {
     super(props);
   }
 
-  public onAuthorNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  public onChange = (e: any) => {
     const { name, value } = e.currentTarget;
-    if (value.length < lengthConstrains[name]) {
+    if (value.length < this.lengthConstrains[name]) {
       this.setState(() => ({
-        authorName: value
-      }));
-    }
-  };
-
-  public onThreadNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.currentTarget;
-    if (value.length < lengthConstrains[name]) {
-      this.setState(() => ({
-        threadName: value
-      }));
-    }
-  };
-
-  public onMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const { name, value } = e.currentTarget;
-    if (value.length < lengthConstrains[name]) {
-      this.setState(() => ({
-        message: value
+        [name]: value
       }));
     }
   };
@@ -61,9 +39,9 @@ class NewThreadFormContainer extends React.Component<
   public render() {
     return (
       <NewThreadForm
-        onAuthorNameChange={this.onAuthorNameChange}
-        onThreadNameChange={this.onThreadNameChange}
-        onMessageChange={this.onMessageChange}
+        onAuthorNameChange={this.onChange}
+        onThreadNameChange={this.onChange}
+        onMessageChange={this.onChange}
         onSubmit={this.onSubmit}
         authorName={this.state.authorName}
         threadName={this.state.threadName}
