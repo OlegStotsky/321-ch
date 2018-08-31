@@ -1,13 +1,17 @@
-export const getErrorMessages = (e: any) => {
-  let errors: any[] = [];
-  Object.keys(e).forEach(key => {
-    if (e[key].hasOwnProperty("message")) {
-      errors.push(e[key]);
-    }
-    if (typeof e[key] === "object" && e[key] != null) {
-      const childErrorMessages = getErrorMessages(e[key]);
-      errors = [...errors, childErrorMessages];
-    }
-  });
-  return errors;
+import { IPostDocument } from "../models/Post";
+import * as R from "ramda";
+import { IThreadDocument } from "../models/Thread";
+
+export const pickValuesFromPost = (post: IPostDocument) => {
+  return R.pick(
+    ["date", "authorName", "content", "subject", "postNumber"],
+    post
+  );
+};
+
+export const pickValuesfromThread = (thread: IThreadDocument) => {
+  return R.evolve(
+    { opPost: pickValuesFromPost, posts: R.map(pickValuesFromPost) },
+    R.pick(["posts", "opPost", "opPostNumber"], thread)
+  );
 };

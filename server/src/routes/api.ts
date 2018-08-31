@@ -10,22 +10,9 @@ import {
   BoardNotFoundError,
   ThreadNotFoundError
 } from "../lib/apiServiceExceptions";
+import { pickValuesFromPost, pickValuesfromThread } from "../utils/utils";
 
 const apiRouter: Router = Router();
-
-const pickValuesFromPost = (post: IPostDocument) => {
-  return R.pick(
-    ["date", "authorName", "content", "subject", "postNumber"],
-    post
-  );
-};
-
-const pickValuesfromThread = (thread: IThreadDocument) => {
-  return R.evolve(
-    { opPost: pickValuesFromPost, posts: R.map(pickValuesFromPost) },
-    R.pick(["posts", "opPost", "opPostNumber"], thread)
-  );
-};
 
 apiRouter.post("/:board_name/", (req: Request, res: Response) => {
   const { opPostAuthor, opPostSubject, opPostContent } = req.body;
