@@ -10,7 +10,7 @@ export const ThreadSchema = new Schema({
     type: Number
   },
   posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
-  board: { type: Schema.Types.ObjectId, ref: "Board", required: true }
+  boardId: { type: Schema.Types.ObjectId, ref: "Board", required: true }
 });
 
 interface IAddPostParams {
@@ -67,7 +67,8 @@ ThreadSchema.methods.addOpPost = async function(
 export interface IThreadDocument extends Document {
   opPost: IPost;
   posts: IPost[];
-  board: Schema.Types.ObjectId;
+  boardId: Schema.Types.ObjectId;
+  opPostNumber: number;
 }
 
 export interface IThread extends IThreadDocument {

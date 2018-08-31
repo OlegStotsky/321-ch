@@ -30,7 +30,7 @@ export const PostSchema = new Schema({
 PostSchema.pre("save", async function(next) {
   const post: any = this;
   const thread: any = await Thread.findById(post.thread);
-  const board: any = await Board.findById(thread.board);
+  const board: any = await Board.findById(thread.boardId);
   post.postNumber = board.lastPostNumber;
   board.lastPostNumber++;
   board.save();

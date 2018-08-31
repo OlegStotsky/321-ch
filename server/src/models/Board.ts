@@ -25,7 +25,7 @@ BoardSchema.methods.addThread = async function(
 ): Promise<IThread> {
   const board = this;
   const threadData = {
-    board: board._id
+    boardId: board._id
   };
   const thread = new Thread(threadData);
   await thread.save();

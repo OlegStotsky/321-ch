@@ -21,7 +21,7 @@ describe("Board", () => {
     expect(board).toMatchObject(boardData);
   });
 
-  it("Adds thhread to the existing board", async () => {
+  it("Adds thread to the existing board", async () => {
     const board = new Board({ name: "b" });
     await board.save();
     const opPost = {
@@ -36,7 +36,7 @@ describe("Board", () => {
     expect(thread.opPost.subject).toEqual("Serious Business");
     expect(thread.opPost.content).toEqual("Hello there!");
     expect(thread.opPost.date / 10e6).toBeCloseTo(moment.now() / 10e6, 2);
-    expect(thread.board).toEqual(board._id);
+    expect(thread.boardId).toEqual(board._id);
   });
 
   it("Creates new board, creates threads and posts in them with correct post numbers", async () => {
@@ -47,7 +47,7 @@ describe("Board", () => {
       opPostSubject: "Serious Business",
       opPostContent: "Hello there!"
     });
-    const threads = await Thread.find({ board: board._id });
+    const threads = await Thread.find({ boardId: board._id });
     expect(threads.length).toEqual(1);
     await thread.addPost({
       authorName: "Vasya",
@@ -64,7 +64,7 @@ describe("Board", () => {
     expect(thread.posts[1].postNumber).toEqual(3);
   });
 
-  it("Creates 2 board and their post numbers don't clash", async () => {
+  it("Creates 2 boards and their post numbers don't clash", async () => {
     const boardA = new Board({ name: "a" });
     const boardSci = new Board({ name: "sci" });
     await boardA.save();

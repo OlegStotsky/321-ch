@@ -20,7 +20,7 @@ describe("Thread", async () => {
 
   it("Creates thread with op post", async () => {
     const threadData = {
-      board: board._id
+      boardId: board._id
     };
     const opPost = {
       authorName: "abcd",
@@ -32,13 +32,13 @@ describe("Thread", async () => {
     await thread.save();
     await thread.addOpPost(opPost);
     await thread.populateThread();
-    expect(thread.board).toEqual(threadData.board);
+    expect(thread.boardId).toEqual(threadData.boardId);
     expect(thread.opPost).toMatchObject(opPost);
   });
 
   it("Creates thread with op post and posts", async () => {
     const threadData = {
-      board
+      boardId: board._id
     };
     const post1 = {
       authorName: "agfasf",
@@ -59,7 +59,7 @@ describe("Thread", async () => {
     await thread.addPost(post1);
     await thread.addPost(post2);
     await thread.populateThread();
-    expect(thread.board).toEqual(threadData.board);
+    expect(thread.boardId).toEqual(threadData.boardId);
     expect(thread.opPost).toMatchObject(opPost);
     expect(thread.posts[0]).toMatchObject(post1);
     expect(thread.posts[1]).toMatchObject(post2);
@@ -67,7 +67,7 @@ describe("Thread", async () => {
 
   it("Adds post to array of posts", async () => {
     const threadData = {
-      board
+      boardId: board._id
     };
     const opPost = {
       authorName: '"abcd',
