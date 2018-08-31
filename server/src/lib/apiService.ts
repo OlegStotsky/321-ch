@@ -12,7 +12,7 @@ export const findThreadInBoard = (
 ): Promise<IThread> => {
   return Board.findOne({ name: boardName }).then(board => {
     if (!board) {
-      throw new BoardNotFoundError(`${boardName} doesn't exist`);
+      throw new BoardNotFoundError(`Board ${boardName} doesn't exist`);
     }
 
     return Thread.findOne({ boardId: board._id, opPostNumber }).then(thread => {

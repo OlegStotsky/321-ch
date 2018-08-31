@@ -1,10 +1,15 @@
 import { Router, Request, Response } from "express";
 import * as express from "express";
 import * as R from "ramda";
-import { IThreadDocument } from "../models/Thread";
+import { IThreadDocument, IThread } from "../models/Thread";
 import Board from "../models/Board";
 import { IPostDocument } from "../models/Post";
 import Thread from "../models/Thread";
+import { findThreadInBoard } from "../lib/apiService";
+import {
+  BoardNotFoundError,
+  ThreadNotFoundError
+} from "../lib/apiServiceExceptions";
 
 const apiRouter: Router = Router();
 
@@ -18,7 +23,7 @@ const pickValuesFromPost = (post: IPostDocument) => {
 const pickValuesfromThread = (thread: IThreadDocument) => {
   return R.evolve(
     { opPost: pickValuesFromPost, posts: R.map(pickValuesFromPost) },
-    R.pick(["posts", "opPost"], thread)
+    R.pick(["posts", "opPost", "opPostNumber"], thread)
   );
 };
 
@@ -49,71 +54,57 @@ apiRouter.post("/:board_name/", (req: Request, res: Response) => {
   });
 });
 
-apiRouter.get("/:boardName/:threadNumber", (req: Request, res: Response) => {
-  const boardName: string = req.params.boardName;
-  const threadNumber: number = parseInt(req.params.threadNumber, 10);
-  Board.findOne({ name: boardName })
-    .then(board => {
-      if (!board) {
-        res.status(400).json({
-          errors: "Board doesn't exist"
-        });
-        return;
-      }
-
-      Thread.findOne({ opPostNumber: threadNumber, board: board._id }).then(
-        thread => {
-          if (!thread) {
-            res.status(400).json({
-              errors: "Thread doesn't exist"
-            });
-          }
-
-          thread.populateThread().then(populatedThread => {
-            res.status(200).send(pickValuesfromThread(thread));
-          });
-        }
-      );
-    })
-    .catch(e => {
-      res.status(400).send(e.errors);
-    });
-});
-
-apiRouter.post("/:boardName/:threadNumber/", (req: Request, res: Response) => {
-  const boardName: string = req.params.boardName;
-  const threadNumber: number = parseInt(req.params.threadNumber, 10);
-  Board.findOne({ name: boardName }).then(board => {
-    if (!board) {
-      res.status(400).json({
-        errors: "Board doesn't exist"
+apiRouter.get(
+  "/:boardName/:threadNumber",
+  async (req: Request, res: Response) => {
+    const boardName: string = req.params.boardName;
+    const threadNumber: number = parseInt(req.params.threadNumber, 10);
+    try {
+      const thread = await findThreadInBoard(boardName, threadNumber);
+      thread.populateThread().then(populatedThread => {
+        res.status(200).send(pickValuesfromThread(thread));
       });
-      return;
-    }
-
-    Thread.findOne({ opPostNumber: threadNumber, board: board._id }).then(
-      thread => {
-        if (!thread) {
-          res.status(400).json({
-            errors: "Thread doesn't exist"
-          });
-          return;
-        }
-
-        thread
-          .addPost(req.body)
-          .then(newPost => {
-            res.status(201).json(pickValuesFromPost(newPost));
-          })
-          .catch(e => {
-            console.log("Eror: ", e);
-            res.status(400).json({
-              errors: ["Something went wrong"]
-            });
-          });
+    } catch (e) {
+      if (
+        !(e instanceof BoardNotFoundError || e instanceof ThreadNotFoundError)
+      ) {
+        throw e;
       }
-    );
-  });
-});
+      res.status(400).json({
+        error: e.message
+      });
+    }
+  }
+);
+
+apiRouter.post(
+  "/:boardName/:threadNumber/",
+  async (req: Request, res: Response) => {
+    const boardName: string = req.params.boardName;
+    const threadNumber: number = parseInt(req.params.threadNumber, 10);
+    try {
+      const thread: IThread = await findThreadInBoard(boardName, threadNumber);
+      thread
+        .addPost(req.body)
+        .then(newPost => {
+          res.status(201).json(pickValuesFromPost(newPost));
+        })
+        .catch(e => {
+          res.status(400).json({
+            errors: ["Something went wrong"]
+          });
+        });
+    } catch (e) {
+      if (
+        !(e instanceof BoardNotFoundError || e instanceof ThreadNotFoundError)
+      ) {
+        throw e;
+      }
+      res.status(400).json({
+        error: e.message
+      });
+    }
+  }
+);
 
 export default apiRouter;
