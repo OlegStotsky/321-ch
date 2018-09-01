@@ -4,7 +4,7 @@ import { IThreadDocument, IThread } from "../models/Thread";
 import Board from "../models/Board";
 import { IPostDocument } from "../models/Post";
 import Thread from "../models/Thread";
-import { findThreadInBoard } from "../lib/apiService";
+import { findThreadInBoard, getAllThreads } from "../lib/apiService";
 import {
   BoardNotFoundError,
   ThreadNotFoundError
@@ -37,6 +37,24 @@ export default class ApiController {
           });
         });
     });
+  };
+
+  public findAllThreads = async (req: Request, res: Response) => {
+    const boardName: string = req.params.boardName;
+    try {
+      const threads: IThread[] = await getAllThreads(boardName);
+      const populatedThreads: IThread[] = await Promise.all(
+        threads.map(async t => await t.populateThread())
+      );
+      res.status(200).send(populatedThreads);
+    } catch (e) {
+      if (!(e instanceof BoardNotFoundError)) {
+        throw e;
+      }
+      res.status(400).json({
+        errors: e
+      });
+    }
   };
 
   public findThread = async (req: Request, res: Response) => {
