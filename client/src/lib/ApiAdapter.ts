@@ -15,6 +15,15 @@ export default class ApiAdapter {
       .then(thread => threadDecoder.runWithException(thread));
   }
 
+  public static getThreads(
+    boardCredentials: IBoardCredentials
+  ): Promise<IThread[]> {
+    return axios
+      .get(`/api/${boardCredentials.shortName}`)
+      .then(response => response.data)
+      .then(threads => array(threadDecoder).runWithException(threads));
+  }
+
   public static sendPost(
     boardCredentials: IBoardCredentials,
     threadNumber: number,
@@ -29,5 +38,22 @@ export default class ApiAdapter {
       .post(`/api/${boardCredentials.shortName}/${threadNumber}`, post)
       .then(response => response.data)
       .then(newPost => postDecoder.runWithException(newPost));
+  }
+
+  public static sendThread(
+    boardCredentials: IBoardCredentials,
+    authorName: string,
+    subject: string,
+    content: string
+  ) {
+    const opPost = {
+      opPostAuthor: authorName,
+      opPostSubject: subject,
+      opPostContent: content
+    };
+    return axios
+      .post(`/api/${boardCredentials.shortName}`, opPost)
+      .then(response => response.data)
+      .then(p => postDecoder.runWithException(p));
   }
 }
