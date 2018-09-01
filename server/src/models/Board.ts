@@ -14,6 +14,8 @@ const BoardSchema = new Schema({
   }
 });
 
+BoardSchema.index({ name: 1 });
+
 interface IAddThreadParams {
   opPostAuthor: string;
   opPostSubject: string;

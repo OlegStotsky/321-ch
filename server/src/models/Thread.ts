@@ -12,6 +12,7 @@ export const ThreadSchema = new Schema({
   posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
   boardId: { type: Schema.Types.ObjectId, ref: "Board", required: true }
 });
+ThreadSchema.index({ boardId: 1, opPostNumber: 1 });
 
 interface IAddPostParams {
   authorName: string;
