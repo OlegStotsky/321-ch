@@ -12,11 +12,6 @@ interface INewPostFormContainerState {
   content: string;
 }
 
-const lengthConstrains = {
-  authorName: 30,
-  content: 1500
-};
-
 interface IStateProps {
   curBoard: IBoardCredentials;
   curThread: ICurThreadState;
@@ -28,31 +23,24 @@ interface IDispatchProps {
 
 type NewPostFormProps = IStateProps & IDispatchProps;
 
-class NewPostFormContainer extends React.Component<
-  NewPostFormProps,
-  INewPostFormContainerState
-> {
+class NewPostFormContainer extends React.Component<NewPostFormProps, any> {
   public state: INewPostFormContainerState = {
     authorName: "Anonymous",
     content: ""
+  };
+
+  private lengthConstrains = {
+    authorName: 30,
+    content: 1500
   };
 
   constructor(props) {
     super(props);
   }
 
-  public onAuthorNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  public onChange = (e: any) => {
     const { name, value } = e.currentTarget;
-    if (value.length < lengthConstrains[name]) {
-      this.setState(() => ({
-        authorName: value
-      }));
-    }
-  };
-
-  public onContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const { name, value } = e.currentTarget;
-    if (value.length < lengthConstrains[name]) {
+    if (value.length < this.lengthConstrains[name]) {
       this.setState(() => ({
         content: value
       }));
@@ -73,8 +61,8 @@ class NewPostFormContainer extends React.Component<
   public render() {
     return (
       <NewPostForm
-        onAuthorNameChange={this.onAuthorNameChange}
-        onContentChange={this.onContentChange}
+        onAuthorNameChange={this.onChange}
+        onContentChange={this.onChange}
         onSubmit={this.onSubmit}
         authorName={this.state.authorName}
         content={this.state.content}
