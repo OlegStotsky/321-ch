@@ -26,3 +26,13 @@ export const findThreadInBoard = (
     });
   });
 };
+
+export const getAllThreads = (boardName: string): Promise<IThread[]> => {
+  return Board.findOne({ name: boardName }).then(board => {
+    if (!board) {
+      throw new BoardNotFoundError(`Board ${boardName} doesn't exist`);
+    }
+
+    return Thread.find({ boardId: board._id });
+  });
+};
