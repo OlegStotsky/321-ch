@@ -14,7 +14,6 @@ export default class FlashMessage extends React.Component<any, any> {
   }
 
   public onDismiss = () => {
-    console.log("calling onDismiss", this.props.id);
     this.props.onDismiss(this.props.id);
   };
 

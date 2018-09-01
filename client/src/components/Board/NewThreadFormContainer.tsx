@@ -1,5 +1,7 @@
 import * as React from "react";
 import NewThreadForm from "./NewThreadForm";
+import { connect } from "react-redux";
+import { postNewThread } from "../../redux/actions/curBoard";
 
 interface INewThreadFormContainerState {
   authorName: string;
@@ -7,7 +9,16 @@ interface INewThreadFormContainerState {
   message: string;
 }
 
-class NewThreadFormContainer extends React.Component<{}, any> {
+interface IDispatchProps {
+  postNewThread?: (authorName: string, subject: string, content: string) => any;
+}
+
+type INewThreadFormContainerProps = IDispatchProps;
+
+export class NewThreadFormContainer extends React.Component<
+  INewThreadFormContainerProps,
+  any
+> {
   public state: INewThreadFormContainerState = {
     authorName: "Anonymous",
     threadName: "",
@@ -34,6 +45,18 @@ class NewThreadFormContainer extends React.Component<{}, any> {
 
   public onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    this.props
+      .postNewThread(
+        this.state.authorName,
+        this.state.threadName,
+        this.state.message
+      )
+      .then(() => {
+        this.setState(() => ({
+          threadName: "",
+          message: ""
+        }));
+      });
   };
 
   public render() {
@@ -51,4 +74,12 @@ class NewThreadFormContainer extends React.Component<{}, any> {
   }
 }
 
-export default NewThreadFormContainer;
+const mapDispatchToProps = dispatch => ({
+  postNewThread: (authorName: string, subject: string, content: string) =>
+    dispatch(postNewThread(authorName, subject, content))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(NewThreadFormContainer);

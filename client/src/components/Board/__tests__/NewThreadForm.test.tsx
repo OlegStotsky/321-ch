@@ -1,12 +1,14 @@
 import * as React from "react";
 import * as Enzyme from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
-import NewThreadFormContainer from "../NewThreadFormContainer";
+import { NewThreadFormContainer } from "../NewThreadFormContainer";
+import createStore from "../../../redux/store/createStore";
 
 Enzyme.configure({ adapter: new Adapter() });
 
 describe("NewThreadFormContainer", () => {
   let newThreadFormContainer: any;
+  const store = createStore();
   beforeEach(() => {
     newThreadFormContainer = Enzyme.mount(<NewThreadFormContainer />);
   });
@@ -27,11 +29,9 @@ describe("NewThreadFormContainer", () => {
     expect(newThreadFormContainer.instance().state.threadName).toEqual("Games");
   });
   it("correctly sets content onChange", () => {
-    newThreadFormContainer
-      .instance()
-      .onChange({
-        currentTarget: { name: "message", value: "I like to play Call of Duty" }
-      });
+    newThreadFormContainer.instance().onChange({
+      currentTarget: { name: "message", value: "I like to play Call of Duty" }
+    });
     expect(newThreadFormContainer.instance().state.message).toEqual(
       "I like to play Call of Duty"
     );

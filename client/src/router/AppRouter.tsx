@@ -19,7 +19,7 @@ const AppRouter = props => (
             path={board.link}
             render={() => {
               props.dispatch(changangeCurrentBoard(board));
-              return <Board boardCredentials={board} />;
+              return <Board />;
             }}
             exact={true}
           />
