@@ -76,15 +76,12 @@ export const loadCurrentThreadData = () => {
   };
 };
 
-export const sendNewPost = (
-  boardCredentials: IBoardCredentials,
-  threadNumber: number,
-  authorName: string,
-  content: string
-) => {
+export const sendNewPost = (authorName: string, content: string) => {
   return (dispatch, getCurState) => {
     dispatch(apiFetchRequested());
     dispatch(addingNewPost());
+    const boardCredentials: IBoardCredentials = getCurState().curBoard.curBoard;
+    const threadNumber: number = getCurState().curThread.threadNumber;
     return ApiAdapter.sendPost(
       boardCredentials,
       threadNumber,

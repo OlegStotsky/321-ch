@@ -23,12 +23,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-  addNewPost: (
-    boardCredentials: IBoardCredentials,
-    threadNumber: number,
-    authorName: string,
-    content: string
-  ) => any;
+  addNewPost: (authorName: string, content: string) => any;
 }
 
 type NewPostFormProps = IStateProps & IDispatchProps;
@@ -67,12 +62,7 @@ class NewPostFormContainer extends React.Component<
   public onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     this.props
-      .addNewPost(
-        this.props.curBoard,
-        this.props.curThread.curThreadNumber,
-        this.state.authorName,
-        this.state.content
-      )
+      .addNewPost(this.state.authorName, this.state.content)
       .then(() => {
         this.setState(() => ({
           content: ""
@@ -100,13 +90,8 @@ const mapStateToProps = (state: IRootState): IStateProps => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addNewPost: (
-    boardCredentials: IBoardCredentials,
-    threadNumber: number,
-    authorName: string,
-    content: string
-  ) =>
-    dispatch(sendNewPost(boardCredentials, threadNumber, authorName, content))
+  addNewPost: (authorName: string, content: string) =>
+    dispatch(sendNewPost(authorName, content))
 });
 
 export default connect(
