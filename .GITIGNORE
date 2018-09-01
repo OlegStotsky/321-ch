@@ -7,3 +7,4 @@ server/src/config/config.ts
 api.text
 server/dist
 client/dist
+.coveralls.yml

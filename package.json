@@ -18,6 +18,7 @@
     "@types/sinon": "^5.0.2",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "coveralls": "^3.0.2",
     "css-loader": "^0.28.11",
     "jest": "^23.1.0",
     "jquery": "^3.3.1",
@@ -50,6 +51,7 @@
     "@types/enzyme-adapter-react-16": "^1.0.2",
     "@types/jest": "^23.0.0",
     "awesome-typescript-loader": "^5.0.0",
+    "codeclimate-test-reporter": "^0.5.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "husky": "^0.14.3",
@@ -66,7 +68,8 @@
     "test": "jest --runInBand",
     "lint-client": "tslint -c ./tslint.json './client/**/*.ts*'",
     "lint-server": "tslint -c ./tslint.json './server/**/*.ts*'",
-    "start-server": "node ./server/dist/server.js"
+    "start-server": "node ./server/dist/server.js",
+    "coverage-report": "jest --runInBand --coverage --coverageReporters=text-lcov | coveralls"
   },
   "author": "Oleg Stotsky",
   "license": "ISC"
