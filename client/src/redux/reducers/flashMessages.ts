@@ -1,11 +1,13 @@
 import {
   FlashMessagesActionType,
   IFlashMessagesActionTypeKeys,
-  IAddNewFlashMessageAction
+  IAddNewFlashMessageAction,
+  FlashMessageKind,
+  IFlashMessage
 } from "../actions/flashMessages";
 
 export interface IFlashMessagesState {
-  messages: string[];
+  messages: IFlashMessage[];
 }
 const defaultFlashMessagesState: IFlashMessagesState = {
   messages: []
@@ -23,6 +25,11 @@ export const flashMessagesReducer = (
           ...state.messages,
           (action as IAddNewFlashMessageAction).message
         ]
+      };
+    case IFlashMessagesActionTypeKeys.DELETE_MESSAGE:
+      return {
+        ...state,
+        messages: state.messages.filter(m => m.id !== action.id)
       };
     default:
       return state;

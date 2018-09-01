@@ -4,7 +4,7 @@ import { IBoardCredentials } from "../../../../shared/lib/types/BoardCredentials
 import { IPost } from "../../lib/Post";
 import { apiFetchRequested, apiFetchSucceded, apiFetchFailed } from "./api";
 import { IRootState } from "../reducers/rootReducer";
-import { addNewFlashMessage } from "./flashMessages";
+import { addNewFlashMessage, FlashMessageKind } from "./flashMessages";
 
 export enum ICurThreadActionTypeKeys {
   CHANGE_CUR_THREAD_NUMBER = "CHANGE_CUR_THREAD_NUMBER",
@@ -66,6 +66,12 @@ export const loadCurrentThreadData = () => {
         setTimeout(() => dispatch(apiFetchSucceded()), 500);
         setTimeout(() => dispatch(currentThreadNotLoading()), 500);
         dispatch(curThreadLoadSuccess());
+        dispatch(
+          addNewFlashMessage(
+            "Successfuly loaded data",
+            FlashMessageKind.Success
+          )
+        );
         dispatch(setCurrentThreadData(threadData));
       })
       .catch(e => {
@@ -77,11 +83,11 @@ export const loadCurrentThreadData = () => {
 };
 
 export const sendNewPost = (authorName: string, content: string) => {
-  return (dispatch, getCurState) => {
+  return (dispatch, getCurState: () => IRootState) => {
     dispatch(apiFetchRequested());
     dispatch(addingNewPost());
     const boardCredentials: IBoardCredentials = getCurState().curBoard.curBoard;
-    const threadNumber: number = getCurState().curThread.threadNumber;
+    const threadNumber: number = getCurState().curThread.curThreadNumber;
     return ApiAdapter.sendPost(
       boardCredentials,
       threadNumber,
@@ -92,12 +98,18 @@ export const sendNewPost = (authorName: string, content: string) => {
         dispatch(addNewPost(post));
         dispatch(apiFetchSucceded());
         dispatch(notAddingNewPost());
+        dispatch(
+          addNewFlashMessage(
+            "Successfuly added new post",
+            FlashMessageKind.Success
+          )
+        );
       })
       .catch(e => {
         dispatch(notAddingNewPost());
         dispatch(apiFetchFailed());
         e.response.data.errors.forEach(errorMessage =>
-          dispatch(addNewFlashMessage(errorMessage))
+          dispatch(addNewFlashMessage(errorMessage, FlashMessageKind.Danger))
         );
       });
   };

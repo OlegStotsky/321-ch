@@ -6,10 +6,12 @@ import { allBoards } from "../../../shared/lib/static/BoardSections";
 import { changangeCurrentBoard } from "../redux/actions/curBoard";
 import { connect } from "react-redux";
 import { changeCurrentThreadNumber } from "../redux/actions/curThread";
+import FlashMessagesList from "../components/FlashMessagesList";
 
 const AppRouter = props => (
   <BrowserRouter>
     <div>
+      <FlashMessagesList />
       <Switch>
         <Route path="/" component={HomePage} exact={true} />
         {allBoards.map(board => (

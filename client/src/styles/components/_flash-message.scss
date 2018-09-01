@@ -1,0 +1,34 @@
+.flash-messages {
+  position: fixed;
+  right: 0;
+  top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.flash-message {
+  background-color: $color-off-white;
+  padding: 1rem;
+  border-radius: 2rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  &--danger {
+    color: $color-red;
+  }
+
+  &--success {
+    color: $color-green;
+  }
+
+  &__text {
+    font-size: 2rem;
+    margin-right: 0.3rem;
+  }
+
+  &__close {
+    font-size: 1.7rem;
+  }
+}
