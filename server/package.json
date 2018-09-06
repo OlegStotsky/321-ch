@@ -12,7 +12,7 @@
     "build": "tsc",
     "compile": "tsc && node ./dist/server.js",
     "watch": "nodemon -e ts --exec \"npm run compile\"",
-    "start": "node ./dist/server.js",
+    "start": "ts-node ./src/server.ts",
     "start-db": "mongo",
     "install-dep": "yarn install"
   },
@@ -31,5 +31,8 @@
     "tsc": "^1.20150623.0",
     "tslint": "^5.11.0",
     "typescript": "^3.0.1"
+  },
+  "devDependencies": {
+    "ts-node": "^7.0.1"
   }
 }

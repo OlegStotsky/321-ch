@@ -44,7 +44,7 @@ export default class ApiController {
     try {
       const threads: IThread[] = await getAllThreads(boardName);
       const populatedThreads: IThread[] = await Promise.all(
-        threads.map(async t => await t.populateThread())
+        threads.map(t => t.populateThread())
       );
       res.status(200).send(populatedThreads);
     } catch (e) {
