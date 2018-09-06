@@ -13,7 +13,8 @@
     "compile": "tsc && node ./dist/server.js",
     "watch": "nodemon -e ts --exec \"npm run compile\"",
     "start": "node ./dist/server.js",
-    "start-db": "mongo"
+    "start-db": "mongo",
+    "install-dep": "yarn install"
   },
   "author": "Oleg Stotsky",
   "license": "ISC",

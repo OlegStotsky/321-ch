@@ -8,3 +8,4 @@ api.text
 server/dist
 client/dist
 .coveralls.yml
+client/dist/bundle.js

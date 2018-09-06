@@ -21,6 +21,7 @@
     "body-parser": "^1.18.3",
     "coveralls": "^3.0.2",
     "css-loader": "^0.28.11",
+    "heroku": "^7.14.2",
     "jest": "^23.1.0",
     "jquery": "^3.3.1",
     "moment": "^2.22.2",
@@ -65,6 +66,8 @@
     "tslint-config-prettier": "^1.13.0"
   },
   "scripts": {
+    "heroku-postbuild": "webpack -p --env production && npm --prefix server run install-dep && npm --prefix server run build",
+    "start": "start-server",
     "precommit": "pretty-quick --staged && npm test",
     "build-client": "webpack",
     "dev-server": "webpack-dev-server",
@@ -72,6 +75,7 @@
     "lint-client": "tslint -c ./tslint.json './client/**/*.ts*'",
     "lint-server": "tslint -c ./tslint.json './server/**/*.ts*'",
     "start-server": "node ./server/dist/server.js",
+    "install-dep": "npm install",
     "coverage-report": "jest --runInBand --coverage --coverageReporters=text-lcov | coveralls"
   },
   "author": "Oleg Stotsky",
