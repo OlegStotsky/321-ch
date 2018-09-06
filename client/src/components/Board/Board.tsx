@@ -9,6 +9,7 @@ import { getAllThreads } from "../../redux/actions/curBoard";
 import { connect } from "react-redux";
 import { css } from "react-emotion";
 import { ClipLoader } from "react-spinners";
+import BoardList from "./BoardList";
 
 interface IOwnProps {
   boardCredentials: IBoardCredentials;
@@ -56,8 +57,15 @@ export class Board extends React.Component<IBoardProps, {}> {
         <div className="board__body">
           {!this.props.threadsLoading &&
             this.props.threads.map(t => (
-              <ThreadPreview key={t.opPost.postNumber} threadData={t} />
+              <ThreadPreview
+                key={t.opPost.postNumber}
+                threadData={t}
+                curBoard={this.props.boardCredentials}
+              />
             ))}
+        </div>
+        <div className="board__footer">
+          <BoardList />
         </div>
       </div>
     );
