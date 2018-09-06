@@ -69,6 +69,7 @@ export const loadCurrentThreadData = () => {
         dispatch(setCurrentThreadData(threadData));
       })
       .catch(e => {
+        console.log(e);
         dispatch(currentThreadNotLoading());
         dispatch(curThreadLoadFailure());
         dispatch(apiFetchFailed());
@@ -100,6 +101,7 @@ export const sendNewPost = (authorName: string, content: string) => {
         );
       })
       .catch(e => {
+        console.log(e);
         dispatch(notAddingNewPost());
         dispatch(apiFetchFailed());
         e.response.data.errors.forEach(errorMessage =>

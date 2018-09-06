@@ -114,6 +114,7 @@ export const postNewThread = (
         );
       })
       .catch(e => {
+        console.log(e);
         dispatch(postingNewThreadFailure());
         dispatch(
           addNewFlashMessage(
@@ -135,6 +136,7 @@ export const getAllThreads = () => {
         dispatch(notLoadingThreads());
       })
       .catch(e => {
+        console.log(e);
         dispatch(
           addNewFlashMessage(
             "Something went wrong while loading threads",
