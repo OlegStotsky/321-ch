@@ -143,6 +143,7 @@ export const getAllThreads = () => {
             FlashMessageKind.Danger
           )
         );
+        dispatch(notLoadingThreads());
       });
   };
 };
