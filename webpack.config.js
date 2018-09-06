@@ -1,6 +1,6 @@
 const path = require("path");
 
-module.exports = (env, args) => {
+module.exports = (env) => {
   const isProduction = env === "production";
   return {
     mode: isProduction ? env : "development",
