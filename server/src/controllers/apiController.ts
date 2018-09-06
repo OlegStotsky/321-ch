@@ -32,6 +32,7 @@ export default class ApiController {
             });
         })
         .catch(e => {
+          console.log(e);
           res.status(400).json({
             errors: e.errors
           });
@@ -71,6 +72,7 @@ export default class ApiController {
       ) {
         throw e;
       }
+      console.log(e);
       res.status(400).json({
         error: e.message
       });
@@ -88,6 +90,7 @@ export default class ApiController {
           res.status(201).json(pickValuesFromPost(newPost));
         })
         .catch(e => {
+          console.log(e);
           res.status(400).json({
             errors: ["Something went wrong"]
           });

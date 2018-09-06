@@ -14,11 +14,6 @@ export const ThreadSchema = new Schema({
 });
 ThreadSchema.index({ boardId: 1, opPostNumber: 1 });
 
-interface IAddPostParams {
-  authorName: string;
-  content: string;
-}
-
 ThreadSchema.methods.populateThread = async function(): Promise<IThread> {
   const thread = this;
   return thread
@@ -26,6 +21,11 @@ ThreadSchema.methods.populateThread = async function(): Promise<IThread> {
     .populate("posts")
     .execPopulate();
 };
+
+interface IAddPostParams {
+  authorName: string;
+  content: string;
+}
 
 ThreadSchema.methods.addPost = async function(
   params: IAddPostParams

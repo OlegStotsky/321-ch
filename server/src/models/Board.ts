@@ -25,6 +25,9 @@ interface IAddThreadParams {
 BoardSchema.methods.addThread = async function(
   params: IAddThreadParams
 ): Promise<IThread> {
+  if (!params.opPostAuthor || !params.opPostSubject || !params.opPostContent) {
+    throw new Error("All fields must be present");
+  }
   const board = this;
   const threadData = {
     boardId: board._id
