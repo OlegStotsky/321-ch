@@ -66,12 +66,6 @@ export const loadCurrentThreadData = () => {
         setTimeout(() => dispatch(apiFetchSucceded()), 500);
         setTimeout(() => dispatch(currentThreadNotLoading()), 500);
         dispatch(curThreadLoadSuccess());
-        dispatch(
-          addNewFlashMessage(
-            "Successfuly loaded data",
-            FlashMessageKind.Success
-          )
-        );
         dispatch(setCurrentThreadData(threadData));
       })
       .catch(e => {
