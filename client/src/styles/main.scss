@@ -9,7 +9,7 @@
 
 @import "./components/box";
 @import "./components/column";
-@import "./components/text_link.scss";
+@import "./components/text_link";
 @import "./components/board";
 @import "./components/form";
 @import "./components/post";
@@ -17,6 +17,7 @@
 @import "./components/mid-panel";
 @import "./components/spinner";
 @import "./components/flash-message";
+@import "./components/thread-preview";
 
 @import "./layout/app";
 @import "./layout/bg-particles";

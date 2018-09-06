@@ -1,0 +1,30 @@
+.thread-preview {
+  :not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  &__posts {
+    padding: 0 0.8rem;
+    min-height: 1rem;
+  }
+
+  &__info {
+    padding-left: 0.8rem;
+    color: gray;
+
+    font-size: 1.5rem;
+
+    &-text {
+      margin-right: 0.3rem;
+    }
+  }
+
+  &__thread-link {
+    text-decoration: none;
+    color: rgb(110, 57, 57);
+
+    &:hover {
+      color: $color-white;
+    }
+  }
+}
