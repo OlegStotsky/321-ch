@@ -19,20 +19,18 @@ mongoose.connection.once("connected", () => {
   console.log("Connected to database");
 });
 
-Promise.all(
-  Object.keys(BoardName).map(key => {
-    Board.find({ name: BoardName[key as any] }).then(board => {
-      if (!board) {
-        return Board.create({ name: BoardName[key as any] });
-      }
-    });
-  })
-);
+Promise.all(Object.keys(BoardName).map(key => {
+  Board.find({ name: BoardName[key as any] }).then(board => {
+    return Board.create({ name: BoardName[key as any] });
+  });
+}));
+
 
 const distPath = path.join(__dirname, "..", "..", "client", "dist");
 app.use(express.static(distPath));
 
 app.use("/api", apiRouter);
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(distPath, "index.html"));
 });
