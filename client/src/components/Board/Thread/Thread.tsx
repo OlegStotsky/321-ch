@@ -53,11 +53,8 @@ const Thread: React.SFC<IThreadProps> = ({
           threadData.posts.map(post => (
             <Post key={post.postNumber} {...post} isOpPost={false} />
           ))}
-        <MidPanel />
       </div>
-      <div className="thread__footer">
-        <BoardList />
-      </div>
+      <hr />
     </React.Fragment>
   );
 };
