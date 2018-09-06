@@ -30,7 +30,8 @@
     "morgan-body": "^2.4.5",
     "tsc": "^1.20150623.0",
     "tslint": "^5.11.0",
-    "typescript": "^3.0.1"
+    "typescript": "^3.0.1",
+    "ts-node": "^7.0.1"
   },
   "devDependencies": {
     "ts-node": "^7.0.1"
