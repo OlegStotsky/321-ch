@@ -6,7 +6,6 @@ import apiRouter from "./routes/api";
 import * as bodyParser from "body-parser";
 // import morganBody from "morgan-body";
 import morgan from "morgan";
-import Thread from "./models/thread";
 import Board from "./models/Board";
 import BoardName from "../../shared/lib/types/BoardName";
 
