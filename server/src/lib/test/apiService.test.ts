@@ -2,10 +2,7 @@ import * as sinon from "sinon";
 import { findThreadInBoard } from "../apiService";
 import Thread from "../../models/Thread";
 import Board from "../../models/Board";
-import {
-  BoardNotFoundError,
-  ThreadNotFoundError
-} from "../apiServiceExceptions";
+import { AppError } from "../appError";
 
 describe("api service", () => {
   const boardFixtures = [
@@ -41,14 +38,10 @@ describe("api service", () => {
       expect(thread.boardId).toEqual(1);
     });
     it("throws BoardNotFoundError if board doesn't exist", async () => {
-      expect(findThreadInBoard("sci", 1)).rejects.toBeInstanceOf(
-        BoardNotFoundError
-      );
+      expect(findThreadInBoard("sci", 1)).rejects.toBeInstanceOf(AppError);
     });
     it("throws ThreadNotFoundError if thread doesn't exist", async () => {
-      expect(findThreadInBoard("b", 2)).rejects.toBeInstanceOf(
-        ThreadNotFoundError
-      );
+      expect(findThreadInBoard("b", 2)).rejects.toBeInstanceOf(AppError);
     });
   });
 });

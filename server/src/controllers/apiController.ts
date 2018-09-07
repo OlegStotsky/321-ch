@@ -6,6 +6,7 @@ import { IPostDocument } from "../models/Post";
 import Thread from "../models/Thread";
 import { findThreadInBoard, getAllThreads } from "../lib/apiService";
 import { pickValuesFromPost, pickValuesfromThread } from "../utils/utils";
+import { logger } from "../config/winston";
 
 export default class ApiController {
   public createNewThread = (req: Request, res: Response) => {
@@ -28,8 +29,9 @@ export default class ApiController {
             });
         })
         .catch(e => {
+          logger.warn(e);
           res.status(400).json({
-            errors: e.errors
+            errors: e
           });
         });
     });
@@ -47,6 +49,7 @@ export default class ApiController {
       if (!e.isOperational) {
         throw e;
       }
+      logger.warn(e);
       res.status(400).json({
         errors: e.description
       });
@@ -65,7 +68,7 @@ export default class ApiController {
       if (!e.isOperational) {
         throw e;
       }
-      console.log(e);
+      logger.info(e);
       res.status(400).json({
         error: e.description
       });
@@ -83,7 +86,7 @@ export default class ApiController {
           res.status(201).json(pickValuesFromPost(newPost));
         })
         .catch(e => {
-          console.log(e);
+          logger.info(e);
           res.status(400).json({
             errors: ["Something went wrong"]
           });
@@ -92,6 +95,7 @@ export default class ApiController {
       if (!e.isOperational) {
         throw e;
       }
+      logger.info(e);
 
       res.status(400).json({
         error: e.description
