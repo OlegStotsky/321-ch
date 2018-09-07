@@ -1,4 +1,4 @@
-# <center> 321-ch </center>
+<p align="center"><h1>321-ch</h1></p>
 
 [![CodeFactor](https://www.codefactor.io/repository/github/olegstotsky/321-ch/badge)](https://www.codefactor.io/repository/github/olegstotsky/321-ch)
 [![BCH compliance](https://bettercodehub.com/edge/badge/OlegStotsky/321-ch?branch=master)](https://bettercodehub.com/)
