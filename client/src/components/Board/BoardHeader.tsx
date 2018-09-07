@@ -18,9 +18,12 @@ interface IBoardHeaderState {
 }
 
 class BoardHeader extends React.Component<IBoardHeaderProps, IBoardHeaderState> {
+  public static defaultProps = {
+    Form: NewThreadFormContainer
+  };
   public state = {
     isFormOpen: false
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -61,9 +64,5 @@ class BoardHeader extends React.Component<IBoardHeaderProps, IBoardHeaderState> 
     );
   };
 }
-
-BoardHeader.defaultProps = {
-  Form: NewThreadFormContainer
-};
 
 export default BoardHeader;
