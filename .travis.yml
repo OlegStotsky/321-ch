@@ -5,6 +5,8 @@ deploy:
   provider: heroku
   api_key:
     secure: LB0Z/3FSivaG/J/r1Fvl3ywMxTVGzxb8jjK9A5Gftl3nUuvcktg1D2rcsosuor2jntdB8AecGr0G8GRdWEIWDTX5pRWT5BikBBWPEDMuz2gbhp+QQSGJpQT+lqQR8gA0QqnTq8xfvcoST8IzRlzGMMH68yZNBGCK7fCq4Y7Xc/q2QJCgg9DPxAFw8617A9L64wXL9utz/u+3tvyvGscZe3bFxNXGh/e05v8bjXeR0ri6UaWp1+RJ4jTVqANQ89pbF968w/oAjdJToc1FYoS8g9vtm2trHa5eS607o/LfeKKz3e+IqrWfbAYS+ByKthm2CQmOv1DmbGSQaLJYp1T1q38HNGeiUgPEKN8EItKjae4Du3KpVlgaO9B/Oc75pQgfR33vu8wgyIz6Xs99SJza/PyWkP6Ryb7RLoSgV2SPE5UgczuSRSrqXMRNzcN2IrczmsBZrHVsElVTvfrryIzQjHGjVnmPVVzZBEO6WLQxdTr1+wC60ysiCb2D/JhHQ4T8GtJNEpTuNmirPoxmE8twPF+sTWxCtyffwlh2wB5b31mhhusTTbdwfvUsm3HWxRJgEEAUQZQtZMD17Ez5AKGVzB6+dWuymXIkg7y8wCLFZywRzrVxOaKOvOxErmcg8Mf503Ep78SRpdY9n6BJXhEFfYQfyud7+me6lr4Pi3y8QYk=
+  app:
+    chan321ch
 script: yarn install && cd server && yarn install && cd .. && yarn test
 services:
 - mongodb
