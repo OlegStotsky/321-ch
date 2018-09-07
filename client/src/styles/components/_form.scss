@@ -5,7 +5,7 @@
   &__label {
     color: white;
     font-size: 1.5rem;
-    margin-right: .7rem;
+    margin-right: 0.7rem;
     flex: 1 0 3rem;
     display: flex;
   }
@@ -13,7 +13,7 @@
   &__input {
     height: 2rem;
     flex: 1 0 15rem;
-    padding: .3rem;
+    padding: 0.3rem;
 
     &-text {
       height: 10rem;
@@ -23,14 +23,14 @@
   &__submit {
     display: inline-block;
     margin: 0 auto;
-    padding: .5rem 2rem;
+    padding: 0.5rem 2rem;
   }
 }
 
 .form-group {
   display: flex;
-  
+
   &:not(:last-child) {
-    margin-bottom: .5rem; 
+    margin-bottom: 0.5rem;
   }
 }
