@@ -1,4 +1,4 @@
-# 321-ch
+# <center> 321-ch </center>
 
 [![CodeFactor](https://www.codefactor.io/repository/github/olegstotsky/321-ch/badge)](https://www.codefactor.io/repository/github/olegstotsky/321-ch)
 [![BCH compliance](https://bettercodehub.com/edge/badge/OlegStotsky/321-ch?branch=master)](https://bettercodehub.com/)
@@ -13,21 +13,23 @@
 321ch is an imageboard engine built using react and node.js.
 
 ## Technologies
-    Front End:
-        React
-        Redux
-        Typescript
-        SASS
-        Webpack
-    Back End:
-        Node.js
-        Express
-        Typescript
-        Mongoose, Mongod DB
-    Testing:
-        Jest
-        Sinon
-        Enzyme
+* Front End:
+  * React
+  * Redux
+  * Typescript
+  * SASS
+  * Webpack
+
+* Back End:
+  * Node.js
+  * Express
+  * Typescript
+  * Mongoose, Mongod DB
+
+* Testing:
+  * Jest
+  * Sinon
+  * Enzyme
 
 ## Requirements
 You should have the latest version of mongodb and node.js installed on your machine. Mongodb is assumed to use the default port, username and password, but you can always change that in server/config/config.ts.
