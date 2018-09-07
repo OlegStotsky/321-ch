@@ -6,7 +6,7 @@ import createStore from "../../../redux/store/createStore";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe("NewThreadFormContainer", () => {
+describe.skip("NewThreadFormContainer", () => {
   let newThreadFormContainer: any;
   beforeEach(() => {
     newThreadFormContainer = Enzyme.mount(<NewThreadFormContainer />);
