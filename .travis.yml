@@ -3,12 +3,12 @@ node_js:
 - 10.8.0
 cache:
   directories:
-    - "client/node_modules"
-    - "server/"
+  - client/node_modules
+  - server/
 deploy:
   provider: heroku
   api_key:
-    secure: odZBFgDtE9Hq7rwakJAI4p7WqaT45vpTdlG++TH//C6Lu0i5eTMt0ErWjgXbPtGlPWUzFH2yaL+w4qavxRu9OWWOP26WwMdGvCrPdwCDXfo7JXYWyoeL1zehmDP2FNXqAifmfyaN2cNHqOZBV2PAk9YWZnaszTZK/q5bCZK7ZCRgXtd8y1HOo/UXehnj4bWUUW9MARcGeXZrpczwPNhs9cvUWOMsGLUpouOhGxgATGDGkqf45JZKk5O/4lWjNsJOiEc5kLn3d03njy4wsBf6CYGGO5JbCOhhL0mZeeH2vyZ8EClzLXBTZML5tLciAomh8YK7RKB4AhTsBIs/Xig6PSLSzTl5/pvGzQiBG6ztnfcauAEh8e67dJn3f0I5kgj88mdBB0YEIZT3toPw0g+9aDOR0ISYfT563oYAt6d6GqYZUwVGg6fp7vqtOl1kKZKZnZguVts3Ivce8n+Z6sOyDYBWFEsFOehoNM9opHGoxhe2izI38djJEICwzwY6hy+CTqGI9assI+jaEu7xNFSzNe+G9atqy0iLQBH44VCKac6rcOWyAvBG0E7S6oA66QjuLd7LlpT3rf3Fd7nZVTEn2kW3QMoubvYMrdXgrO+XwBnemMHPcMtJprzXOpvgp0UxPgd/siSD92/8t6ZwTgsVCSfxPRVtmvZG/I/Pv5X3F3U=
+    secure: Dy0y1nDV/G0bfCS3gJP638jrt/zij+VV/mwQJgKyEFWsXfkW+RLquci6iqphkA7oj2jmXdPAa+CKrtEZPxy3aWixNbw2kbHoG2IPBNJ52/aTk0Mif8yz4W9/BuAawnVz4XzDNzC9yMqXhy3pvSXg7ZhuNjzVnldvDFxz/EOzwJAEI6E+yRo9IjJkz85Ubt3v7KueNbwu9n8WvCllPhiQ/czl7TwVmq+sv/HkkbPCzQZ4RicAnr3ZfVivZE6Lg8kpb5EwaH6U/VHbAADh5OOW7mgicpRY0XN2Sq3k65HMn//uSY+gnEiL3JlBk156XHAC1+4UCfshzcAKOXICnA1stL1hpnoQB80av8VxqUJg7zHi+rOHNP9JmTHaY28E4OjGlaW3rwc+BUfVofSebu3gR9l8i4ERtmTT/fuT0U6Sj/m/lfh9AudcnQpkrlX66ANGG+ljVSQf2FNUOxqzK4JeVhK+P+yTQnM4LAKM7EYQUFJwNtLekHV0uWncYY+AOopvw4Qm7/ImSnL56J/lRd/TbtY9vVAL4seeF6anQNwb7mrLainO62OL32zNeoKXZix8Ncb3R2MX+9toWvvdwR+3cikjK+0dHsqWq7ISrBwecWRd81ji5h6/Nlr/ivupH6v8tJLSG6D4ua7Zz9fLl2Jr76fPIElP/c4/0L8ISi3AkWU=
   app: chan321ch
 script: yarn install && cd server && yarn install && cd .. && yarn test
 services:
