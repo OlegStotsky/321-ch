@@ -3,4 +3,4 @@ node_js:
   - "10.8.0"
 deploy:
 provider: heroku
-script: yarn install && yarn test && cd server && yarn install && yarn test
+script: yarn install && yarn test-client && cd server && yarn install && yarn test
