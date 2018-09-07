@@ -55,7 +55,7 @@ Generate production bundle:
 
 `yarn run build-prod`
 
-Run tests to verify that everything if working smoothly:
+Run tests to verify that everything is working smoothly:
 
 `yarn test`
 
