@@ -116,6 +116,7 @@ export const postNewThread = (
       .catch(e => {
         console.log(e);
         dispatch(postingNewThreadFailure());
+        dispatch(notPostingNewThread());
         dispatch(
           addNewFlashMessage(
             "Failed to post new thread",
