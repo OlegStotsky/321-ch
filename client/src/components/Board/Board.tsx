@@ -31,10 +31,6 @@ export class Board extends React.Component<IBoardProps, {}> {
     super(props);
   }
 
-  public componentWillMount() {
-    this.props.getAllThreads();
-  }
-
   public render() {
     const override = css`
       display: block;
