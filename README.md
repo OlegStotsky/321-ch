@@ -47,8 +47,20 @@ Install server dependencies:
 
 `yarn install`
 
-Run server:
+Go back to root directory:
 
-`yarn run start`
+`cd ..`
+
+Generate production bundle:
+
+`yarn run build-prod`
+
+Run tests to verify that everything if working smoothly:
+
+`yarn test`
+
+Finally, start the project:
+
+`yarn start`
 
 Voila! Both api and content server are running on port 3000. Visit localhost:3000 to view the website.
