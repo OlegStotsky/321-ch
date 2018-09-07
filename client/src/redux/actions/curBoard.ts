@@ -106,6 +106,7 @@ export const postNewThread = (
       .then(opPost => {
         dispatch(postingNewThreadSuccess());
         dispatch(addNewThread(opPost));
+        dispatch(notPostingNewThread());
         dispatch(
           addNewFlashMessage(
             "Successfully added posted new thread",
