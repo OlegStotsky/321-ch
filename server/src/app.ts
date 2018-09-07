@@ -12,7 +12,7 @@ import BoardName from "../../shared/lib/types/BoardName";
 const app = express();
 
 app.use(bodyParser.json());
-app.use(morgan("common"));
+app.use(morgan("dev"));
 
 mongoose.connect(config["mongo-uri"]);
 mongoose.connection.once("connected", () => {
@@ -21,9 +21,11 @@ mongoose.connection.once("connected", () => {
 
 Promise.all(
   Object.keys(BoardName).map(key => {
-    Board.find({ name: BoardName[key as any] }).then(board => {
-      return Board.create({ name: BoardName[key as any] });
-    });
+    Board.find({ name: BoardName[key as any] })
+      .then(board => {
+        return Board.create({ name: BoardName[key as any] });
+      })
+      .catch(e => e);
   })
 );
 

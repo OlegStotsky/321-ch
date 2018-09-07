@@ -5,10 +5,6 @@ import Board from "../models/Board";
 import { IPostDocument } from "../models/Post";
 import Thread from "../models/Thread";
 import { findThreadInBoard, getAllThreads } from "../lib/apiService";
-import {
-  BoardNotFoundError,
-  ThreadNotFoundError
-} from "../lib/apiServiceExceptions";
 import { pickValuesFromPost, pickValuesfromThread } from "../utils/utils";
 
 export default class ApiController {
@@ -32,7 +28,6 @@ export default class ApiController {
             });
         })
         .catch(e => {
-          console.log(e);
           res.status(400).json({
             errors: e.errors
           });
@@ -49,11 +44,11 @@ export default class ApiController {
       );
       res.status(200).send(populatedThreads);
     } catch (e) {
-      if (!(e instanceof BoardNotFoundError)) {
+      if (!e.isOperational) {
         throw e;
       }
       res.status(400).json({
-        errors: e
+        errors: e.description
       });
     }
   };
@@ -67,14 +62,12 @@ export default class ApiController {
         res.status(200).send(pickValuesfromThread(thread));
       });
     } catch (e) {
-      if (
-        !(e instanceof BoardNotFoundError || e instanceof ThreadNotFoundError)
-      ) {
+      if (!e.isOperational) {
         throw e;
       }
       console.log(e);
       res.status(400).json({
-        error: e.message
+        error: e.description
       });
     }
   };
@@ -96,13 +89,12 @@ export default class ApiController {
           });
         });
     } catch (e) {
-      if (
-        !(e instanceof BoardNotFoundError || e instanceof ThreadNotFoundError)
-      ) {
+      if (!e.isOperational) {
         throw e;
       }
+
       res.status(400).json({
-        error: e.message
+        error: e.description
       });
     }
   };
