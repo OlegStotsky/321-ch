@@ -8,3 +8,45 @@
 
 ## Demo
 [Link](https://chan321ch.herokuapp.com/)
+
+## About
+321ch is an imageboard engine built using react and node.js.
+
+## Technologies
+    * Front End:
+        * React
+        * Redux
+        * Typescript
+        * SASS
+        * Webpack
+    * Back End:
+        * Node.js
+        * Express
+        * Typescript
+        * Mongoose, Mongod DB
+    * Testing:
+        * Jest
+        * Sinon
+        * Enzyme
+
+## Requirements
+You should have the latest version of mongodb and node.js installed on your machine. Mongodb is assumed to use the default port, username and password, but you can always change that in server/config/config.ts.
+
+## Setting up and running
+Install client dependencies:
+
+`yarn install`
+
+Move to server folder:
+
+`cd server`
+
+Install server dependencies:
+
+`yarn install`
+
+Run server:
+
+`yarn run start`
+
+Voila! Both api and content server are running on port 3000. Visit localhost:3000 to view the website.
