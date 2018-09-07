@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import { css } from "react-emotion";
 import { ClipLoader } from "react-spinners";
 import BoardList from "./BoardList";
+import Loading from "../Loading";
 
 interface IOwnProps {
   boardCredentials: IBoardCredentials;
@@ -32,10 +33,6 @@ export class Board extends React.Component<IBoardProps, {}> {
   }
 
   public render() {
-    const override = css`
-      display: block;
-      margin: 5px 10px;
-    `;
     return (
       <div>
         <BoardHeader
@@ -43,13 +40,7 @@ export class Board extends React.Component<IBoardProps, {}> {
           credentials={this.props.boardCredentials}
         />
         <MidPanel />
-        <ClipLoader
-          sizeUnit="px"
-          size={35}
-          loading={this.props.threadsLoading}
-          color="rgb(54, 215, 183)"
-          className={override}
-        />
+        <Loading isLoading={this.props.threadsLoading} />
         <div className="board__body">
           {!this.props.threadsLoading &&
             this.props.threads.map(t => (

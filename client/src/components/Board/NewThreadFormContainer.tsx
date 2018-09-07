@@ -2,6 +2,7 @@ import * as React from "react";
 import NewThreadForm from "./NewThreadForm";
 import { connect } from "react-redux";
 import { postNewThread } from "../../redux/actions/curBoard";
+import { IRootState } from "../../redux/reducers/rootReducer";
 
 interface INewThreadFormContainerState {
   authorName: string;
@@ -13,7 +14,11 @@ interface IDispatchProps {
   postNewThread?: (authorName: string, subject: string, content: string) => any;
 }
 
-type INewThreadFormContainerProps = IDispatchProps;
+interface IStateProps {
+  postingNewThread?: boolean;
+}
+
+type INewThreadFormContainerProps = IDispatchProps & IStateProps;
 
 export class NewThreadFormContainer extends React.Component<
   INewThreadFormContainerProps,
@@ -69,10 +74,14 @@ export class NewThreadFormContainer extends React.Component<
         authorName={this.state.authorName}
         threadName={this.state.threadName}
         message={this.state.message}
+        isSubmitting={this.props.postingNewThread}
       />
     );
   }
 }
+const mapStateToProps = (state: IRootState) => ({
+  postingNewThread: state.curBoard.postingNewThread
+});
 
 const mapDispatchToProps = dispatch => ({
   postNewThread: (authorName: string, subject: string, content: string) =>
@@ -80,6 +89,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(
-  null,
+mapStateToProps,
   mapDispatchToProps
 )(NewThreadFormContainer);

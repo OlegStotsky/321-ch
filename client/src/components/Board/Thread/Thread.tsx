@@ -10,6 +10,7 @@ import BoardList from "../BoardList";
 import NewPostFormContainer from "./NewPostFormContainer";
 import { css } from "react-emotion";
 import { ClipLoader } from "react-spinners";
+import Loading from "../../Loading";
 
 interface IThreadProps {
   boardCredentials: IBoardCredentials;
@@ -24,10 +25,6 @@ const Thread: React.SFC<IThreadProps> = ({
   threadData,
   loading
 }) => {
-  const override = css`
-    display: block;
-    margin: 10px auto;
-  `;
   return (
     <React.Fragment>
       <BoardHeader
@@ -37,17 +34,7 @@ const Thread: React.SFC<IThreadProps> = ({
       />
       <MidPanel />
       <div className="thread__body">
-        <div className="spinner">
-          {
-            <ClipLoader
-              sizeUnit="px"
-              size={50}
-              loading={loading}
-              color="rgb(54, 215, 183)"
-              className={override}
-            />
-          }
-        </div>
+        <Loading isLoading={loading} />
         {threadData && <Post {...threadData.opPost} isOpPost={true} />}
         {threadData &&
           threadData.posts.map(post => (

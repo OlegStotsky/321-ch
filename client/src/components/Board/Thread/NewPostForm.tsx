@@ -1,6 +1,7 @@
 import * as React from "react";
 import { ClipLoader } from "react-spinners";
 import { css } from "react-emotion";
+import Loading from "../../Loading";
 
 interface INewPostFormProps {
   onAuthorNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -12,21 +13,9 @@ interface INewPostFormProps {
 }
 
 const NewPostForm: React.SFC<INewPostFormProps> = props => {
-  const override = css`
-    display: block;
-    margin: 5px 10px;
-  `;
   return (
     <form className="form" onSubmit={props.onSubmit}>
-      <div className="spinner">
-        <ClipLoader
-          sizeUnit="px"
-          size={35}
-          loading={props.isSubmitting}
-          color="rgb(54, 215, 183)"
-          className={override}
-        />
-      </div>
+      <Loading isLoading={props.isSubmitting} />
       <div className="form-group">
         <label className="form__label">Name</label>
         <input

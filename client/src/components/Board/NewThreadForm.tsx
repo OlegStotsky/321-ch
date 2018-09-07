@@ -1,4 +1,5 @@
 import * as React from "react";
+import Loading from "../Loading";
 
 interface IThreadFormProps {
   onAuthorNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -8,11 +9,13 @@ interface IThreadFormProps {
   authorName: string;
   threadName: string;
   message: string;
+  isSubmitting: boolean;
 }
 
 const NewThreadForm: React.SFC<IThreadFormProps> = props => {
   return (
     <form className="form" onSubmit={props.onSubmit}>
+      <Loading isLoading={props.isSubmitting} />
       <div className="form-group">
         <label className="form__label">Name</label>
         <input

@@ -8,7 +8,6 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe("NewThreadFormContainer", () => {
   let newThreadFormContainer: any;
-  const store = createStore();
   beforeEach(() => {
     newThreadFormContainer = Enzyme.mount(<NewThreadFormContainer />);
   });
