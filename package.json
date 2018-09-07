@@ -73,6 +73,7 @@
     "build-client": "webpack",
     "dev-server": "webpack-dev-server",
     "test": "jest --runInBand",
+    "test-client": "jest client",
     "lint-client": "tslint -c ./tslint.json './client/**/*.ts*'",
     "lint-server": "tslint -c ./tslint.json './server/**/*.ts*'",
     "start-server": "npm --prefix server run start",
