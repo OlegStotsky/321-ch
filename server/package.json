@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --runInBand",
     "lint": "tslint -c ../tslint.json './**/*.ts*'",
     "build": "tsc",
     "compile": "tsc && node ./dist/server.js",
