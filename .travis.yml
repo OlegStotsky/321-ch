@@ -4,7 +4,7 @@ node_js:
 cache:
   directories:
   - client/node_modules
-  - server/
+  - server/node_modules
 deploy:
   provider: heroku
   api_key:
