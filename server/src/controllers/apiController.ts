@@ -7,6 +7,7 @@ import Thread from "../models/Thread";
 import { findThreadInBoard, getAllThreads } from "../services/apiService";
 import { pickValuesFromPost, pickValuesfromThread } from "../utils/utils";
 import { logger } from "../config/winston";
+import { errorHandler } from "../lib/errorHandler";
 
 export default class ApiController {
   public createNewThread = (req: Request, res: Response) => {
@@ -20,7 +21,7 @@ export default class ApiController {
 
       board
         .addThread({ opPostAuthor, opPostContent, opPostSubject })
-        .then(thread => {
+        .then((thread: IThread) => {
           thread
             .populate("opPost")
             .execPopulate()
@@ -29,10 +30,8 @@ export default class ApiController {
             });
         })
         .catch(e => {
-          logger.warn(e);
-          res.status(400).json({
-            errors: e
-          });
+          errorHandler(e);
+          res.status(500).send();
         });
     });
   };
@@ -46,10 +45,7 @@ export default class ApiController {
       );
       res.status(200).send(populatedThreads);
     } catch (e) {
-      if (!e.isOperational) {
-        throw e;
-      }
-      logger.warn(e);
+      errorHandler(e);
       res.status(400).json({
         errors: e.description
       });
@@ -65,10 +61,7 @@ export default class ApiController {
         res.status(200).send(pickValuesfromThread(populatedThread));
       });
     } catch (e) {
-      if (!e.isOperational) {
-        throw e;
-      }
-      logger.info(e);
+      errorHandler(e);
       res.status(400).json({
         error: e.description
       });
@@ -86,16 +79,13 @@ export default class ApiController {
           res.status(201).json(pickValuesFromPost(newPost));
         })
         .catch(e => {
-          logger.info(e);
+          errorHandler(e);
           res.status(400).json({
             errors: ["Something went wrong"]
           });
         });
     } catch (e) {
-      if (!e.isOperational) {
-        throw e;
-      }
-      logger.info(e);
+      errorHandler(e);
 
       res.status(400).json({
         error: e.description

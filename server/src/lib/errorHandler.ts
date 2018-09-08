@@ -6,6 +6,5 @@ export const errorHandler = (error: AppError) => {
         logger.warn(error.message);
     } else {
         logger.error(error.message);
-        throw error;
     }
 };
