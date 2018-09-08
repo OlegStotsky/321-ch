@@ -2,7 +2,7 @@ import * as sinon from "sinon";
 import { findThreadInBoard } from "../apiService";
 import Thread from "../../models/Thread";
 import Board from "../../models/Board";
-import { AppError } from "../appError";
+import { AppError } from "../../lib/appError";
 
 describe("api service", () => {
   const boardFixtures = [

@@ -4,7 +4,7 @@ import { IThreadDocument, IThread } from "../models/Thread";
 import Board from "../models/Board";
 import { IPostDocument } from "../models/Post";
 import Thread from "../models/Thread";
-import { findThreadInBoard, getAllThreads } from "../lib/apiService";
+import { findThreadInBoard, getAllThreads } from "../services/apiService";
 import { pickValuesFromPost, pickValuesfromThread } from "../utils/utils";
 import { logger } from "../config/winston";
 
@@ -61,8 +61,8 @@ export default class ApiController {
     const threadNumber: number = parseInt(req.params.threadNumber, 10);
     try {
       const thread = await findThreadInBoard(boardName, threadNumber);
-      thread.populateThread().then(populatedThread => {
-        res.status(200).send(pickValuesfromThread(thread));
+      thread.populateThread().then((populatedThread: IThread) => {
+        res.status(200).send(pickValuesfromThread(populatedThread));
       });
     } catch (e) {
       if (!e.isOperational) {
