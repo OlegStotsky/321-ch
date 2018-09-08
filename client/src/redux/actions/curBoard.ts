@@ -109,7 +109,7 @@ export const postNewThread = (
         dispatch(notPostingNewThread());
         dispatch(
           addNewFlashMessage(
-            "Successfully added posted new thread",
+            "Successfully posted new thread",
             FlashMessageKind.Success
           )
         );
