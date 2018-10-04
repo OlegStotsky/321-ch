@@ -1,6 +1,7 @@
 const path = require("path");
+const { TsConfigPathsPlugin } = require("awesome-typescript-loader");
 
-module.exports = (env) => {
+module.exports = env => {
   const isProduction = env === "production";
   return {
     mode: isProduction ? env : "development",
@@ -11,6 +12,7 @@ module.exports = (env) => {
       publicPath: "/"
     },
     resolve: {
+      plugins: [new TsConfigPathsPlugin()],
       extensions: [".js", ".json", ".ts", ".tsx"]
     },
     module: {

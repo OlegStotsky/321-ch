@@ -22,3 +22,10 @@
 @import "./layout/app";
 @import "./layout/bg-particles";
 @import "./layout/home-page";
+
+.dropzone {
+  height: 3rem;
+  flex-grow: 1;
+  border: 1 px solid white;
+  background-color: gray;
+}

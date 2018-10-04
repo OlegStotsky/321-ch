@@ -31,6 +31,10 @@
   display: flex;
 
   &:not(:last-child) {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
+  }
+
+  &:nth-last-child(2) {
+    margin-bottom: 1rem;
   }
 }

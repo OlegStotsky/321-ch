@@ -6,6 +6,7 @@ import Loading from "../../Loading";
 interface INewPostFormProps {
   onAuthorNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onContentChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent) => void;
   authorName: string;
   content: string;
@@ -34,6 +35,15 @@ const NewPostForm: React.SFC<INewPostFormProps> = props => {
           name="content"
           rows={20}
           onChange={props.onContentChange}
+        />
+      </div>
+      <div className="form-group">
+        <label className="form__label">File</label>
+        <input
+          type="file"
+          className="form__input"
+          name="file"
+          onChange={props.onFileChange}
         />
       </div>
       <div className="form-group u-center-text">
