@@ -12,7 +12,7 @@ import { LoggerStream, logger } from "./config/winston";
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "5mb" }));
 app.use(morgan("combined", { stream: new LoggerStream() }));
 
 mongoose.connect(config["mongo-uri"]);

@@ -24,6 +24,7 @@
     "@types/mongoose": "^5.0.16",
     "@types/morgan": "^1.7.35",
     "app-root-path": "^2.1.0",
+    "encoding": "^0.1.12",
     "express": "^4.16.3",
     "jest": "^23.5.0",
     "mongoose": "^5.1.5",

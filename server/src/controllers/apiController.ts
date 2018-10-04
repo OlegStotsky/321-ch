@@ -1,5 +1,7 @@
 import { Router, Request, Response } from "express";
 import * as express from "express";
+import * as path from "path";
+import config from "../config/config";
 import { IThreadDocument, IThread } from "../models/Thread";
 import Board from "../models/Board";
 import { IPostDocument } from "../models/Post";
@@ -8,6 +10,7 @@ import { findThreadInBoard, getAllThreads } from "../services/apiService";
 import { pickValuesFromPost, pickValuesfromThread } from "../utils/utils";
 import { logger } from "../config/winston";
 import { errorHandler } from "../lib/errorHandler";
+import { saveBase64ToDisk } from "../utils/utils";
 
 export default class ApiController {
   public createNewThread = (req: Request, res: Response) => {
@@ -71,6 +74,8 @@ export default class ApiController {
   public createNewPost = async (req: Request, res: Response) => {
     const boardName: string = req.params.boardName;
     const threadNumber: number = parseInt(req.params.threadNumber, 10);
+    const { fileName, data } = req.body.file;
+    await saveBase64ToDisk(config.STATIC_FOLDER, fileName, data);
     try {
       const thread: IThread = await findThreadInBoard(boardName, threadNumber);
       thread
