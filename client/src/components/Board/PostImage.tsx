@@ -30,7 +30,7 @@ export default class PostImage extends React.Component<IProps, IState> {
       : "post__image--preview";
     return (
       <div className={"post__image " + secondClass} onClick={this.handleClick}>
-        <img src={url} />
+        <img src={`data:image/png;base64,${url}`} />
       </div>
     );
   }

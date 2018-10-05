@@ -10,6 +10,8 @@ interface IPostProps {
   content: string;
   subject?: string;
   isOpPost: boolean;
+  imageName?: string;
+  image?: string;
 }
 
 const Post: React.SFC<IPostProps> = ({
@@ -18,7 +20,9 @@ const Post: React.SFC<IPostProps> = ({
   authorName,
   content,
   subject,
-  isOpPost
+  isOpPost,
+  imageName,
+  image
 }) => {
   return (
     <div className={`post ${isOpPost ? "post--opPost" : ""}`}>
@@ -35,7 +39,7 @@ const Post: React.SFC<IPostProps> = ({
           <span className="post__author">{authorName}</span>
         </div>
         <div className="post__body">
-          <PostImage url="https://i.pinimg.com/736x/d4/e8/d3/d4e8d3daab9456b8cdd5d08429c73aa9.jpg" />
+          <PostImage url={image} />
           <div className="post__text">{content}</div>
         </div>
       </div>

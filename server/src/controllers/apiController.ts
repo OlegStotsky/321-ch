@@ -10,7 +10,8 @@ import { findThreadInBoard, getAllThreads } from "../services/apiService";
 import { pickValuesFromPost, pickValuesfromThread } from "../utils/utils";
 import { logger } from "../config/winston";
 import { errorHandler } from "../lib/errorHandler";
-import { saveBase64ToDisk } from "../utils/utils";
+import * as FileService from "../services/fileService";
+import { readFile } from "mz/fs";
 
 export default class ApiController {
   public createNewThread = (req: Request, res: Response) => {
@@ -60,9 +61,12 @@ export default class ApiController {
     const threadNumber: number = parseInt(req.params.threadNumber, 10);
     try {
       const thread = await findThreadInBoard(boardName, threadNumber);
-      thread.populateThread().then((populatedThread: IThread) => {
-        res.status(200).send(pickValuesfromThread(populatedThread));
-      });
+      thread
+        .populateThread()
+        .then(t => t.loadImages())
+        .then((populatedThread: IThread) => {
+          res.status(200).send(pickValuesfromThread(populatedThread));
+        });
     } catch (e) {
       errorHandler(e);
       res.status(400).json({
@@ -74,12 +78,13 @@ export default class ApiController {
   public createNewPost = async (req: Request, res: Response) => {
     const boardName: string = req.params.boardName;
     const threadNumber: number = parseInt(req.params.threadNumber, 10);
+    const { authorName, content } = req.body;
     const { fileName, data } = req.body.file;
-    await saveBase64ToDisk(config.STATIC_FOLDER, fileName, data);
+    await FileService.savePostImageToDisk(fileName, data);
     try {
       const thread: IThread = await findThreadInBoard(boardName, threadNumber);
       thread
-        .addPost(req.body)
+        .addPost({ authorName, content, imageName: fileName })
         .then(newPost => {
           res.status(201).json(pickValuesFromPost(newPost));
         })

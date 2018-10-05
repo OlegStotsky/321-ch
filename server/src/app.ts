@@ -36,7 +36,6 @@ const distPath = path.join(__dirname, "..", "..", "client", "dist");
 app.use(express.static(distPath));
 
 app.use((req: any, res: any, next: any) => {
-  logger.info(req.body);
   next();
 });
 app.use("/api", apiRouter);

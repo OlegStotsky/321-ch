@@ -1,5 +1,7 @@
 import { Schema, model, Document, Model } from "mongoose";
 import * as moment from "moment";
+import * as FileService from "../services/fileService";
+import { logger } from "../config/winston";
 
 export const ThreadSchema = new Schema({
   opPost: {
@@ -22,9 +24,22 @@ ThreadSchema.methods.populateThread = async function(): Promise<IThread> {
     .execPopulate();
 };
 
+ThreadSchema.methods.loadImages = async function(): Promise<IThread> {
+  const thread = this;
+  for (const post of thread.posts) {
+    if (!post.imageName) {
+      continue;
+    }
+
+    post.image = await FileService.loadPostImageFromDisk(post.imageName);
+  }
+  return this;
+};
+
 interface IAddPostParams {
   authorName: string;
   content: string;
+  imageName: string;
 }
 
 ThreadSchema.methods.addPost = async function(
@@ -35,7 +50,8 @@ ThreadSchema.methods.addPost = async function(
     date: moment.now(),
     authorName: params.authorName,
     content: params.content,
-    thread: this._id
+    thread: this._id,
+    imageName: params.imageName
   });
   await post.save();
   thread.posts.push(post._id);
@@ -56,7 +72,8 @@ ThreadSchema.methods.addOpPost = async function(
     authorName: params.authorName,
     content: params.content,
     subject: params.subject,
-    thread: thread._id
+    thread: thread._id,
+    imageName: params.imageName
   });
   await opPost.save();
   thread.opPost = opPost._id;
@@ -76,6 +93,7 @@ export interface IThread extends IThreadDocument {
   addPost: (params: IAddPostParams) => Promise<IPost>;
   addOpPost: (params: IAddOpPostParams) => Promise<IPost>;
   populateThread: () => Promise<IThread>;
+  loadImages: () => Promise<IThread>;
 }
 
 export interface IThreadModel extends Model<IThread> {}
