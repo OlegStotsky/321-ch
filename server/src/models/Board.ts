@@ -20,6 +20,7 @@ interface IAddThreadParams {
   opPostAuthor: string;
   opPostSubject: string;
   opPostContent: string;
+  opPostImageName: string;
 }
 
 BoardSchema.methods.addThread = async function(
@@ -37,7 +38,8 @@ BoardSchema.methods.addThread = async function(
   await thread.addOpPost({
     authorName: params.opPostAuthor,
     subject: params.opPostSubject,
-    content: params.opPostContent
+    content: params.opPostContent,
+    imageName: params.opPostImageName
   });
   return thread;
 };

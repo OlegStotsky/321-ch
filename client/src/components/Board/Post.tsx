@@ -39,7 +39,7 @@ const Post: React.SFC<IPostProps> = ({
           <span className="post__author">{authorName}</span>
         </div>
         <div className="post__body">
-          <PostImage url={image} />
+          {image && <PostImage url={image} />}
           <div className="post__text">{content}</div>
         </div>
       </div>

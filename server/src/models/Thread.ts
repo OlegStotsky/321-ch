@@ -56,6 +56,7 @@ ThreadSchema.methods.addPost = async function(
   await post.save();
   thread.posts.push(post._id);
   await thread.save();
+  post.image = await FileService.loadPostImageFromDisk(post.imageName);
   return post;
 };
 
@@ -79,6 +80,7 @@ ThreadSchema.methods.addOpPost = async function(
   thread.opPost = opPost._id;
   thread.opPostNumber = opPost.postNumber;
   await thread.save();
+  opPost.image = await FileService.loadPostImageFromDisk(opPost.imageName);
   return thread;
 };
 

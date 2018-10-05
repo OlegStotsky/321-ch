@@ -25,7 +25,8 @@ export const PostSchema = new Schema({
     type: Number
   },
   imageName: {
-    type: String
+    type: String,
+    required: true
   },
   image: {
     type: String

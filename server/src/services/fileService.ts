@@ -24,4 +24,4 @@ const loadPostImageFromDisk = (fileName: string): Promise<string> => {
   return readFile(staticFolderPath(fileName), "base64");
 };
 
-export { savePostImageToDisk, loadPostImageFromDisk };
+export { savePostImageToDisk, loadPostImageFromDisk, staticFolderPath };
