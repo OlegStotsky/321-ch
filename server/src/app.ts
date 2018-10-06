@@ -12,7 +12,7 @@ import { LoggerStream, logger } from "./config/winston";
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "5mb" }));
 app.use(morgan("combined", { stream: new LoggerStream() }));
 
 mongoose.connect(config["mongo-uri"]);
@@ -33,13 +33,15 @@ Promise.all(
 );
 
 const distPath = path.join(__dirname, "..", "..", "client", "dist");
+const staticPath = path.join(__dirname, "..", "static");
 app.use(express.static(distPath));
 
-app.use((req: any, res: any, next: any) => {
-  logger.info(req.body);
-  next();
-});
 app.use("/api", apiRouter);
+
+app.get("/images/:image_name", (req, res) => {
+  logger.debug(path.join(staticPath, req.params.image_name));
+  res.sendFile(path.join(staticPath, req.params.image_name));
+});
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(distPath, "index.html"));

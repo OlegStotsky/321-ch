@@ -1,5 +1,6 @@
 import ApiAdapter from "../../lib/ApiAdapter";
 import { IThread } from "../../lib/Thread";
+import { IFile } from "../../../../shared/lib/types/File";
 import { IBoardCredentials } from "../../../../shared/lib/types/BoardCredentials";
 import { IPost } from "../../lib/Post";
 import { apiFetchRequested, apiFetchSucceded, apiFetchFailed } from "./api";
@@ -69,7 +70,6 @@ export const loadCurrentThreadData = () => {
         dispatch(setCurrentThreadData(threadData));
       })
       .catch(e => {
-        console.log(e);
         dispatch(currentThreadNotLoading());
         dispatch(curThreadLoadFailure());
         dispatch(apiFetchFailed());
@@ -77,7 +77,11 @@ export const loadCurrentThreadData = () => {
   };
 };
 
-export const sendNewPost = (authorName: string, content: string) => {
+export const sendNewPost = (
+  authorName: string,
+  content: string,
+  file: IFile
+) => {
   return (dispatch, getCurState: () => IRootState) => {
     dispatch(apiFetchRequested());
     dispatch(addingNewPost());
@@ -87,7 +91,8 @@ export const sendNewPost = (authorName: string, content: string) => {
       boardCredentials,
       threadNumber,
       authorName,
-      content
+      content,
+      file
     )
       .then(post => {
         dispatch(addNewPost(post));

@@ -20,14 +20,12 @@ interface IAddThreadParams {
   opPostAuthor: string;
   opPostSubject: string;
   opPostContent: string;
+  opPostImageUri: string;
 }
 
 BoardSchema.methods.addThread = async function(
   params: IAddThreadParams
 ): Promise<IThread> {
-  if (!params.opPostAuthor || !params.opPostSubject || !params.opPostContent) {
-    throw new Error("All fields must be present");
-  }
   const board = this;
   const threadData = {
     boardId: board._id
@@ -37,7 +35,8 @@ BoardSchema.methods.addThread = async function(
   await thread.addOpPost({
     authorName: params.opPostAuthor,
     subject: params.opPostSubject,
-    content: params.opPostContent
+    content: params.opPostContent,
+    imageUri: params.opPostImageUri
   });
   return thread;
 };

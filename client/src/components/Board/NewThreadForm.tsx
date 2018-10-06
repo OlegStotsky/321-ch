@@ -1,10 +1,13 @@
 import * as React from "react";
 import Loading from "../Loading";
+import FileUpload from "../FileUpload";
+import { IFile } from "../../../../shared/lib/types/File";
 
 interface IThreadFormProps {
   onAuthorNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onThreadNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onMessageChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onLoadSuccess: (file: IFile) => any;
   onSubmit: (e: React.FormEvent) => void;
   authorName: string;
   threadName: string;
@@ -46,6 +49,7 @@ const NewThreadForm: React.SFC<IThreadFormProps> = props => {
           onChange={props.onMessageChange}
         />
       </div>
+      <FileUpload onLoadSuccess={props.onLoadSuccess} />
       <div className="form-group u-center-text">
         <button className="form__submit">Submit</button>
       </div>

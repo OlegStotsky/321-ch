@@ -1,5 +1,7 @@
 import { Router, Request, Response } from "express";
 import * as express from "express";
+import * as path from "path";
+import config from "../config/config";
 import { IThreadDocument, IThread } from "../models/Thread";
 import Board from "../models/Board";
 import { IPostDocument } from "../models/Post";
@@ -8,19 +10,31 @@ import { findThreadInBoard, getAllThreads } from "../services/apiService";
 import { pickValuesFromPost, pickValuesfromThread } from "../utils/utils";
 import { logger } from "../config/winston";
 import { errorHandler } from "../lib/errorHandler";
+import * as FileService from "../services/fileService";
+import { readFile } from "mz/fs";
 
 export default class ApiController {
   public createNewThread = (req: Request, res: Response) => {
     const { opPostAuthor, opPostSubject, opPostContent } = req.body;
-    Board.findOne({ name: req.params.board_name }).then(board => {
+    const { name: fileName, data } = req.body.opPostFile;
+    Board.findOne({ name: req.params.board_name }).then(async board => {
       if (!board) {
         res.status(400).json({
           errors: "Board doesn't exist"
         });
       }
 
+      const imageUri: string = await FileService.savePostImageToDisk(
+        fileName,
+        data
+      );
       board
-        .addThread({ opPostAuthor, opPostContent, opPostSubject })
+        .addThread({
+          opPostAuthor,
+          opPostContent,
+          opPostSubject,
+          opPostImageUri: imageUri
+        })
         .then((thread: IThread) => {
           thread
             .populate("opPost")
@@ -71,10 +85,16 @@ export default class ApiController {
   public createNewPost = async (req: Request, res: Response) => {
     const boardName: string = req.params.boardName;
     const threadNumber: number = parseInt(req.params.threadNumber, 10);
+    const { authorName, content } = req.body;
+    const { name: fileName, data } = req.body.file;
+    const imageUri: string = await FileService.savePostImageToDisk(
+      fileName,
+      data
+    );
     try {
       const thread: IThread = await findThreadInBoard(boardName, threadNumber);
       thread
-        .addPost(req.body)
+        .addPost({ authorName, content, imageUri })
         .then(newPost => {
           res.status(201).json(pickValuesFromPost(newPost));
         })

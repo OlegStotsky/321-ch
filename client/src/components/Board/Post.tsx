@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as moment from "moment";
 import PostId from "../../../../shared/lib/types/PostId";
+import PostImage from "./PostImage";
 
 interface IPostProps {
   date: number;
@@ -9,6 +10,7 @@ interface IPostProps {
   content: string;
   subject?: string;
   isOpPost: boolean;
+  imageUri?: string;
 }
 
 const Post: React.SFC<IPostProps> = ({
@@ -17,7 +19,8 @@ const Post: React.SFC<IPostProps> = ({
   authorName,
   content,
   subject,
-  isOpPost
+  isOpPost,
+  imageUri
 }) => {
   return (
     <div className={`post ${isOpPost ? "post--opPost" : ""}`}>
@@ -33,7 +36,10 @@ const Post: React.SFC<IPostProps> = ({
           <span className="post__number">{`No. ${postNumber}`}</span>
           <span className="post__author">{authorName}</span>
         </div>
-        <div className="post__body">{content}</div>
+        <div className="post__body">
+          {imageUri && <PostImage url={imageUri} />}
+          <div className="post__text">{content}</div>
+        </div>
       </div>
     </div>
   );

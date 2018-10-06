@@ -24,6 +24,10 @@ export const PostSchema = new Schema({
   postNumber: {
     type: Number
   },
+  imageUri: {
+    type: String,
+    required: true
+  },
   thread: { type: Schema.Types.ObjectId, required: true }
 });
 
@@ -43,6 +47,7 @@ export interface IPostDocument extends Document {
   content: string;
   subject?: string;
   postNumber: number;
+  imageUri: string;
 }
 
 export interface IPost extends IPostDocument {}

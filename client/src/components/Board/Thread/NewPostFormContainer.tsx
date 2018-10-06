@@ -1,6 +1,7 @@
 import * as React from "react";
 import NewPostForm from "./NewPostForm";
 import ApiAdapter from "../../../lib/ApiAdapter";
+import { IFile } from "../../../../../shared/lib/types/File";
 import { connect } from "react-redux";
 import { IBoardCredentials } from "../../../../../shared/lib/types/BoardCredentials";
 import { IRootState } from "../../../redux/reducers/rootReducer";
@@ -10,6 +11,7 @@ import { sendNewPost } from "../../../redux/actions/curThread";
 interface INewPostFormContainerState {
   authorName: string;
   content: string;
+  file: IFile;
 }
 
 interface IStateProps {
@@ -18,7 +20,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
-  addNewPost: (authorName: string, content: string) => any;
+  addNewPost: (authorName: string, content: string, file: IFile) => any;
 }
 
 type NewPostFormProps = IStateProps & IDispatchProps;
@@ -26,7 +28,12 @@ type NewPostFormProps = IStateProps & IDispatchProps;
 class NewPostFormContainer extends React.Component<NewPostFormProps, any> {
   public state: INewPostFormContainerState = {
     authorName: "Anonymous",
-    content: ""
+    content: "",
+    file: {
+      name: undefined,
+      data: undefined,
+      type: undefined
+    }
   };
 
   private lengthConstrains = {
@@ -38,7 +45,7 @@ class NewPostFormContainer extends React.Component<NewPostFormProps, any> {
     super(props);
   }
 
-  public onChange = (e: any) => {
+  public onTextChange = (e: any) => {
     const { name, value } = e.currentTarget;
     if (value.length < this.lengthConstrains[name]) {
       this.setState(() => ({
@@ -47,13 +54,18 @@ class NewPostFormContainer extends React.Component<NewPostFormProps, any> {
     }
   };
 
+  public onFileLoadSuccess = (file: IFile) => {
+    this.setState(() => ({ file }));
+  };
+
   public onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     this.props
-      .addNewPost(this.state.authorName, this.state.content)
+      .addNewPost(this.state.authorName, this.state.content, this.state.file)
       .then(() => {
         this.setState(() => ({
-          content: ""
+          content: "",
+          file: {}
         }));
       });
   };
@@ -61,8 +73,9 @@ class NewPostFormContainer extends React.Component<NewPostFormProps, any> {
   public render() {
     return (
       <NewPostForm
-        onAuthorNameChange={this.onChange}
-        onContentChange={this.onChange}
+        onAuthorNameChange={this.onTextChange}
+        onContentChange={this.onTextChange}
+        onFileLoadSuccess={this.onFileLoadSuccess}
         onSubmit={this.onSubmit}
         authorName={this.state.authorName}
         content={this.state.content}
@@ -78,8 +91,8 @@ const mapStateToProps = (state: IRootState): IStateProps => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addNewPost: (authorName: string, content: string) =>
-    dispatch(sendNewPost(authorName, content))
+  addNewPost: (authorName: string, content: string, file: IFile) =>
+    dispatch(sendNewPost(authorName, content, file))
 });
 
 export default connect(
