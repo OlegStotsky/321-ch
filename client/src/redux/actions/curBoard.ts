@@ -6,6 +6,7 @@ import { IRootState } from "../reducers/rootReducer";
 import { ICurThreadLoadSuccessAction } from "./curThread";
 import { ICurBoardState } from "../reducers/curBoard";
 import { IThread } from "../../lib/Thread";
+import { IFile } from "../../../../shared/lib/types/File";
 
 export enum CurBoardActionTypeKeys {
   CHANGE_CUR_BOARD = "CHANGE_CUR_BOARD",
@@ -93,7 +94,8 @@ export const setThreads = (threads: IThread[]): ISetThreadsAction => ({
 export const postNewThread = (
   authorName: string,
   subject: string,
-  content: string
+  content: string,
+  file: IFile
 ) => {
   return (dispatch, getCurState: () => IRootState) => {
     dispatch(postingNewThread());
@@ -101,7 +103,8 @@ export const postNewThread = (
       getCurState().curBoard.curBoard,
       authorName,
       subject,
-      content
+      content,
+      file
     )
       .then(opPost => {
         dispatch(postingNewThreadSuccess());
@@ -115,7 +118,6 @@ export const postNewThread = (
         );
       })
       .catch(e => {
-        console.log(e);
         dispatch(postingNewThreadFailure());
         dispatch(notPostingNewThread());
         dispatch(
@@ -123,7 +125,7 @@ export const postNewThread = (
             "Failed to post new thread",
             FlashMessageKind.Danger
           )
-        ); //TODO: use response from server
+        );
       });
   };
 };
@@ -138,7 +140,6 @@ export const getAllThreads = () => {
         dispatch(notLoadingThreads());
       })
       .catch(e => {
-        console.log(e);
         dispatch(
           addNewFlashMessage(
             "Something went wrong while loading threads",

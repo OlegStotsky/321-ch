@@ -39,7 +39,7 @@ ThreadSchema.methods.loadImages = async function(): Promise<IThread> {
 interface IAddPostParams {
   authorName: string;
   content: string;
-  imageName: string;
+  imageUri: string;
 }
 
 ThreadSchema.methods.addPost = async function(
@@ -51,12 +51,11 @@ ThreadSchema.methods.addPost = async function(
     authorName: params.authorName,
     content: params.content,
     thread: this._id,
-    imageName: params.imageName
+    imageUri: params.imageUri
   });
   await post.save();
   thread.posts.push(post._id);
   await thread.save();
-  post.image = await FileService.loadPostImageFromDisk(post.imageName);
   return post;
 };
 
@@ -74,13 +73,12 @@ ThreadSchema.methods.addOpPost = async function(
     content: params.content,
     subject: params.subject,
     thread: thread._id,
-    imageName: params.imageName
+    imageUri: params.imageUri
   });
   await opPost.save();
   thread.opPost = opPost._id;
   thread.opPostNumber = opPost.postNumber;
   await thread.save();
-  opPost.image = await FileService.loadPostImageFromDisk(opPost.imageName);
   return thread;
 };
 
@@ -95,7 +93,6 @@ export interface IThread extends IThreadDocument {
   addPost: (params: IAddPostParams) => Promise<IPost>;
   addOpPost: (params: IAddOpPostParams) => Promise<IPost>;
   populateThread: () => Promise<IThread>;
-  loadImages: () => Promise<IThread>;
 }
 
 export interface IThreadModel extends Model<IThread> {}

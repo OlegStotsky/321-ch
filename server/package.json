@@ -11,7 +11,7 @@
     "lint": "tslint -c ../tslint.json './**/*.ts*'",
     "build": "tsc",
     "compile": "tsc && node ./dist/server.js",
-    "watch": "nodemon -e ts --exec \"npm run compile\"",
+    "watch": "nodemon -e ts --exec \"npm run start\"",
     "start": "ts-node ./src/server.ts",
     "start-db": "mongo",
     "install-dep": "yarn install"

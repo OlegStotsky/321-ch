@@ -5,15 +5,7 @@ import * as path from "path";
 
 export const pickValuesFromPost = (post: IPostDocument) => {
   return R.pick(
-    [
-      "date",
-      "authorName",
-      "content",
-      "subject",
-      "postNumber",
-      "image",
-      "imageName"
-    ],
+    ["date", "authorName", "content", "subject", "postNumber", "imageUri"],
     post
   );
 };

@@ -5,6 +5,7 @@ interface IThreadFormProps {
   onAuthorNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onThreadNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onMessageChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent) => void;
   authorName: string;
   threadName: string;
@@ -44,6 +45,15 @@ const NewThreadForm: React.SFC<IThreadFormProps> = props => {
           name="message"
           rows={20}
           onChange={props.onMessageChange}
+        />
+      </div>
+      <div className="form-group">
+        <label className="form__label">File</label>
+        <input
+          type="file"
+          className="form__input"
+          name="file"
+          onChange={props.onFileChange}
         />
       </div>
       <div className="form-group u-center-text">

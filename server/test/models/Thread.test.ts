@@ -26,7 +26,7 @@ describe("Thread", async () => {
       authorName: "abcd",
       content: "afasfasf",
       subject: "some subject",
-      imageName: "123.jpg"
+      imageUri: "123.jpg"
     };
 
     const thread = new Thread(threadData);
@@ -44,18 +44,18 @@ describe("Thread", async () => {
     const post1 = {
       authorName: "agfasf",
       content: "123",
-      imageName: "123.jpg"
+      imageUri: "123.jpg"
     };
     const post2 = {
       authorName: "agfasf",
       content: "123",
-      imageName: "123.jpg"
+      imageUri: "123.jpg"
     };
     const opPost = {
       authorName: "op",
       content: "hello there",
       subject: "hey guys",
-      imageName: "123.jpg"
+      imageUri: "123.jpg"
     };
     const thread = new Thread(threadData);
     await thread.save();
@@ -77,7 +77,7 @@ describe("Thread", async () => {
       authorName: '"abcd',
       content: "asfasf",
       subject: "lolz",
-      imageName: "123.jpg"
+      imageUri: "123.jpg"
     };
     const thread = new Thread(threadData);
     await thread.save();
@@ -85,7 +85,7 @@ describe("Thread", async () => {
     await thread.addPost({
       authorName: "abcd",
       content: "asfasasdf",
-      imageName: "123.jpg"
+      imageUri: "123.jpg"
     });
     await thread.populateThread();
     expect(thread.posts[0].date / 10e6).toBeCloseTo(moment.now() / 10e6, 2);

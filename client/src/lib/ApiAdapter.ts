@@ -47,13 +47,16 @@ export default class ApiAdapter {
     boardCredentials: IBoardCredentials,
     authorName: string,
     subject: string,
-    content: string
+    content: string,
+    file: IFile
   ) {
     const opPost = {
       opPostAuthor: authorName,
       opPostSubject: subject,
-      opPostContent: content
+      opPostContent: content,
+      opPostFile: file
     };
+    console.log(opPost);
     return axios
       .post(`/api/${boardCredentials.shortName}`, opPost)
       .then(response => response.data)

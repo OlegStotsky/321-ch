@@ -16,15 +16,25 @@ import { readFile } from "mz/fs";
 export default class ApiController {
   public createNewThread = (req: Request, res: Response) => {
     const { opPostAuthor, opPostSubject, opPostContent } = req.body;
-    Board.findOne({ name: req.params.board_name }).then(board => {
+    const { fileName, data } = req.body.opPostFile;
+    Board.findOne({ name: req.params.board_name }).then(async board => {
       if (!board) {
         res.status(400).json({
           errors: "Board doesn't exist"
         });
       }
 
+      const imageUri: string = await FileService.savePostImageToDisk(
+        fileName,
+        data
+      );
       board
-        .addThread({ opPostAuthor, opPostContent, opPostSubject })
+        .addThread({
+          opPostAuthor,
+          opPostContent,
+          opPostSubject,
+          opPostImageUri: imageUri
+        })
         .then((thread: IThread) => {
           thread
             .populate("opPost")
@@ -61,12 +71,9 @@ export default class ApiController {
     const threadNumber: number = parseInt(req.params.threadNumber, 10);
     try {
       const thread = await findThreadInBoard(boardName, threadNumber);
-      thread
-        .populateThread()
-        .then(t => t.loadImages())
-        .then((populatedThread: IThread) => {
-          res.status(200).send(pickValuesfromThread(populatedThread));
-        });
+      thread.populateThread().then((populatedThread: IThread) => {
+        res.status(200).send(pickValuesfromThread(populatedThread));
+      });
     } catch (e) {
       errorHandler(e);
       res.status(400).json({
@@ -79,12 +86,15 @@ export default class ApiController {
     const boardName: string = req.params.boardName;
     const threadNumber: number = parseInt(req.params.threadNumber, 10);
     const { authorName, content } = req.body;
-    const { fileName, data } = req.body.file;
-    await FileService.savePostImageToDisk(fileName, data);
+    const { fileName: fileName, data } = req.body.file;
+    const imageUri: string = await FileService.savePostImageToDisk(
+      fileName,
+      data
+    );
     try {
       const thread: IThread = await findThreadInBoard(boardName, threadNumber);
       thread
-        .addPost({ authorName, content, imageName: fileName })
+        .addPost({ authorName, content, imageUri })
         .then(newPost => {
           res.status(201).json(pickValuesFromPost(newPost));
         })

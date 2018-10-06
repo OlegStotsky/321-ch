@@ -7,7 +7,7 @@ import Thread, { IThread } from "../../src/models/Thread";
 import config from "../../src/config/config";
 
 describe("Board", () => {
-  const testImageName = "123.jpg";
+  const testimageUri = "123.jpg";
   beforeAll(async () => {
     await mongoose.connect(config["mongo-test-uri"]);
     await writeFile(staticFolderPath("123.jpg"), "");
@@ -32,7 +32,7 @@ describe("Board", () => {
       opPostAuthor: "Oleg",
       opPostSubject: "Serious Business",
       opPostContent: "Hello there!",
-      opPostImageName: testImageName
+      opPostImageUri: testimageUri
     };
     const thread = await board.addThread(opPost);
     await thread.populateThread();
@@ -51,19 +51,19 @@ describe("Board", () => {
       opPostAuthor: "Oleg",
       opPostSubject: "Serious Business",
       opPostContent: "Hello there!",
-      opPostImageName: testImageName
+      opPostImageUri: testimageUri
     });
     const threads = await Thread.find({ boardId: board._id });
     expect(threads.length).toEqual(1);
     await thread.addPost({
       authorName: "Vasya",
       content: "How are you?",
-      imageName: testImageName
+      imageUri: testimageUri
     });
     await thread.addPost({
       authorName: "Kolya",
       content: "Fine, how are you?",
-      imageName: testImageName
+      imageUri: testimageUri
     });
     await thread.populateThread();
     expect(thread.opPost.postNumber).toEqual(1);
@@ -81,7 +81,7 @@ describe("Board", () => {
       opPostAuthor: "Oleg",
       opPostSubject: "Serious Business",
       opPostContent: "Hello there!",
-      opPostImageName: testImageName
+      opPostImageUri: testimageUri
     });
     await thread1.populateThread();
     expect(thread1.opPost.postNumber).toEqual(1);
@@ -89,19 +89,19 @@ describe("Board", () => {
       opPostAuthor: "Oleg",
       opPostSubject: "Serious Business",
       opPostContent: "Hello there!",
-      opPostImageName: testImageName
+      opPostImageUri: testimageUri
     });
     await thread2.populateThread();
     expect(thread2.opPost.postNumber).toEqual(1);
     const post1 = await thread1.addPost({
       authorName: "anon",
       content: "hahaha",
-      imageName: testImageName
+      imageUri: testimageUri
     });
     const post2 = await thread2.addPost({
       authorName: "vasya",
       content: "abcd",
-      imageName: testImageName
+      imageUri: testimageUri
     });
     expect(post1.postNumber).toEqual(2);
     expect(post2.postNumber).toEqual(2);

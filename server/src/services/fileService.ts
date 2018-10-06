@@ -6,8 +6,16 @@ const staticFolderPath = (subPath: string) => {
   return path.join(config.STATIC_FOLDER_PATH, subPath);
 };
 
-const savePostImageToDisk = (fileName: string, data: string): Promise<void> => {
-  return saveBase64ToDisk(config.STATIC_FOLDER, fileName, data);
+const getTypeFromDataString = (dataString: string) => {
+  return dataString.match(/^data:image\/(\w+);base64/)[1];
+};
+
+const savePostImageToDisk = async (
+  fileName: string,
+  data: string
+): Promise<string> => {
+  await saveBase64ToDisk(config.STATIC_FOLDER, fileName, data);
+  return "images/" + fileName;
 };
 
 const saveBase64ToDisk = (

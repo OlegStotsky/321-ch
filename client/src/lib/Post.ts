@@ -12,8 +12,7 @@ export interface IPost {
   authorName: string;
   content: string;
   subject?: string;
-  imageName?: string;
-  image?: string;
+  imageUri?: string;
 }
 
 export const postDecoder: Decoder<IPost> = object({
@@ -22,6 +21,5 @@ export const postDecoder: Decoder<IPost> = object({
   authorName: string(),
   content: string(),
   subject: optional(string()),
-  imageName: optional(string()),
-  image: optional(string())
+  imageUri: optional(string())
 });

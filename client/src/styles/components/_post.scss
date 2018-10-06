@@ -33,23 +33,21 @@
   &__image {
     margin-right: 1rem;
     flex-shrink: 0;
-    border-radius: 0.3rem;
   }
 
   &__image--preview {
-    max-width: 200px;
-    max-height: 200px;
+    width: 200px;
+    height: 200px;
 
     img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
 
   &__image--full-size {
     margin-right: 1rem;
-    max-width: 1200px;
-    max-height: 1200px;
 
     img {
       width: 100%;
