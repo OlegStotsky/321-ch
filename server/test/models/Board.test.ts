@@ -10,7 +10,6 @@ describe("Board", () => {
   const testimageUri = "123.jpg";
   beforeAll(async () => {
     await mongoose.connect(config["mongo-test-uri"]);
-    await writeFile(staticFolderPath("123.jpg"), "");
   });
   afterEach(async () => {
     await mongoose.connection.db.dropDatabase();
