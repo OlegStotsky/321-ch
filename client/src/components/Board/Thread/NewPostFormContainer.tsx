@@ -54,19 +54,8 @@ class NewPostFormContainer extends React.Component<NewPostFormProps, any> {
     }
   };
 
-  public onFileChange = (e: any) => {
-    const { files } = e.currentTarget;
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(files[0]);
-    fileReader.onload = () => {
-      this.setState(() => ({
-        file: {
-          data: fileReader.result,
-          fileName: files[0].name,
-          type: files[0].type
-        }
-      }));
-    };
+  public onFileLoadSuccess = (file: IFile) => {
+    this.setState(() => ({ file }));
   };
 
   public onSubmit = (e: React.FormEvent) => {
@@ -86,7 +75,7 @@ class NewPostFormContainer extends React.Component<NewPostFormProps, any> {
       <NewPostForm
         onAuthorNameChange={this.onTextChange}
         onContentChange={this.onTextChange}
-        onFileChange={this.onFileChange}
+        onFileLoadSuccess={this.onFileLoadSuccess}
         onSubmit={this.onSubmit}
         authorName={this.state.authorName}
         content={this.state.content}

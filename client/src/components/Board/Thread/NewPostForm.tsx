@@ -2,11 +2,13 @@ import * as React from "react";
 import { ClipLoader } from "react-spinners";
 import { css } from "react-emotion";
 import Loading from "../../Loading";
+import FileUpload from "../../FileUpload";
+import { IFile } from "../../../../../shared/lib/types/File";
 
 interface INewPostFormProps {
   onAuthorNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onContentChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  onFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onFileLoadSuccess: (file: IFile) => any;
   onSubmit: (e: React.FormEvent) => void;
   authorName: string;
   content: string;
@@ -37,15 +39,7 @@ const NewPostForm: React.SFC<INewPostFormProps> = props => {
           onChange={props.onContentChange}
         />
       </div>
-      <div className="form-group">
-        <label className="form__label">File</label>
-        <input
-          type="file"
-          className="form__input"
-          name="file"
-          onChange={props.onFileChange}
-        />
-      </div>
+      <FileUpload onLoadSuccess={props.onFileLoadSuccess} />
       <div className="form-group u-center-text">
         <button className="form__submit">Submit</button>
       </div>

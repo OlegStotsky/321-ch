@@ -60,19 +60,8 @@ export class NewThreadFormContainer extends React.Component<
     }
   };
 
-  public onFileChange = (e: any) => {
-    const { files } = e.currentTarget;
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(files[0]);
-    fileReader.onload = () => {
-      this.setState(() => ({
-        file: {
-          data: fileReader.result,
-          fileName: files[0].name,
-          type: files[0].type
-        }
-      }));
-    };
+  public onFileLoadSuccess = (file: IFile) => {
+    this.setState(() => ({ file }));
   };
 
   public onSubmit = (e: React.FormEvent) => {
@@ -103,7 +92,7 @@ export class NewThreadFormContainer extends React.Component<
         onAuthorNameChange={this.onChange}
         onThreadNameChange={this.onChange}
         onMessageChange={this.onChange}
-        onFileChange={this.onFileChange}
+        onLoadSuccess={this.onFileLoadSuccess}
         onSubmit={this.onSubmit}
         authorName={this.state.authorName}
         threadName={this.state.threadName}

@@ -16,7 +16,7 @@ import { readFile } from "mz/fs";
 export default class ApiController {
   public createNewThread = (req: Request, res: Response) => {
     const { opPostAuthor, opPostSubject, opPostContent } = req.body;
-    const { fileName, data } = req.body.opPostFile;
+    const { name: fileName, data } = req.body.opPostFile;
     Board.findOne({ name: req.params.board_name }).then(async board => {
       if (!board) {
         res.status(400).json({
@@ -86,7 +86,7 @@ export default class ApiController {
     const boardName: string = req.params.boardName;
     const threadNumber: number = parseInt(req.params.threadNumber, 10);
     const { authorName, content } = req.body;
-    const { fileName: fileName, data } = req.body.file;
+    const { name: fileName, data } = req.body.file;
     const imageUri: string = await FileService.savePostImageToDisk(
       fileName,
       data
