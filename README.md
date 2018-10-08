@@ -5,9 +5,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/OlegStotsky/321-ch/badge.svg?branch=master)](https://coveralls.io/github/OlegStotsky/321-ch?branch=master)
 [![Build Status](https://travis-ci.com/OlegStotsky/321-ch.svg?branch=master)](https://travis-ci.com/OlegStotsky/321-ch)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-<a href="https://twitter.com/acdlite/status/974390255393505280">
-    <img alt="Blazing Fast" src="https://img.shields.io/badge/speed-blazing%20%F0%9F%94%A5-brightgreen.svg?style=flat-square">
- </a>
 
 ## Demo
 [Link](https://chan321ch.herokuapp.com/)
