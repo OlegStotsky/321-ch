@@ -12,7 +12,8 @@
     "object-literal-sort-keys": false,
     "jsx-no-lambda": false,
     "only-arrow-functions": false,
-    "no-empty-interface": false
+    "no-empty-interface": false,
+    "no-unused-expression": false
   },
   "rulesDirectory": []
 }
