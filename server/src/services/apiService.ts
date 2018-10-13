@@ -1,7 +1,8 @@
 import { IThread } from "../models/Thread";
 import Thread from "../models/Thread";
 import Board from "../models/Board";
-import { AppError } from "../lib/appError";
+import ThreadNotFoundError from "../lib/ThreadNotFoundError";
+import BoardNotFoundError from "../lib/BoardNotFoundError";
 
 export const findThreadInBoard = (
   boardName: string,
@@ -9,14 +10,13 @@ export const findThreadInBoard = (
 ): Promise<IThread> => {
   return Board.findOne({ name: boardName }).then(board => {
     if (!board) {
-      throw new AppError(`Board ${boardName} doesn't exist`, true);
+      throw new BoardNotFoundError(`Board ${boardName} doesn't exist`);
     }
 
     return Thread.findOne({ boardId: board._id, opPostNumber }).then(thread => {
       if (!thread) {
-        throw new AppError(
-          `Thread number ${opPostNumber} doesn't exist in ${boardName}`,
-          true
+        throw new ThreadNotFoundError(
+          `Thread number ${opPostNumber} doesn't exist in ${boardName}`
         );
       }
 
@@ -28,7 +28,7 @@ export const findThreadInBoard = (
 export const getAllThreads = (boardName: string): Promise<IThread[]> => {
   return Board.findOne({ name: boardName }).then(board => {
     if (!board) {
-      throw new AppError(`Board ${boardName} doesn't exist`, true);
+      throw new BoardNotFoundError(`Board ${boardName} doesn't exist`);
     }
 
     return Thread.find({ boardId: board._id });

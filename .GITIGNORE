@@ -1,11 +1,14 @@
 node_modules
+
 schema.txt
 technologies.txt
-false
 devlog.txt
 api.text
+
 server/dist
 client/dist
-.coveralls.yml
-client/dist/bundle.js
 server/static
+
+.coveralls.yml
+
+.env

@@ -4,11 +4,11 @@ import mongoose from "mongoose";
 import config from "./config/config";
 import apiRouter from "./routes/api";
 import * as bodyParser from "body-parser";
-// import morganBody from "morgan-body";
 import morgan from "morgan";
 import Board from "./models/Board";
 import BoardName from "../../shared/lib/types/BoardName";
 import { LoggerStream, logger } from "./config/winston";
+import errorHandler from "./middleware/errorHandler";
 
 const app = express();
 
@@ -46,5 +46,7 @@ app.get("/images/:image_name", (req, res) => {
 app.get("*", (req, res) => {
   res.sendFile(path.join(distPath, "index.html"));
 });
+
+app.use(errorHandler);
 
 export default app;
