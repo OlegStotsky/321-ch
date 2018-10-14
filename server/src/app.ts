@@ -20,7 +20,7 @@ initDB();
 
 createBoards();
 
-//important to initialize routes before static content handler
+// important to initialize routes before static content handler
 initRoutes(app);
 
 initStatic(app);

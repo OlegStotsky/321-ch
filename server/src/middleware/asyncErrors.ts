@@ -2,17 +2,18 @@ import { Request, Response, NextFunction } from "express";
 import { badImplementation } from "boom";
 import { logger } from "../config/winston";
 
-export default (fn: any) => (
+export default (fn: any) => async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  Promise.resolve(fn(req, res, next)).catch((err: any) => {
-    if (!err.isBoom) {
-      logger.debug("I was here ", err);
-      return next(badImplementation(err));
+  try {
+    await fn(req, res, next);
+  } catch (e) {
+    if (!e.isBoom) {
+      next(badImplementation(e));
     }
-    logger.debug("I was there ", err);
-    next(err);
-  });
+
+    next(e);
+  }
 };

@@ -20,8 +20,8 @@ import ThreadNotFoundError from "../lib/ThreadNotFoundError";
 
 export default class ApiController {
   public createNewThread = (req: Request, res: Response) => {
-    const { opPostAuthor, opPostSubject, opPostContent } = req.body;
-    const { name: fileName, data } = req.body.opPostFile;
+    const { authorName, subject, content } = req.body;
+    const { name: fileName, data } = req.body.file;
     Board.findOne({ name: req.params.board_name }).then(async board => {
       if (!board) {
         throw badRequest(`Board ${req.params.board_name} doesn't exist`);
@@ -33,10 +33,10 @@ export default class ApiController {
       );
       board
         .addThread({
-          opPostAuthor,
-          opPostContent,
-          opPostSubject,
-          opPostImageUri: imageUri
+          authorName,
+          content,
+          subject,
+          imageUri
         })
         .then((thread: IThread) => {
           thread

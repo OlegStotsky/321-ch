@@ -17,10 +17,10 @@ const BoardSchema = new Schema({
 BoardSchema.index({ name: 1 });
 
 interface IAddThreadParams {
-  opPostAuthor: string;
-  opPostSubject: string;
-  opPostContent: string;
-  opPostImageUri: string;
+  authorName: string;
+  content: string;
+  subject: string;
+  imageUri: string;
 }
 
 BoardSchema.methods.addThread = async function(
@@ -32,12 +32,7 @@ BoardSchema.methods.addThread = async function(
   };
   const thread = new Thread(threadData);
   await thread.save();
-  await thread.addOpPost({
-    authorName: params.opPostAuthor,
-    subject: params.opPostSubject,
-    content: params.opPostContent,
-    imageUri: params.opPostImageUri
-  });
+  await thread.addOpPost(params);
   return thread;
 };
 
