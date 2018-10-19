@@ -4,6 +4,8 @@ import { IBoardCredentials } from "../../../shared/lib/types/BoardCredentials";
 import { IThread, threadDecoder } from "./Thread";
 import { postDecoder } from "./Post";
 import { IFile } from "../../../shared/lib/types/File";
+import ISendThreadDTO from "./SendThreadDTO";
+import ISendPostDTO from "./SendPostDTO";
 
 export default class ApiAdapter {
   public static getThread(
@@ -28,37 +30,22 @@ export default class ApiAdapter {
   public static sendPost(
     boardCredentials: IBoardCredentials,
     threadNumber: number,
-    authorName: string,
-    content: string,
-    file: IFile
+    sendPostDTO: ISendPostDTO
   ) {
-    const post = {
-      authorName,
-      content,
-      file
-    };
+    const { shortName } = boardCredentials;
     return axios
-      .post(`/api/${boardCredentials.shortName}/${threadNumber}`, post)
+      .post(`/api/${boardCredentials.shortName}/${threadNumber}`, sendPostDTO)
       .then(response => response.data)
       .then(newPost => postDecoder.runWithException(newPost));
   }
 
   public static sendThread(
     boardCredentials: IBoardCredentials,
-    authorName: string,
-    subject: string,
-    content: string,
-    file: IFile
+    sendThreadDTO: ISendThreadDTO
   ) {
-    const opPost = {
-      opPostAuthor: authorName,
-      opPostSubject: subject,
-      opPostContent: content,
-      opPostFile: file
-    };
-    console.log(opPost);
+    const { shortName } = boardCredentials;
     return axios
-      .post(`/api/${boardCredentials.shortName}`, opPost)
+      .post(`/api/${shortName}`, sendThreadDTO)
       .then(response => response.data)
       .then(p => postDecoder.runWithException(p));
   }

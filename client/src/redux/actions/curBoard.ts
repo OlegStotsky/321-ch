@@ -7,6 +7,7 @@ import { ICurThreadLoadSuccessAction } from "./curThread";
 import { ICurBoardState } from "../reducers/curBoard";
 import { IThread } from "../../lib/Thread";
 import { IFile } from "../../../../shared/lib/types/File";
+import ISendThreadDTO from "../../lib/SendThreadDTO";
 
 export enum CurBoardActionTypeKeys {
   CHANGE_CUR_BOARD = "CHANGE_CUR_BOARD",
@@ -91,21 +92,10 @@ export const setThreads = (threads: IThread[]): ISetThreadsAction => ({
   threads
 });
 
-export const postNewThread = (
-  authorName: string,
-  subject: string,
-  content: string,
-  file: IFile
-) => {
+export const postNewThread = (sendThreadDTO: ISendThreadDTO) => {
   return (dispatch, getCurState: () => IRootState) => {
     dispatch(postingNewThread());
-    return ApiAdapter.sendThread(
-      getCurState().curBoard.curBoard,
-      authorName,
-      subject,
-      content,
-      file
-    )
+    return ApiAdapter.sendThread(getCurState().curBoard.curBoard, sendThreadDTO)
       .then(opPost => {
         dispatch(postingNewThreadSuccess());
         dispatch(addNewThread(opPost));
@@ -118,14 +108,10 @@ export const postNewThread = (
         );
       })
       .catch(e => {
+        const { message } = e;
         dispatch(postingNewThreadFailure());
         dispatch(notPostingNewThread());
-        dispatch(
-          addNewFlashMessage(
-            "Failed to post new thread",
-            FlashMessageKind.Danger
-          )
-        );
+        dispatch(addNewFlashMessage(message, FlashMessageKind.Danger));
       });
   };
 };
@@ -140,12 +126,8 @@ export const getAllThreads = () => {
         dispatch(notLoadingThreads());
       })
       .catch(e => {
-        dispatch(
-          addNewFlashMessage(
-            "Something went wrong while loading threads",
-            FlashMessageKind.Danger
-          )
-        );
+        const { message } = e;
+        dispatch(addNewFlashMessage(message, FlashMessageKind.Danger));
         dispatch(notLoadingThreads());
       });
   };

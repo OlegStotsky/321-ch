@@ -92,7 +92,7 @@ const mapStateToProps = (state: IRootState): IStateProps => ({
 
 const mapDispatchToProps = dispatch => ({
   addNewPost: (authorName: string, content: string, file: IFile) =>
-    dispatch(sendNewPost(authorName, content, file))
+    dispatch(sendNewPost({ authorName, content, file }))
 });
 
 export default connect(

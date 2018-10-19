@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { postNewThread } from "../../redux/actions/curBoard";
 import { IRootState } from "../../redux/reducers/rootReducer";
 import { IFile } from "../../../../shared/lib/types/File";
+import ISendThreadDTO from "../../lib/SendThreadDTO";
 
 interface INewThreadFormContainerState {
   authorName: string;
@@ -13,12 +14,7 @@ interface INewThreadFormContainerState {
 }
 
 interface IDispatchProps {
-  postNewThread?: (
-    authorName: string,
-    subject: string,
-    content: string,
-    file: IFile
-  ) => any;
+  postNewThread?: (sendThreadDTO: ISendThreadDTO) => any;
 }
 
 interface IStateProps {
@@ -66,13 +62,19 @@ export class NewThreadFormContainer extends React.Component<
 
   public onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const {
+      authorName,
+      threadName: subject,
+      message: content,
+      file
+    } = this.state;
     this.props
-      .postNewThread(
-        this.state.authorName,
-        this.state.threadName,
-        this.state.message,
-        this.state.file
-      )
+      .postNewThread({
+        authorName,
+        subject,
+        content,
+        file
+      })
       .then(() => {
         this.setState(() => ({
           threadName: "",
@@ -107,12 +109,8 @@ const mapStateToProps = (state: IRootState) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  postNewThread: (
-    authorName: string,
-    subject: string,
-    content: string,
-    file: IFile
-  ) => dispatch(postNewThread(authorName, subject, content, file))
+  postNewThread: (sendThreadDTO: ISendThreadDTO) =>
+    dispatch(postNewThread(sendThreadDTO))
 });
 
 export default connect(

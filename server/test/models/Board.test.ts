@@ -28,10 +28,10 @@ describe("Board", () => {
     const board = new Board({ name: "b" });
     await board.save();
     const opPost = {
-      opPostAuthor: "Oleg",
-      opPostSubject: "Serious Business",
-      opPostContent: "Hello there!",
-      opPostImageUri: testimageUri
+      authorName: "Oleg",
+      subject: "Serious Business",
+      content: "Hello there!",
+      imageUri: testimageUri
     };
     const thread = await board.addThread(opPost);
     await thread.populateThread();
@@ -47,10 +47,10 @@ describe("Board", () => {
     const board = new Board({ name: "pr" });
     board.save();
     const thread = await board.addThread({
-      opPostAuthor: "Oleg",
-      opPostSubject: "Serious Business",
-      opPostContent: "Hello there!",
-      opPostImageUri: testimageUri
+      authorName: "Oleg",
+      subject: "Serious Business",
+      content: "Hello there!",
+      imageUri: testimageUri
     });
     const threads = await Thread.find({ boardId: board._id });
     expect(threads.length).toEqual(1);
@@ -77,18 +77,18 @@ describe("Board", () => {
     await boardA.save();
     await boardSci.save();
     const thread1 = await boardSci.addThread({
-      opPostAuthor: "Oleg",
-      opPostSubject: "Serious Business",
-      opPostContent: "Hello there!",
-      opPostImageUri: testimageUri
+      authorName: "Oleg",
+      subject: "Serious Business",
+      content: "Hello there!",
+      imageUri: testimageUri
     });
     await thread1.populateThread();
     expect(thread1.opPost.postNumber).toEqual(1);
     const thread2 = await boardA.addThread({
-      opPostAuthor: "Oleg",
-      opPostSubject: "Serious Business",
-      opPostContent: "Hello there!",
-      opPostImageUri: testimageUri
+      authorName: "Oleg",
+      subject: "Serious Business",
+      content: "Hello there!",
+      imageUri: testimageUri
     });
     await thread2.populateThread();
     expect(thread2.opPost.postNumber).toEqual(1);

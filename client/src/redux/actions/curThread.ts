@@ -6,6 +6,7 @@ import { IPost } from "../../lib/Post";
 import { apiFetchRequested, apiFetchSucceded, apiFetchFailed } from "./api";
 import { IRootState } from "../reducers/rootReducer";
 import { addNewFlashMessage, FlashMessageKind } from "./flashMessages";
+import ISendPostDTO from "../../lib/SendPostDTO";
 
 export enum ICurThreadActionTypeKeys {
   CHANGE_CUR_THREAD_NUMBER = "CHANGE_CUR_THREAD_NUMBER",
@@ -70,6 +71,8 @@ export const loadCurrentThreadData = () => {
         dispatch(setCurrentThreadData(threadData));
       })
       .catch(e => {
+        const { response } = e;
+        dispatch(addNewFlashMessage(response, FlashMessageKind.Danger));
         dispatch(currentThreadNotLoading());
         dispatch(curThreadLoadFailure());
         dispatch(apiFetchFailed());
@@ -77,23 +80,13 @@ export const loadCurrentThreadData = () => {
   };
 };
 
-export const sendNewPost = (
-  authorName: string,
-  content: string,
-  file: IFile
-) => {
+export const sendNewPost = (sendPostDTO: ISendPostDTO) => {
   return (dispatch, getCurState: () => IRootState) => {
     dispatch(apiFetchRequested());
     dispatch(addingNewPost());
     const boardCredentials: IBoardCredentials = getCurState().curBoard.curBoard;
     const threadNumber: number = getCurState().curThread.curThreadNumber;
-    return ApiAdapter.sendPost(
-      boardCredentials,
-      threadNumber,
-      authorName,
-      content,
-      file
-    )
+    return ApiAdapter.sendPost(boardCredentials, threadNumber, sendPostDTO)
       .then(post => {
         dispatch(addNewPost(post));
         dispatch(apiFetchSucceded());
@@ -106,12 +99,10 @@ export const sendNewPost = (
         );
       })
       .catch(e => {
-        console.log(e);
+        const { response } = e;
         dispatch(notAddingNewPost());
         dispatch(apiFetchFailed());
-        e.response.data.errors.forEach(errorMessage =>
-          dispatch(addNewFlashMessage(errorMessage, FlashMessageKind.Danger))
-        );
+        dispatch(e);
       });
   };
 };

@@ -2,6 +2,7 @@ import { Router, Request, Response } from "express";
 import * as express from "express";
 import * as path from "path";
 import { badRequest, badImplementation } from "boom";
+import { object, string } from "joi";
 
 import config from "../config/config";
 
@@ -17,11 +18,31 @@ import { logger } from "../config/winston";
 import * as FileService from "../services/fileService";
 import BoardNotFoundError from "../lib/BoardNotFoundError";
 import ThreadNotFoundError from "../lib/ThreadNotFoundError";
+import { ValidationError } from "mongoose";
+import { NextFunction } from "connect";
 
 export default class ApiController {
-  public createNewThread = (req: Request, res: Response) => {
-    const { opPostAuthor, opPostSubject, opPostContent } = req.body;
-    const { name: fileName, data } = req.body.opPostFile;
+  public createNewThread = (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    const opPostSchema = object().keys({
+      authorName: string(),
+      subject: string(),
+      content: string(),
+      file: object({
+        name: string(),
+        data: string()
+      })
+    });
+    const validationResult = opPostSchema.validate(req.body);
+    if (validationResult.error) {
+      throw badRequest(validationResult.error.message);
+    }
+
+    const { authorName, subject, content } = req.body;
+    const { name: fileName, data } = req.body.file;
     Board.findOne({ name: req.params.board_name }).then(async board => {
       if (!board) {
         throw badRequest(`Board ${req.params.board_name} doesn't exist`);
@@ -31,25 +52,39 @@ export default class ApiController {
         fileName,
         data
       );
-      board
-        .addThread({
-          opPostAuthor,
-          opPostContent,
-          opPostSubject,
-          opPostImageUri: imageUri
-        })
-        .then((thread: IThread) => {
-          thread
-            .populate("opPost")
-            .execPopulate()
-            .then(populatedThread => {
-              res.status(201).json(pickValuesFromPost(populatedThread.opPost));
-            });
-        });
+      try {
+        await board
+          .addThread({
+            authorName,
+            content,
+            subject,
+            imageUri
+          })
+          .then((thread: IThread) => {
+            thread
+              .populate("opPost")
+              .execPopulate()
+              .then(populatedThread => {
+                res
+                  .status(201)
+                  .json(pickValuesFromPost(populatedThread.opPost));
+              });
+          });
+      } catch (err) {
+        if (err instanceof ValidationError) {
+          throw badRequest(err.message);
+        }
+
+        throw badImplementation(err.message);
+      }
     });
   };
 
-  public findAllThreads = async (req: Request, res: Response) => {
+  public findAllThreads = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
     const boardName: string = req.params.boardName;
     try {
       const threads: IThread[] = await getAllThreads(boardName);

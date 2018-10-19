@@ -12,3 +12,4 @@ server/static
 .coveralls.yml
 
 .env
+.DS_Store
