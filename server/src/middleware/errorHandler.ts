@@ -11,5 +11,5 @@ export default (err: any, req: Request, res: Response, next: NextFunction) => {
     logger.error(err.message);
   }
 
-  res.status(err.output.statusCode).json(err.output.payload);
+  return res.status(err.output.statusCode).json(err.output.payload);
 };

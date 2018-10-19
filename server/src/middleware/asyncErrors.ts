@@ -9,11 +9,11 @@ export default (fn: any) => async (
 ) => {
   try {
     await fn(req, res, next);
-  } catch (e) {
-    if (!e.isBoom) {
-      next(badImplementation(e));
+  } catch (err) {
+    if (!err.isBoom) {
+      err = badImplementation(err);
     }
 
-    next(e);
+    next(err);
   }
 };

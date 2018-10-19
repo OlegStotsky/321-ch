@@ -10,21 +10,25 @@ import initRoutes from "./initialization/initRoutes";
 
 import errorHandler from "./middleware/errorHandler";
 
-const app = express();
+const init = async () => {
+  const app = express();
 
-app.use(bodyParser.json({ limit: "5mb" }));
+  app.use(bodyParser.json({ limit: "5mb" }));
 
-initLogger(app);
+  await initLogger(app);
 
-initDB();
+  await initDB();
 
-createBoards();
+  await createBoards();
 
-// important to initialize routes before static content handler
-initRoutes(app);
+  // important to initialize routes before static content handler
+  await initRoutes(app);
 
-initStatic(app);
+  await initStatic(app);
 
-app.use(errorHandler);
+  app.use(errorHandler);
 
-export default app;
+  return app;
+};
+
+export default init;

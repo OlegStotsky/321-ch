@@ -1,6 +1,7 @@
 import { IThread } from "../models/Thread";
 import Thread from "../models/Thread";
 import Board from "../models/Board";
+
 import ThreadNotFoundError from "../lib/ThreadNotFoundError";
 import BoardNotFoundError from "../lib/BoardNotFoundError";
 
