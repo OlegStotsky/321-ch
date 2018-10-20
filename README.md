@@ -7,13 +7,13 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 <!-- toc -->
-* [🚀 Demo](##-demo)
-* [🗒 Description](##-description)
-* [✨ Technologies](##-technologies)
-* [📌 Requirements](##-requirements)
-* [🔨 Usage](##-setting-up-and-running)
-* [🏭 Contributing](##-related-repositories)
-* [📣 License](##-the-mit-license-(mit))
+* [🚀 Demo](#-demo)
+* [🗒 Description](#-description)
+* [✨ Technologies](#-technologies)
+* [📌 Requirements](#-requirements)
+* [🔨 Usage](#-setting-up-and-running)
+* [🏭 Contributing](#-contributing)
+* [📣 License](##-the-mit-license-mit)
 <!-- tocstop -->
 
 ## 🚀 Demo
