@@ -6,13 +6,23 @@
 [![Build Status](https://travis-ci.com/OlegStotsky/321-ch.svg?branch=master)](https://travis-ci.com/OlegStotsky/321-ch)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-## Demo
+<!-- toc -->
+* [🚀 Demo](##-demo)
+* [🗒 Description](##-description)
+* [✨ Technologies](##-technologies)
+* [📌 Requirements](##-requirements)
+* [🔨 Usage](##-setting-up-and-running)
+* [🏭 Contributing](##-related-repositories)
+* [📣 License](##-the-mit-license-(mit))
+<!-- tocstop -->
+
+## 🚀 Demo
 [Link](https://chan321ch.herokuapp.com/)
 
-## About
-321ch is an imageboard engine built using react and node.js.
+## 🗒 Description
+321ch is an imageboard engine built using React, Node.js, Typescript.
 
-## Technologies
+## ✨ Technologies
 * Front End:
   * React
   * Redux
@@ -31,10 +41,10 @@
   * Sinon
   * Enzyme
 
-## Requirements
+## 📌 Requirements
 You should have the latest version of mongodb and node.js installed on your machine. Mongodb is assumed to use the default port, username and password, but you can always change that in server/config/config.ts.
 
-## Setting up and running
+## 🔨 Setting up and running
 Install client dependencies:
 
 `yarn install`
@@ -65,7 +75,7 @@ Finally, start the project:
 
 Voila! Both api and content server are running on port 3000. Visit localhost:3000 to view the website.
 
-## Contributing
+## 🏭 Contributing
 
 1. Fork it ( https://github.com/olegStotsky/321-ch/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
@@ -73,7 +83,7 @@ Voila! Both api and content server are running on port 3000. Visit localhost:300
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
 
-## The MIT License (MIT)
+## 📣 The MIT License (MIT)
 
 Copyright (c) 2015 ID25
 
